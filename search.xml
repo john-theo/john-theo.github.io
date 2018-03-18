@@ -34,6 +34,12 @@
   
     
     <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <content type="html"><![CDATA[]]></content>
+    </entry>
+    
+    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <content type="html"><![CDATA[]]></content>
