@@ -34,14 +34,14 @@
   
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
