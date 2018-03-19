@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最开始接触 Python 是因为女票选了 Python，为了秀一下“男友力”，我花了2小时读完 Python 3.6 的文档，做了她一学期的私人答疑。在使用Python的过程中，其解释性的语言，众多彩蛋语法糖，优雅的数据结构，优秀的包管理工具，大量的例程和学习资料，让我一直把 Python 作为我的首要编程语言。本文是我在研究 Python 语言本身高级特性是所做的笔记，会慢慢更新。如果你恰好">
+<meta name="keywords" content="Python,进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python进阶函数和功能">
+<meta property="og:url" content="http://yoursite.com/2018/03/19/python-adv/index.html">
+<meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="最开始接触 Python 是因为女票选了 Python，为了秀一下“男友力”，我花了2小时读完 Python 3.6 的文档，做了她一学期的私人答疑。在使用Python的过程中，其解释性的语言，众多彩蛋语法糖，优雅的数据结构，优秀的包管理工具，大量的例程和学习资料，让我一直把 Python 作为我的首要编程语言。本文是我在研究 Python 语言本身高级特性是所做的笔记，会慢慢更新。如果你恰好">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/python.jpg">
+<meta property="og:image" content="http://img.mukewang.com/54c8a7e40001327303410245.png">
+<meta property="og:updated_time" content="2018-03-19T07:51:39.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python进阶函数和功能">
+<meta name="twitter:description" content="最开始接触 Python 是因为女票选了 Python，为了秀一下“男友力”，我花了2小时读完 Python 3.6 的文档，做了她一学期的私人答疑。在使用Python的过程中，其解释性的语言，众多彩蛋语法糖，优雅的数据结构，优秀的包管理工具，大量的例程和学习资料，让我一直把 Python 作为我的首要编程语言。本文是我在研究 Python 语言本身高级特性是所做的笔记，会慢慢更新。如果你恰好">
+<meta name="twitter:image" content="http://yoursite.com/images/python.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/19/python-adv/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python进阶函数和功能 | 不太想说话</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?682c8bcd3389def4e85fe433be700aa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  
+<style>
+	#loading{
+		background-color: #f2f2f2;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		margin-top: 0px;
+		top: 0px;
+	}
+	#loading-center{
+		width: 100%;
+		height: 90%;
+		position: relative;
+		}
+	#loading-center-absolute {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 20px;
+		width: 100px;
+		margin-top: -10px;
+		margin-left: -50px;
+
+	}
+    .info{
+        color: black;
+        width: 100%;
+		height: 100%;
+        padding: 0 20px;
+		text-align:center;
+        opacity:0.9;
+        top:58%;
+        font-size: 12px;
+        font-family: "Courier New";
+        font-weight: lighter;
+        line-height: 26px;
+		position: absolute;	
+    }
+    .en{
+        font-size: 14px;
+        }
+	.object{
+		width: 20px;
+		height: 20px;
+		background-color: #000000;
+		-moz-border-radius: 50% 50% 50% 50%;
+		-webkit-border-radius: 50% 50% 50% 50%;
+		border-radius: 50% 50% 50% 50%;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		position: absolute;	
+	}
+	#object_one{
+		-webkit-animation: object 2s linear infinite;
+		 animation: object 2s linear infinite;
+		 }
+	#object_two{ 
+		-webkit-animation: object 2s linear infinite -.4s;
+		animation: object 2s linear infinite -.4s;
+		 }
+	#object_three{ 
+		-webkit-animation: object 2s linear infinite -.8s; 
+		animation: object 2s linear infinite -.8s; 
+		}
+	#object_four{ 
+		-webkit-animation: object 2s linear infinite -1.2s;
+		animation: object 2s linear infinite -1.2s; 
+		} 
+	#object_five{ 
+		-webkit-animation: object 2s linear infinite -1.6s; 
+		animation: object 2s linear infinite -1.6s; 
+		}
+	@-webkit-keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }		
+		
+	}		
+	@keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }
+	}	
+	</style>
+  <script>
+    function load() {
+      var a= setTimeout("loading.style.transition='opacity 0.3s'",0)   
+      //设置透明度改变的过渡时间为0.3秒
+      var b= setTimeout("loading.style.opacity=0",500)
+      //0.5秒后加载动画开始变为透明
+      var c= setTimeout("loading.style.display='none'",800)
+      //当透明度为0的时候，隐藏掉它
+    }
+  </script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"  onload="load()">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<div id="loading">
+		<div id="loading-center">
+            <div class="info">
+                <span class="en">github.io</span> 有点慢，<span class="en">font-awesome</span> 有点大，
+                <br>
+                客官麻烦搬条板凳坐一下下，我马上就到！
+            </div>
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two" style="left:20px;"></div>
+				<div class="object" id="object_three" style="left:40px;"></div>
+				<div class="object" id="object_four" style="left:60px;"></div>
+				<div class="object" id="object_five" style="left:80px;"></div>
+			</div>
+		</div> 
+	</div>
+
+  <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不太想说话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所爱，天道酬勤</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-失控">
+    <a href="/" rel="section">
+      失控</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-归档">
+    <a href="/archives/" rel="section">
+      归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      关于</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/python-adv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python进阶函数和功能</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T00:00:00+08:00">2018-03-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言特性/" itemprop="url" rel="index"><span itemprop="name">语言特性</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/19/python-adv/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/19/python-adv/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             热度： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div><br><img src="/images/python.jpg" style="border-radius:20px"><br></div>
+
+<p>最开始接触 Python 是因为女票选了 Python，为了秀一下“男友力”，我花了2小时读完 Python 3.6 的文档，做了她一学期的私人答疑。<br>在使用Python的过程中，其解释性的语言，众多彩蛋语法糖，优雅的数据结构，优秀的包管理工具，大量的例程和学习资料，让我一直把 Python 作为我的首要编程语言。<br>本文是我在研究 Python 语言本身高级特性是所做的笔记，会慢慢更新。<br>如果你恰好也和我一样喜欢Python。希望本文能对你的学习有所帮助！</p>
+<a id="more"></a>
+<h2 id="map"><a href="#map" class="headerlink" title="map()"></a><strong>map()</strong></h2><p>map()是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回。</p>
+<p>例如，对于list [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>
+<p>如果希望把list的每个元素都作平方，就可以用map()函数：</p>
+<p><img src="http://img.mukewang.com/54c8a7e40001327303410245.png" alt="file-list"></p>
+<p>因此，我们只需要传入函数f(x)=x*x，就可以利用map()函数完成这个计算：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x*x</span><br><span class="line"><span class="keyword">print</span> map(f, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure></p>
+<p><strong>输出结果：</strong>[1, 4, 9, 10, 25, 36, 49, 64, 81]</p>
+<p><code>注意：map()函数不改变原有的 list，而是返回一个新的 list。</code></p>
+<p>利用map()函数，可以把一个 list 转换为另一个 list，只需要传入转换函数。</p>
+<p>由于list包含的元素可以是任何类型，因此，map() 不仅仅可以处理只包含数值的 list，事实上它可以处理包含任意类型的 list，只要传入的函数f可以处理这种数据类型。</p>
+<hr>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a><strong>reduce()</strong></h2><p>reduce()函数也是Python内置的一个高阶函数。reduce()函数接收的参数和 map()类似，<code>一个函数 f</code>，<code>一个list</code>，但行为和 map()不同，reduce()传入的函数 f 必须接收两个参数，reduce()对list的每个元素反复调用函数f，并返回最终结果值。</p>
+<p>例如，编写一个f函数，接收x和y，返回x和y的和：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure></p>
+<p>调用 reduce(f, [1, 3, 5, 7, 9])时，reduce函数将做如下计算：</p>
+<blockquote>
+<ol>
+<li>先计算头两个元素：f(1, 3)，结果为4； </li>
+<li>再把结果和第3个元素计算：f(4, 5)，结果为9； </li>
+<li>再把结果和第4个元素计算：f(9,7)，结果为16； </li>
+<li>再把结果和第5个元素计算：f(16, 9)，结果为25；</li>
+<li>由于没有更多的元素了，计算结束，返回结果25。</li>
+</ol>
+</blockquote>
+<p>上述计算实际上是对 list的所有元素求和。虽然Python内置了求和函数sum()，但是，利用reduce()求和也很简单。</p>
+<p>reduce()还可以接收第3个可选参数，作为计算的初始值。如果把初始值设为100，计算：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(f, [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>], <span class="number">100</span>)</span><br></pre></td></tr></table></figure></p>
+<p>结果将变为<code>125</code>，因为第一轮计算是：</p>
+<p>计算初始值和第一个元素：<code>f(100, 1)</code>，结果为<code>101</code>。</p>
+<hr>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><strong>filter()</strong></h2><p>filter()函数是 Python 内置的另一个有用的高阶函数，filter()函数接收一个函数 f 和一个list，这个函数 f 的作用是对每个元素进行判断，返回 True或 False，<strong>filter()根据判断结果自动过滤掉不符合条件的元素，返回由符合条件元素组成的新list。</strong></p>
+<p>例如，要从一个list [1, 4, 6, 7, 9, 12, 17]中删除偶数，保留奇数，首先，要编写一个判断奇数的函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_odd</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> == <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>然后，利用filter()过滤掉偶数：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter(is_odd, [<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">17</span>])</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果:</strong> [1, 7, 9, 17]</p>
+<p>利用filter()，可以完成很多有用的功能，例如，删除 None 或者空字符串：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_not_empty</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s <span class="keyword">and</span> len(s.strip()) &gt; <span class="number">0</span></span><br><span class="line">filter(is_not_empty, [<span class="string">'test'</span>, <span class="keyword">None</span>, <span class="string">''</span>, <span class="string">'str'</span>, <span class="string">'  '</span>, <span class="string">'END'</span>])</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果：</strong>[‘test’, ‘str’, ‘END’]</p>
+<p><code>注意: s.strip(rm) 删除 s 字符串中开头、结尾处的 rm 序列的字符。</code></p>
+<p>当rm为空时，默认删除空白符（包括’\n’, ‘\r’, ‘\t’, ‘ ‘)，如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> = <span class="string">'     123'</span></span><br><span class="line"><span class="selector-tag">a</span>.strip()</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果：</strong> ‘123’<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a='<span class="symbol">\t</span><span class="symbol">\t</span>123<span class="symbol">\r</span><span class="symbol">\n</span>'</span><br><span class="line">a.strip()</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果：</strong>‘123’</p>
+<hr>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a><strong>sorted()</strong></h2><p>Python内置的 sorted()函数可对list进行排序：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sorted([<span class="number">36</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">9</span>, <span class="number">21</span>])</span><br><span class="line"></span><br><span class="line">[<span class="number">5</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">21</span>, <span class="number">36</span>]</span><br></pre></td></tr></table></figure></p>
+<p>但 sorted()也是一个高阶函数，它可以接收一个比较函数来实现自定义排序，比较函数的定义是，传入两个待比较的元素 x, y，<strong>如果 x 应该排在 y 的前面，返回 -1，如果 x 应该排在 y 的后面，返回 1。如果 x 和 y 相等，返回 0。</strong></p>
+<p>因此，如果我们要实现倒序排序，只需要编写一个reversed_cmp函数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reversed_cmp</span><span class="params">(x, y)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="symbol">y:</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="symbol">y:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>这样，调用 sorted() 并传入 reversed_cmp 就可以实现倒序排序：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sorted([<span class="number">36</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">9</span>, <span class="number">21</span>], reversed_cmp)</span><br><span class="line">[<span class="number">36</span>, <span class="number">21</span>, <span class="number">12</span>, <span class="number">9</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>sorted()也可以对字符串进行排序，字符串默认按照ASCII大小来比较：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>])</span><br><span class="line">[<span class="string">'Credit'</span>, <span class="string">'Zoo'</span>, <span class="string">'about'</span>, <span class="string">'bob'</span>]</span><br></pre></td></tr></table></figure></p>
+<p>‘Zoo’排在’about’之前是因为’Z’的ASCII码比’a’小。</p>
+<hr>
+<h2 id="Python中返回函数"><a href="#Python中返回函数" class="headerlink" title="Python中返回函数"></a><strong>Python中返回函数</strong></h2><p>Python的函数不但可以返回int、str、list、dict等数据类型，还可以返回函数！</p>
+<p>例如，定义一个函数 f()，我们让它返回一个函数 g，可以这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'call f()...'</span></span><br><span class="line">    <span class="comment"># 定义函数g:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'call g()...'</span></span><br><span class="line">    <span class="comment"># 返回函数g:</span></span><br><span class="line">    <span class="keyword">return</span> g</span><br></pre></td></tr></table></figure></p>
+<p>仔细观察上面的函数定义，我们在函数 f 内部又定义了一个函数 g。由于函数 g 也是一个对象，函数名 g 就是指向函数 g 的变量，所以，最外层函数 f 可以返回变量 g，也就是函数 g 本身。</p>
+<p>调用函数 f，我们会得到 f 返回的一个函数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; x = f()   <span class="comment"># 调用f()</span></span><br><span class="line">call f()...</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; x   <span class="comment"># 变量x是f()返回的函数：</span></span><br><span class="line">&lt;function g at <span class="number">0x1037bf320</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; x()   <span class="comment"># x指向函数，因此可以调用</span></span><br><span class="line">call g()...   <span class="comment"># 调用x()就是执行g()函数定义的代码</span></span><br></pre></td></tr></table></figure></p>
+<p>请注意区分返回函数和返回值：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myabs</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> abs   <span class="comment"># 返回函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myabs2</span><span class="params">(x)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> abs(x)   <span class="comment"># 返回函数调用的结果，返回值是一个数值</span></span><br></pre></td></tr></table></figure></p>
+<p>返回函数可以把一些计算延迟执行。例如，如果定义一个普通的求和函数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_sum</span><span class="params">(lst)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> sum(lst)</span><br></pre></td></tr></table></figure></p>
+<p>调用calc_sum()函数时，将立刻计算并得到结果：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; calc_sum([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果返回一个函数，就可以“延迟计算”：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_sum</span><span class="params">(lst)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">return</span> sum(lst)</span><br><span class="line">    <span class="keyword">return</span> lazy_sum</span><br><span class="line"><span class="comment"># 调用calc_sum()并没有计算出结果，而是返回函数:</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; f = calc_sum([1, 2, 3, 4])</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; f</span></span><br><span class="line">&lt;function lazy_sum at 0x1037bfaa0&gt;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对返回的函数进行调用时，才计算出结果:</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; f()</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>由于可以返回函数，我们在后续代码里就可以决定到底要不要调用该函数。</p>
+<p>编写一个函数calc_prod(lst)，它接收一个list，返回一个函数，返回函数可以计算参数的乘积。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_prod</span><span class="params">(lst)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 方法一：</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x * y, lst)</span><br><span class="line">    <span class="keyword">return</span> prod</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 方法二：</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> :reduce(<span class="keyword">lambda</span> x, y: x * y, lst)</span><br><span class="line"></span><br><span class="line">f = calc_prod([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="keyword">print</span> f()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><strong>闭包</strong></h2><p>在函数内部定义的函数和外部定义的函数是一样的，只是他们无法被外部访问：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'g()...'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'f()...'</span></span><br><span class="line">    <span class="keyword">return</span> g</span><br></pre></td></tr></table></figure></p>
+<p>将 g 的定义移入函数 f 内部，防止其他代码调用 g：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'f()...'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'g()...'</span></span><br><span class="line">    <span class="keyword">return</span> g</span><br></pre></td></tr></table></figure></p>
+<p>但是，考察上一小节定义的 calc_sum 函数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_sum</span><span class="params">(lst)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">return</span> sum(lst)</span><br><span class="line">    <span class="keyword">return</span> lazy_sum</span><br></pre></td></tr></table></figure></p>
+<p><code>注意: 发现没法把 lazy_sum 移到 calc_sum 的外部，因为它引用了 calc_sum 的参数 lst。</code></p>
+<p>像这种内层函数引用了外层函数的变量（参数也算变量），然后返回内层函数的情况，称为闭包（Closure）。</p>
+<p>闭包的特点是返回的函数还引用了外层函数的局部变量，所以，要正确使用闭包，就要确保引用的局部变量在函数返回后不能变。举例如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 希望一次返回3个函数，分别计算1x1,2x2,3x3:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>)<span class="symbol">:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">             <span class="keyword">return</span> i*i</span><br><span class="line">        fs.append(f)</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line"></span><br><span class="line">f1, f2, f3 = count()</span><br></pre></td></tr></table></figure></p>
+<p>你可能认为调用f1()，f2()和f3()结果应该是1，4，9，但实际结果全部都是 9（请自己动手验证）。</p>
+<p>原因就是当count()函数返回了3个函数时，这3个函数所引用的<code>变量 i</code> 的值已经变成了3。由于f1、f2、f3并没有被调用，所以，此时他们并未计算 i*i，当 f1 被调用时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f1()</span><br><span class="line">9     # 因为f1现在才计算i*i，但现在i的值已经变为3</span><br></pre></td></tr></table></figure></p>
+<p>因此，返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+<blockquote>
+<p><strong>返回闭包不能引用循环变量，请改写count()函数，让它正确返回能计算1x1、2x2、3x3的函数。</strong></p>
+</blockquote>
+<blockquote>
+<p>考察下面的函数 f:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(j)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">return</span> j*j</span><br><span class="line">    <span class="keyword">return</span> g</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>它可以正确地返回一个闭包g，g所引用的变量j不是循环变量，因此将正常执行。<br>在count函数的循环内部，如果借助f函数，就可以避免引用循环变量i。</p>
+<blockquote>
+<p><strong>参考代码:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">    ---</span><br><span class="line">        <span class="comment"># 写法一：</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(j)</span>:</span></span><br><span class="line">            <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></span><br><span class="line">                <span class="keyword">return</span> j*j</span><br><span class="line">            <span class="keyword">return</span> g</span><br><span class="line">        r = f(i)</span><br><span class="line">        fs.append(r)</span><br><span class="line">    ---</span><br><span class="line">        <span class="comment"># 写法二：</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(i)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">lambda</span> : i*i</span><br><span class="line">        fs.append(f(i))</span><br><span class="line">    ---</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line"><span class="keyword">print</span> f1(), f2(), f3()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/进阶/" rel="tag"># 进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/new/" rel="next" title="Hello World !">
+                <i class="fa fa-chevron-left"></i> Hello World !
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/./images/avatar.png"
+                alt="John Theo" />
+            
+              <p class="site-author-name" itemprop="name">John Theo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/John-Theo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:John_Theo@zju.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">1.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">2.</span> <span class="nav-text">reduce()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">3.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted"><span class="nav-number">4.</span> <span class="nav-text">sorted()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中返回函数"><span class="nav-number">5.</span> <span class="nav-text">Python中返回函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">6.</span> <span class="nav-text">闭包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Theo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user-circle-o"></i>
+      &ensp;Site UV = <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+  
+  
+    <span>&emsp;|&emsp;</span>
+  
+  
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      &ensp;Site PV = <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
