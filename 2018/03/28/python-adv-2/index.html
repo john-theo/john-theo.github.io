@@ -98,24 +98,25 @@
 
 
 
-  <meta name="description" content="本文置顶。 这是庄心昊的 个人博客 ，旨在分享个人学习路径中的所获所得，避免后生走弯路。本博客中 所有代码均经过本人调试 ，关于 调试环境 若无特殊说明请参看 代码环境 。 点 这里 查看我的文章列表  注意：本博客内的所有文章采用&amp;ensp; 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 &amp;ensp;进行许可，转载请勿用于商业目的，并请著名原作者（若不是本人我会特别注明）及原文">
+  <meta name="description" content="本文是近期学习中零散的一些知识点，主要是面向对象，记于此。    下面是快捷方式（点击直达）导入模块、导入模块、面向对象文法、属性优先级、类方法、类的继承、不定参数的传递、关于Python版本和函数使用、">
+<meta name="keywords" content="Python,进阶">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World !">
-<meta property="og:url" content="http://yoursite.com/2018/03/18/new/index.html">
+<meta property="og:title" content="Python进阶函数和功能_#2（杂记）">
+<meta property="og:url" content="http://yoursite.com/2018/03/28/python-adv-2/index.html">
 <meta property="og:site_name" content="不太想说话">
-<meta property="og:description" content="本文置顶。 这是庄心昊的 个人博客 ，旨在分享个人学习路径中的所获所得，避免后生走弯路。本博客中 所有代码均经过本人调试 ，关于 调试环境 若无特殊说明请参看 代码环境 。 点 这里 查看我的文章列表  注意：本博客内的所有文章采用&amp;ensp; 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 &amp;ensp;进行许可，转载请勿用于商业目的，并请著名原作者（若不是本人我会特别注明）及原文">
+<meta property="og:description" content="本文是近期学习中零散的一些知识点，主要是面向对象，记于此。    下面是快捷方式（点击直达）导入模块、导入模块、面向对象文法、属性优先级、类方法、类的继承、不定参数的传递、关于Python版本和函数使用、">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-03-27T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World !">
-<meta name="twitter:description" content="本文置顶。 这是庄心昊的 个人博客 ，旨在分享个人学习路径中的所获所得，避免后生走弯路。本博客中 所有代码均经过本人调试 ，关于 调试环境 若无特殊说明请参看 代码环境 。 点 这里 查看我的文章列表  注意：本博客内的所有文章采用&amp;ensp; 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 &amp;ensp;进行许可，转载请勿用于商业目的，并请著名原作者（若不是本人我会特别注明）及原文">
+<meta name="twitter:title" content="Python进阶函数和功能_#2（杂记）">
+<meta name="twitter:description" content="本文是近期学习中零散的一些知识点，主要是面向对象，记于此。    下面是快捷方式（点击直达）导入模块、导入模块、面向对象文法、属性优先级、类方法、类的继承、不定参数的传递、关于Python版本和函数使用、">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/18/new/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/28/python-adv-2/"/>
 
 
 
@@ -125,7 +126,7 @@
   };
 </script>
 
-  <title>Hello World ! | 不太想说话</title>
+  <title>Python进阶函数和功能_#2（杂记） | 不太想说话</title>
   
 
 
@@ -470,7 +471,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/new/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/python-adv-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Theo">
@@ -487,7 +488,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World !</h1>
+          <h1 class="post-title" itemprop="name headline">Python进阶函数和功能_#2（杂记）</h1>
         
 
         <div class="post-meta">
@@ -499,7 +500,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T00:00:00+08:00">2018-03-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T00:00:00+08:00">2018-03-28</time>
             
 
             
@@ -509,14 +510,25 @@
           </span>
           
           
-              <span class="post-updated">
-                &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-03-28T00:00:00+08:00" content="2018-03-28">
-                  2018-03-28
-                </time>
-              </span>
-          
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言特性/" itemprop="url" rel="index"><span itemprop="name">语言特性</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -526,8 +538,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/18/new/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/18/new/" itemprop="commentsCount"></span>
+                <a href="/2018/03/28/python-adv-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/28/python-adv-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -563,14 +575,79 @@
       
 
       
-        <p><code>本文置顶。</code></p>
-<p>这是庄心昊的 <strong>个人博客</strong> ，旨在分享个人学习路径中的所获所得，避免后生走弯路。<br>本博客中 <strong>所有代码均经过本人调试</strong> ，关于 <strong>调试环境</strong> 若无特殊说明请参看 <a href="/about/#env"><code>代码环境</code></a> 。</p>
-<p>点 <strong><a href="/archives/"><code>这里</code></a></strong> 查看我的文章列表</p>
+        <p>本文是近期学习中零散的一些知识点，主要是面向对象，记于此。</p>
+<div id="content"></div>
+
 <blockquote>
-<p><strong>注意：</strong>本博客内的所有文章采用&ensp; <strong><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></strong> &ensp;进行许可，转载请勿用于商业目的，并请著名原作者（若不是本人我会特别注明）及原文链接。</p>
+<p><strong>下面是快捷方式</strong>（点击直达）<br><a href="/2018/03/28/python-adv-2/#导入模块"><code>导入模块</code></a>、<a href="/2018/03/28/python-adv-2/#导入模块"><code>导入模块</code></a>、<a href="/2018/03/28/python-adv-2/#面向对象文法"><code>面向对象文法</code></a>、<a href="/2018/03/28/python-adv-2/#属性优先级"><code>属性优先级</code></a>、<a href="/2018/03/28/python-adv-2/#类方法"><code>类方法</code></a>、<a href="/2018/03/28/python-adv-2/#类的继承"><code>类的继承</code></a>、<a href="/2018/03/28/python-adv-2/#不定参数的传递"><code>不定参数的传递</code></a>、<a href="/2018/03/28/python-adv-2/#关于Python版本和函数使用"><code>关于Python版本和函数使用</code></a>、</p>
 </blockquote>
-<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Happy coding !</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 尝试导入较老版本模块</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> simplejson <span class="keyword">as</span> json</span><br><span class="line"></span><br><span class="line">print(json.dumps(&#123;<span class="string">'python'</span>:<span class="number">3.6</span>&#125;))</span><br></pre></td></tr></table></figure>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="面向对象文法"><a href="#面向对象文法" class="headerlink" title="面向对象文法"></a>面向对象文法</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="title">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(name, gender, birth)</span></span><span class="symbol">:</span></span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">xiaoming = Person(<span class="string">'Xiao Ming'</span>, <span class="string">'Male'</span>, <span class="string">'1990-1-1'</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last)<span class="symbol">:</span></span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line"><span class="symbol">TypeError:</span> __init_<span class="number">_</span>() takes exactly <span class="number">3</span> arguments (<span class="number">4</span> given)</span><br></pre></td></tr></table></figure>
+<p>这会导致创建失败或运行不正常，因为第一个参数name被Python解释器传入了实例的引用，从而导致整个方法的调用参数位置全部没有对上。</p>
+<p><strong>正确写法：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="comment"># 第一个参数一定要是self！</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, gender, birth)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>第一个参数一定要是 <code>self</code>！</p>
+</blockquote>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="属性优先级"><a href="#属性优先级" class="headerlink" title="属性优先级"></a>属性优先级</h2><p>当实例属性和类属性重名时，实例属性优先级高，它将屏蔽掉对类属性的访问。</p>
+<p>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    address = <span class="string">'Earth'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">p1 = Person(<span class="string">'Bob'</span>)</span><br><span class="line">p2 = Person(<span class="string">'Alice'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Person.address = '</span> + Person.address)</span><br><span class="line"></span><br><span class="line">p1.address = <span class="string">'China'</span></span><br><span class="line">print(<span class="string">'p1.address = '</span> + p1.address)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Person.address = '</span> + Person.address)</span><br><span class="line">print(<span class="string">'p2.address = '</span> + p2.address)</span><br></pre></td></tr></table></figure></p>
+<pre><code>Person.address = Earth
+p1.address = China
+Person.address = Earth
+p2.address = Earth
+</code></pre><p>我们发现，在设置了 p1.address = ‘China’ 后，p1访问 address 确实变成了 ‘China’，但是，Person.address和p2.address仍然是’Earch’，怎么回事？</p>
+<blockquote>
+<p>原因是 p1.address = ‘China’并 <strong>没有改变 Person 的 address</strong> ，而是给 p1这个实例绑定了<code>实例属性</code>address ，对p1来说，它有一个实例属性address（值是’China’），而它所属的类Person也有一个<code>类属性</code>address，所以:</p>
+</blockquote>
+<ul>
+<li>访问 p1.address 时，优先查找实例属性，返回’China’。</li>
+<li>访问 p2.address 时，p2没有实例属性address，但是有类属性address，因此返回’Earth’。</li>
+</ul>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h2><p><code>@classmethod</code> 装饰器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    __count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">how_many</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> cls.__count</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        Person.__count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">print(Person.how_many())</span><br><span class="line">p1 = Person(<span class="string">'Bob'</span>)</span><br><span class="line">print(Person.how_many())</span><br></pre></td></tr></table></figure>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>函数 <code>super(子类, self)</code> 将返回当前类继承的父类，然后调用<strong>init</strong>()方法，注意self参数已在super()中传入，在<strong>init</strong>()中将隐式传递，不需要写出（也不能写）。</p>
+<p><strong>例如</strong>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="title">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, gender)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.gender = gender</span><br><span class="line">        </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="title">Person</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, gender, score)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">super</span>(Student, <span class="keyword">self</span>).__init_<span class="number">_</span>(name, gender)</span><br><span class="line">        <span class="keyword">self</span>.score = score</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一定要用 super(Student, self).<strong>init</strong>(name, gender) 去初始化父类，否则，继承自 Person 的 Student 将没有 name 和 gender。</p>
+</blockquote>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="不定参数的传递"><a href="#不定参数的传递" class="headerlink" title="不定参数的传递"></a>不定参数的传递</h2><p>对于Person类的定义：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="title">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, gender)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.gender = gender</span><br></pre></td></tr></table></figure></p>
+<p>希望除了 name和gender 外，可以提供任意额外的关键字参数，并绑定到实例，请修改 Person 的 <strong>init</strong>() 定 义，完成该功能。</p>
+<p><strong>例程</strong>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, gender, **kw)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.gender = gender</span><br><span class="line">        <span class="comment"># Python 2.7 中 iteritems 独立封装，返回一个迭代器；但是3.*版本整合进了字典内建函数 items。</span></span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> kw.items():</span><br><span class="line">            setattr(self, k, v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">'Bob'</span>, <span class="string">'Male'</span>, age=<span class="number">18</span>, course=<span class="string">'Python'</span>)</span><br><span class="line">print(p.age)</span><br><span class="line">print(p.course)</span><br><span class="line"><span class="comment"># Python 2.7 中 filter 对象可以直接输出，但是在3.*版本需要强制转化成 list 对象，否则输出 &lt;filter object at ...&gt;</span></span><br><span class="line">print(list(filter(<span class="keyword">lambda</span> x: x[<span class="number">0</span>] != <span class="string">'_'</span>, dir(p))))</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li><code>**kw</code> 以字典的形式接受参数表</li>
+<li><code>*args</code> 以元组的方式接受参数表</li>
+<li>关于Python版本和函数使用（<code>链接</code>）</li>
+</ul>
+</blockquote>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+<hr>
+<h2 id="关于Python版本和函数使用："><a href="#关于Python版本和函数使用：" class="headerlink" title="关于Python版本和函数使用："></a>关于Python版本和函数使用：</h2><p><strong>map、filter 和 reduce</strong><br>这三个函数号称是函数式编程的代表。在 Python3.x 和 Python2.x 中也有了很大的差异。</p>
+<p>首先我们先简单的在 Python2.x 的交互下输入 map 和 filter,看到它们两者的类型是 <code>built-in function</code> (内置函数):</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; map</span><br><span class="line">&lt;built-in function map&gt;</span><br><span class="line">&gt;&gt;&gt; filter</span><br><span class="line">&lt;built-in function filter&gt;</span><br></pre></td></tr></table></figure>
+<p>它们输出的结果类型都是列表:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="selector-tag">map</span>(lambda <span class="attribute">x</span>:x *<span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="selector-attr">[2, 4, 6]</span></span><br><span class="line">&gt;&gt;&gt; <span class="selector-tag">filter</span>(lambda <span class="attribute">x</span>:x %<span class="number">2</span> ==<span class="number">0</span>,range(<span class="number">10</span>))</span><br><span class="line"><span class="selector-attr">[0, 2, 4, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<p>但是在Python 3.x中它们却不是这个样子了：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; map</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">map</span>'&gt;</span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; map(print,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">&lt;map object at <span class="number">0x10d8bd400</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; filter</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">filter</span>'&gt;</span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; filter(lambda <span class="symbol">x:</span>x % <span class="number">2</span> == <span class="number">0</span>, range(<span class="number">10</span>))</span><br><span class="line">&lt;filter object at <span class="number">0x10d8bd3c8</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>首先它们从函数变成了类，其次，它们的返回结果也从当初的列表成了一个可迭代的对象, 我们尝试用 next 函数来进行手工迭代:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f =filter(<span class="name">lambda</span> x<span class="symbol">:x</span> %<span class="number">2</span> ==0, range(<span class="number">10</span>))</span><br><span class="line">&gt;&gt;&gt; next(<span class="name">f</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line">&gt;&gt;&gt; next(<span class="name">f</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line">&gt;&gt;&gt; next(<span class="name">f</span>)</span><br><span class="line"><span class="number">4</span></span><br><span class="line">&gt;&gt;&gt; next(<span class="name">f</span>)</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>对于比较高端的 reduce 函数，它在 Python 3.x 中已经不属于 built-in 了，被挪到 functools 模块当中。</p>
+<blockquote>
+<p>另外，关于更多 Python 2.x 和 Python 3.x 中的不同，可以参看 <a href="/2018/03/28/python-translation/#"><code>这里</code></a>，希望有时间我可以仔细翻译一下。</p>
+</blockquote>
+<p><i class="fa fa-arrow-circle-up"></i>&ensp;<a href="#content"><code>回到目录</code></a></p>
+
       
     </div>
     
@@ -601,6 +678,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/进阶/" rel="tag"># 进阶</a>
+          
+        </div>
+      
 
       
       
@@ -610,8 +695,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/asm/" rel="next" title="汇编指令简析">
-                <i class="fa fa-chevron-left"></i> 汇编指令简析
+              <a href="/2018/03/19/python-adv/" rel="next" title="Python进阶函数和功能_#1（函数式编程）">
+                <i class="fa fa-chevron-left"></i> Python进阶函数和功能_#1（函数式编程）
               </a>
             
           </div>
@@ -620,8 +705,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/19/python-adv/" rel="prev" title="Python进阶函数和功能_#1（函数式编程）">
-                Python进阶函数和功能_#1（函数式编程） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/28/python-translation/" rel="prev" title="Python 版本区别翻译">
+                Python 版本区别翻译 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -678,8 +763,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -780,6 +874,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块"><span class="nav-number">1.</span> <span class="nav-text">导入模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象文法"><span class="nav-number">2.</span> <span class="nav-text">面向对象文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性优先级"><span class="nav-number">3.</span> <span class="nav-text">属性优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类方法"><span class="nav-number">4.</span> <span class="nav-text">类方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的继承"><span class="nav-number">5.</span> <span class="nav-text">类的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不定参数的传递"><span class="nav-number">6.</span> <span class="nav-text">不定参数的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Python版本和函数使用："><span class="nav-number">7.</span> <span class="nav-text">关于Python版本和函数使用：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
