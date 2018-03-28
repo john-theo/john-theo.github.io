@@ -3,28 +3,6 @@
   
     
     <entry>
-      <title>Python 版本区别翻译</title>
-      <link href="/2018/03/28/python-translation/"/>
-      <content type="html"><![CDATA[<p>有言曰：</p><blockquote><p>了解一门语言最好的方法是了解它的历史沿革。</p></blockquote><p>本着这一宗旨，同时也为了目前 Python 学习和例程中不同版本写法不同带来的诸多困扰，我开始着手翻译 <a href="https://docs.python.org/3/whatsnew/3.0.html" target="_blank" rel="noopener"><code>What’s New In Python 3.0</code></a> 。如果你同样有兴趣，欢迎加入翻译工作。</p><p>完成的工作会定期迁移到本文。</p><p><strong><a href="https://github.com/John-Theo/PythonDocTranslation" target="_blank" rel="noopener"><code>Repo 传送门</code></a></strong></p><a id="more"></a><hr><blockquote><p>原文链接：<a href="https://docs.python.org/3/whatsnew/3.0.html" target="_blank" rel="noopener">https://docs.python.org/3/whatsnew/3.0.html</a><br>  原作者：Guido van Rossum<br>责任翻译：庄心昊</p></blockquote><p><strong>！ 注意：本文对比版本为 3.0 和 2.6，如果你关心最新版本的变化，请在</strong> <a href="https://docs.python.org/3/whatsnew/changelog.html#changelog" target="_blank" rel="noopener">这里</a> <strong>查看 change log。</strong></p><p><strong>另外，如果你发现本文的机制在最新的版本中不适用，请提交issue。</strong></p><p><strong>（以下为作者正文）</strong></p><hr><p>本文简述了 Python 3.0 相对于 2.6 版本的新功能。 Python 3.0 也被称为 “Python 3000” 或 “Py3K”，是有史以来第一个 <em>特意向后兼容</em>  的Python版本。比普通的发行版本有更多的变化，且对于所有Python用户来说更重要。尽管如此，在充分了解了这些变化之后，你会发现 Python 其实并没有改变太多 —— 总的来说，我们主要修复了广为提及的小问题，并去除了很多无用的设计。</p><p>本文的目的不是提供所有新功能的详细说明，而是试图给出一个简便的概述。有关完整的详细信息，请参阅 Python 3.0 的文档和/或文中引用的许多PEP。如果您想了解特定功能的完整实施和设计原理，PEP通常比常规文档具有更多的细节；但请注意，一旦功能完全实施，PEP通常不会保持在最新状态。</p><blockquote><p><strong>译者注：PEP (Python Enhancement Proposals) 是一份为Python社区提供各种增强功能的技术规格，也是提交新特性，以便让社区指出问题，精确化技术文档的提案。<a href="https://www.python.org/dev/peps/" target="_blank" rel="noopener"><code>传送门</code></a></strong></p></blockquote><p>由于时间限制，这个文件并不像它应该呈现的那样完整。与新的发行版本一样，源代码中的 <code>Misc/NEWS</code> 文件包含大量有关已更改的每个小细节的详细信息。</p><h2 id="常见的绊脚石"><a href="#常见的绊脚石" class="headerlink" title="常见的绊脚石"></a>常见的绊脚石</h2><p>如果您已经习惯于使用 Python 2.5，本节列出了最有可能困住您的一些变化。</p><h3 id="print-是一个函数"><a href="#print-是一个函数" class="headerlink" title="print 是一个函数"></a>print 是一个函数</h3><p><code>print</code> 语句已被 <a href="https://docs.python.org/3/library/functions.html#print" target="_blank" rel="noopener">print()</a> 函数替代，其中的关键字参数替换了原先 <code>print</code> 语句的大部分特殊语法（<a href="https://www.python.org/dev/peps/pep-3105" target="_blank" rel="noopener"><strong>PEP 3105</strong></a>）。 例程：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Old: <span class="builtin-name">print</span> <span class="string">"The answer is"</span>, 2<span class="number">*2</span></span><br><span class="line">New: <span class="builtin-name">print</span>(<span class="string">"The answer is"</span>, 2<span class="number">*2</span>)</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> x,           # Trailing comma suppresses newline</span><br><span class="line">New: <span class="builtin-name">print</span>(x, <span class="attribute">end</span>=<span class="string">" "</span>)  # Appends a space instead of a newline</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span>              # Prints a newline</span><br><span class="line">New: <span class="builtin-name">print</span>()            # You must call the function!</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> &gt;&gt;sys.stderr, <span class="string">"fatal error"</span></span><br><span class="line">New: <span class="builtin-name">print</span>(<span class="string">"fatal error"</span>, <span class="attribute">file</span>=sys.stderr)</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> (x, y)       # prints repr((x, y))</span><br><span class="line">New: <span class="builtin-name">print</span>((x, y))      # <span class="keyword">Not</span> the same as <span class="builtin-name">print</span>(x, y)!</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      <categories>
-          
-          <category> 语言特性 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-            <tag> 翻译 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>机器学习资源链接汇总</title>
       <link href="/2018/03/28/ML-terms/"/>
       <content type="html"><![CDATA[<p><strong>快速链接</strong><br><a href="/2018/03/28/ML-terms/#课程"><code>课程</code></a>、<a href="/2018/03/28/ML-terms/#术语表"><code>术语表</code></a></p><a id="more"></a><hr><h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><h3 id="Google-Crash-Course"><a href="#Google-Crash-Course" class="headerlink" title="Google Crash Course"></a>Google Crash Course</h3><p><i class="fa fa-arrow-circle-right"></i>&ensp;<a href="https://developers.google.cn/machine-learning/crash-course/?hl=zh-CN" target="_blank" rel="noopener"><code>转到</code></a></p><hr><h2 id="术语表"><a href="#术语表" class="headerlink" title="术语表"></a>术语表</h2><h3 id="Google-×-TensorFlow"><a href="#Google-×-TensorFlow" class="headerlink" title="Google × TensorFlow"></a>Google × TensorFlow</h3><p><i class="fa fa-arrow-circle-right"></i>&ensp;<a href="https://developers.google.cn/machine-learning/crash-course/glossary?hl=zh-CN" target="_blank" rel="noopener"><code>转到</code></a></p>]]></content>
@@ -41,6 +19,28 @@
             <tag> 机器学习 </tag>
             
             <tag> 链接 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Python 版本区别翻译</title>
+      <link href="/2018/03/28/python-translation/"/>
+      <content type="html"><![CDATA[<p>有言曰：</p><blockquote><p>了解一门语言最好的方法是了解它的历史沿革。</p></blockquote><p>本着这一宗旨，同时也为了目前 Python 学习和例程中不同版本写法不同带来的诸多困扰，我开始着手翻译 <a href="https://docs.python.org/3/whatsnew/3.0.html" target="_blank" rel="noopener"><code>What’s New In Python 3.0</code></a> 。如果你同样有兴趣，欢迎加入翻译工作。</p><p>为了协作方便，本项目就托管在github上了，完成的工作会定期迁移到本文。</p><p><strong><a href="https://github.com/John-Theo/PythonDocTranslation" target="_blank" rel="noopener"><code>Repo 传送门</code></a></strong></p><a id="more"></a><hr><blockquote><p>原文链接：<a href="https://docs.python.org/3/whatsnew/3.0.html" target="_blank" rel="noopener">https://docs.python.org/3/whatsnew/3.0.html</a><br>  原作者：Guido van Rossum<br>责任翻译：庄心昊</p></blockquote><p><strong>！ 注意：本文对比版本为 3.0 和 2.6，如果你关心最新版本的变化，请在</strong> <a href="https://docs.python.org/3/whatsnew/changelog.html#changelog" target="_blank" rel="noopener">这里</a> <strong>查看 change log。</strong></p><p><strong>另外，如果你发现本文的机制在最新的版本中不适用，请提交issue。</strong></p><p><strong>（以下为作者正文）</strong></p><hr><p>本文简述了 Python 3.0 相对于 2.6 版本的新功能。 Python 3.0 也被称为 “Python 3000” 或 “Py3K”，是有史以来第一个 <em>特意向后兼容</em>  的Python版本。比普通的发行版本有更多的变化，且对于所有Python用户来说更重要。尽管如此，在充分了解了这些变化之后，你会发现 Python 其实并没有改变太多 —— 总的来说，我们主要修复了广为提及的小问题，并去除了很多无用的设计。</p><p>本文的目的不是提供所有新功能的详细说明，而是试图给出一个简便的概述。有关完整的详细信息，请参阅 Python 3.0 的文档和/或文中引用的许多PEP。如果您想了解特定功能的完整实施和设计原理，PEP通常比常规文档具有更多的细节；但请注意，一旦功能完全实施，PEP通常不会保持在最新状态。</p><blockquote><p><strong>译者注：PEP (Python Enhancement Proposals) 是一份为Python社区提供各种增强功能的技术规格，也是提交新特性，以便让社区指出问题，精确化技术文档的提案。<a href="https://www.python.org/dev/peps/" target="_blank" rel="noopener"><code>传送门</code></a></strong></p></blockquote><p>由于时间限制，这个文件并不像它应该呈现的那样完整。与新的发行版本一样，源代码中的 <code>Misc/NEWS</code> 文件包含大量有关已更改的每个小细节的详细信息。</p><h2 id="常见的绊脚石"><a href="#常见的绊脚石" class="headerlink" title="常见的绊脚石"></a>常见的绊脚石</h2><p>如果您已经习惯于使用 Python 2.5，本节列出了最有可能困住您的一些变化。</p><h3 id="print-是一个函数"><a href="#print-是一个函数" class="headerlink" title="print 是一个函数"></a>print 是一个函数</h3><p><code>print</code> 语句已被 <a href="https://docs.python.org/3/library/functions.html#print" target="_blank" rel="noopener">print()</a> 函数替代，其中的关键字参数替换了原先 <code>print</code> 语句的大部分特殊语法（<a href="https://www.python.org/dev/peps/pep-3105" target="_blank" rel="noopener"><strong>PEP 3105</strong></a>）。 例程：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Old: <span class="builtin-name">print</span> <span class="string">"The answer is"</span>, 2<span class="number">*2</span></span><br><span class="line">New: <span class="builtin-name">print</span>(<span class="string">"The answer is"</span>, 2<span class="number">*2</span>)</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> x,           # Trailing comma suppresses newline</span><br><span class="line">New: <span class="builtin-name">print</span>(x, <span class="attribute">end</span>=<span class="string">" "</span>)  # Appends a space instead of a newline</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span>              # Prints a newline</span><br><span class="line">New: <span class="builtin-name">print</span>()            # You must call the function!</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> &gt;&gt;sys.stderr, <span class="string">"fatal error"</span></span><br><span class="line">New: <span class="builtin-name">print</span>(<span class="string">"fatal error"</span>, <span class="attribute">file</span>=sys.stderr)</span><br><span class="line"></span><br><span class="line">Old: <span class="builtin-name">print</span> (x, y)       # prints repr((x, y))</span><br><span class="line">New: <span class="builtin-name">print</span>((x, y))      # <span class="keyword">Not</span> the same as <span class="builtin-name">print</span>(x, y)!</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 语言特性 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 翻译 </tag>
             
         </tags>
       
