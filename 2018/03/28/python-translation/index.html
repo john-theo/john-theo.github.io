@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="不太想说话">
 <meta property="og:description" content="有言曰：  了解一门语言最好的方法是了解它的历史沿革。  本着这一宗旨，同时也为了目前 Python 学习和例程中不同版本写法不同带来的诸多困扰，我开始着手翻译 What’s New In Python 3.0 。如果你同样有兴趣，欢迎加入翻译工作。 为了协作方便，本项目就托管在github上了，完成的工作会定期迁移到本文。 Repo 传送门">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T16:00:00.000Z">
+<meta property="og:updated_time" content="2018-04-06T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 版本区别翻译">
 <meta name="twitter:description" content="有言曰：  了解一门语言最好的方法是了解它的历史沿革。  本着这一宗旨，同时也为了目前 Python 学习和例程中不同版本写法不同带来的诸多困扰，我开始着手翻译 What’s New In Python 3.0 。如果你同样有兴趣，欢迎加入翻译工作。 为了协作方便，本项目就托管在github上了，完成的工作会定期迁移到本文。 Repo 传送门">
@@ -512,8 +512,8 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-04-01T00:00:00+08:00" content="2018-04-01">
-                  2018-04-01
+                <time itemprop="dateUpdated" datetime="2018-04-07T00:00:00+08:00" content="2018-04-07">
+                  2018-04-07
                 </time>
               </span>
           
@@ -642,12 +642,23 @@
 <blockquote>
 <p>__cmp__() 魔术方法在目前的 python 3.6.4 中依然受到支持，但 cmp() 函数确实不见了。</p>
 </blockquote>
-<h4 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h4><ul>
+<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><ul>
 <li><a href="https://www.python.org/dev/peps/pep-0237" target="_blank" rel="noopener"><strong>PEP 237</strong></a>：事实上，long （译者注：长整型）被重命名为 <a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener">int</a>。这就意味着，只有一个內建（built-in）的叫做 <a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener">int</a> 的整形，但是从表现来看，它和原先的 long 差不多。</li>
 <li><a href="https://www.python.org/dev/peps/pep-0238" target="_blank" rel="noopener"><strong>PEP 238</strong></a>：一个诸如 <code>1/2</code> 的表达式返回一个 float。而使用 <code>1//2</code> 来得到截尾（取整）的结果。（后面的表达形式已经存在了数年，至少从 Python 2.2 开始就有了。）</li>
 <li>因为对整形的值不再有限制， <code>sys.maxint</code> 常量被取消。但是 <code>sys.maxsize</code> 可以被用作一个大于任何 practical list 和 string index（译者注：字符串索引？） 的整数。它符合现实的“自然”整数的大小，并且和上一次同一平台中发布版本中的 <code>sys.maxint</code> 相同（如果编译环境完全相同的话）。</li>
 <li>长整数的 <a href="https://docs.python.org/3/library/functions.html#repr" target="_blank" rel="noopener">repr()</a> 函数不需要再尾随一个 <code>L</code> 了，所以无条件 strip 该对象的代码将会删去最后一位数字。（使用 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str()</a> 替代。）</li>
 <li>八进制表示不再写作 <code>0720</code> 这样的形式；而使用例如 <code>0o720</code> 的形式来代替。</li>
+</ul>
+<h3 id="Text-Vs-Data-取代-Unicode-Vs-8-bit"><a href="#Text-Vs-Data-取代-Unicode-Vs-8-bit" class="headerlink" title="Text Vs. Data 取代 Unicode Vs. 8-bit"></a>Text Vs. Data 取代 Unicode Vs. 8-bit</h3><p>你此前关于 二进制数据 和 Unicode 的 认识被全部改变了。</p>
+<ul>
+<li>Python 3.0 使用 <em>text</em> 和 （二进制）数据 的概念来取代 Unicode 字符串 和 8位字符串。所有的 text 都是 Unicode；而已编码的 Unicode（数据）则被作为 二进制数据。用来存放 text 的类型是 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>，用来存放数据（data）的数据类型是字节（byte）。Python 3.0 和 2.x 之间最大的区别是任何企图混淆 text 和 data 的做法都会引发 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" target="_blank" rel="noopener">TypeError</a>；而如果你要在 Python 2.x 中将 Unicode 和 8位字符串 混合使用，当 8位字符串 正好只有7位（ASCII）时，是没问题的；但当其中包含非ASCII值时，就会引发 <a href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" target="_blank" rel="noopener">UnicodeDecodeError</a> 错误。这样针对数值的做法在近几年引起了众多的不满。</li>
+<li>因为这一点原则性的变化，几乎所有使用Unicode，编码或二进制数据的代码都需要更改。这项改变是有建设性的，因为在 2.x 版本中，由编码和非编码字符混合使用导致了非常多的bug。 要在 Python 2.x 中准备好，请对所有未编码的 text 使用 Unicode，并且对二进制或已编码数据使用 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。 然后 <code>2to3</code> 工具将为您完成大部分工作。</li>
+<li>以后，您不需要再对 Unicode 文本使用 <code>u&quot;...&quot;</code> 这样的表达了。然而，您仍然需要对二进制数据使用 <code>b&quot;...&quot;</code> 这样的表达。</li>
+<li>因为 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 和 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型不能混用，您必须明确声明两者之间的转换。使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.encode" target="_blank" rel="noopener">str.encode()</a> 来将 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 转换为 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a>，<a href="https://docs.python.org/3/library/stdtypes.html#bytes.decode" target="_blank" rel="noopener">bytes.decode()</a> 反之。你也可以分别使用 <code>bytes(s, encoding=...)</code> 和 <code>str(b, encoding=...)</code>。</li>
+<li>和 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 一样，<a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型也是不可变的。有一个单独的 _可变_ 类型来保存缓冲（buffered）的二进制数据，<a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。几乎所有接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 的接口也接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。可变的 API 基于 collections.MutableSequence。</li>
+<li>所有在原始（raw）字符串里的反斜杠都会被编译为它字面的意思。这意味着 <code>&#39;\U&#39;</code> 和 <code>&#39;\u&#39;</code> 在原始（raw）字符串中的转义不会被专门处理。比如，<code>r&#39;\u20ac&#39;</code> 在 Python 3.0 中是一个含有6个字符的字符串；而在 2.6 版本中，<code>ur&#39;\u20ac&#39;</code> 则表示一个单独的“欧元”符号。（当然，这项改变仅仅影响原始字符串书面形式，在 Python 3.0 中，欧元符号用 <code>&#39;\u20ac&#39;</code> 表示。）</li>
+<li>內建（built-in）的 basestring 抽象类型被移去了。取而代之的是 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。<a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 和 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型没有足够多的共同功能来共享同一个基类。 <code>2to3</code> 工具（见下文）会将所有出现的 basestring 替换成 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。</li>
+<li>以文本文件（text files）打开的文件（目前作为 <a href="https://docs.python.org/3/library/functions.html#open" target="_blank" rel="noopener">open()</a> 函数的默认模式）通常使用一种编码方式将（内存中的）字符串和（硬盘上的）字节进行映射。以二进制文件（binary files）打开的文件（打开时在 mode 参数处为 <code>&#39;b&#39;</code>）通常在内存中使用字节存储。这意味着，如果一个文件以错误的模式或编码被打开，I/O 会报错，而不是安静地对错误数据进行处理。这也意味着即使是 Unix 的用户也需要在打开文件时制定正确的模式（text 或 binary）。有一种依赖平台（操作系统）的默认编码，在 Unix 系的平台上可以通过环境变量 <code>LANG</code> 设置（个别情况下需要通过对平台特异性本地环境相关的环境变量进行设置）。在大多数情况下，但不是全部情形，系统的默认编码是 UTF-8；你永远不要指望这个默认值派大用场（译者注：谁说的！明明很多乱码问题设成 utf-8 就好了，你骗人）。任何读写非纯 ASCII 文本的应用推荐覆写编码。所以再也没有必要在 codecs 模块里，使用需要关注编码的数据流了。</li>
 </ul>
 
       
@@ -886,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的绊脚石"><span class="nav-number">1.</span> <span class="nav-text">常见的绊脚石</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#print-是一个函数"><span class="nav-number">1.1.</span> <span class="nav-text">print 是一个函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回-Views-对象-和-迭代器-而不再是-Lists"><span class="nav-number">1.2.</span> <span class="nav-text">返回 Views 对象 和 迭代器 而不再是 Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大小比较"><span class="nav-number">1.3.</span> <span class="nav-text">大小比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整数"><span class="nav-number">1.3.1.</span> <span class="nav-text">整数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的绊脚石"><span class="nav-number">1.</span> <span class="nav-text">常见的绊脚石</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#print-是一个函数"><span class="nav-number">1.1.</span> <span class="nav-text">print 是一个函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回-Views-对象-和-迭代器-而不再是-Lists"><span class="nav-number">1.2.</span> <span class="nav-text">返回 Views 对象 和 迭代器 而不再是 Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大小比较"><span class="nav-number">1.3.</span> <span class="nav-text">大小比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数"><span class="nav-number">1.4.</span> <span class="nav-text">整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text-Vs-Data-取代-Unicode-Vs-8-bit"><span class="nav-number">1.5.</span> <span class="nav-text">Text Vs. Data 取代 Unicode Vs. 8-bit</span></a></li></ol></li></ol></div>
             
 
           </div>
