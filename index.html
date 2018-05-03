@@ -866,42 +866,19 @@
 
       
         
-          
-            <h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a><strong>merge</strong></h2><p>merge 函数通过 <strong>一个或多个键</strong> 来将数据集的 <strong>行</strong> 连接起来。该函数的主要应用场景是针对同一个 <code>主键</code> 存在两张包含不同特征的表，通过该主键的连接，将两张表进行合并。合并之后，两张表的行数没有增加，列数是两张表的列数之和减一。<br>函数的具体参数为：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">merge</span>(<span class="keyword">left</span>,<span class="keyword">right</span>,how=<span class="string">'inner'</span>,<span class="keyword">on</span>=<span class="keyword">None</span>,left_on=<span class="keyword">None</span>,right_on=<span class="keyword">None</span>,</span><br><span class="line">left_index=<span class="literal">False</span>,right_index=<span class="literal">False</span>,<span class="keyword">sort</span>=<span class="literal">False</span>,suffixes=(<span class="string">'_x'</span>,<span class="string">'_y'</span>),copy=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>on=None</code> 指定连接的列名，若两列希望连接的列名不一样，可以通过 <code>left_on</code> 和 <code>right_on</code> 来具体指定</li>
-<li><code>how=&#39;inner&#39;</code> 参数指的是左右两个表主键那一列中存在不重合的行时，取结果的方式：inner表示交集，outer 表示并集，left 和right 表示取某一边。 </li>
-</ul>
-<p>举例如下：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">df1 = pd.DataFrame([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>],[<span class="number">3</span>,<span class="number">9</span>,<span class="number">0</span>],[<span class="number">8</span>,<span class="number">0</span>,<span class="number">3</span>]], columns=['x1','x2','x3'])</span><br><span class="line">df2 = pd.DataFrame([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">4</span>,<span class="number">6</span>],[<span class="number">3</span>,<span class="number">9</span>]], columns=['x1','x4'])</span><br><span class="line"></span><br><span class="line">df3 = pd.merge(df1, df2, how='left', on='x1')</span><br><span class="line">print(df3)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>on=&#39;x1&#39;</code>，即以两个表中的x1为主键进行连接，</li>
-<li><code>how=&#39;left&#39;</code>，即是以两个表中 <code>merge</code> 函数中左边那个表的行为准，保持左边表行数不变，拿右边的表与之合并。</li>
-</ul>
-<p>df3 结果如下：</p>
-<blockquote>
-<p>  x1  x2  x3   x4<br>0   1   2   3  2.0<br>1   5   6   7  NaN<br>2   3   9   0  9.0<br>3   8   0   3  NaN</p>
-</blockquote>
-<hr>
-<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a><strong>concat</strong></h2><p>concat 与其说是连接，更准确的说是拼接。就是把两个表直接合在一起。于是有一个突出的问题，是 <strong>横向拼接</strong> 还是 <strong>纵向拼接</strong>，所以 concat 函数的关键参数是 <code>axis</code> 。<br>函数的具体参数是：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat<span class="params">(objs,<span class="attr">axis</span>=0,<span class="attr">join</span>='outer',<span class="attr">join_axes</span>=None,<span class="attr">ignore_index</span>=False,<span class="attr">keys</span>=None,<span class="attr">levels</span>=None,<span class="attr">names</span>=None,<span class="attr">verigy_integrity</span>=False)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>objs</code> 是需要拼接的对象集合，一般为列表或者字典</li>
-<li><code>axis=0</code> 是 <strong>行拼接</strong>，拼接之后行数增加，列数也根据 <code>join</code> 来定，<code>join=&#39;outer&#39;</code> 时，列数是两表并集。同理<code>join=&#39;inner&#39;</code>，列数是两表交集。</li>
-</ul>
-<p>在默认情况下，<code>axis=0</code> 为纵向拼接，此时有：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">concat</span><span class="params">([df1,df2])</span></span>  &lt;=&gt;  df1.append(df2)</span><br></pre></td></tr></table></figure>
-<p>在axis=1 时为横向拼接 ，此时有</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat([df1,df2],<span class="attribute">axis</span>=1)  &lt;=&gt;  merge(df1,df2,<span class="attribute">left_index</span>=<span class="literal">True</span>,right_index=True,how='outer')</span><br></pre></td></tr></table></figure>
-<p>举个例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(&#123;<span class="string">'key'</span>: [<span class="string">'a'</span>,<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'b'</span>], <span class="string">'data1'</span>: range(<span class="number">4</span>)&#125;)</span><br><span class="line">df2 = pd.DataFrame(&#123;<span class="string">'key'</span>: [<span class="string">'b'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'c'</span>], <span class="string">'data2'</span>: range(<span class="number">4</span>)&#125;)</span><br><span class="line"></span><br><span class="line">print(pd.concat([df1, df2],axis=<span class="number">1</span>))</span><br><span class="line">print(pd.merge(df1, df2, left_index=<span class="keyword">True</span>, right_index=<span class="keyword">True</span>, how=<span class="string">'outer'</span>))</span><br></pre></td></tr></table></figure>
-<p>输出如下：</p>
-<blockquote>
-<p>   data1 key  data2 key<br>0      0   a      0   b<br>1      1   a      1   b<br>2      2   b      2   c<br>3      3   b      3   c<br>   data1 key_x  data2 key_y<br>0      0     a      0     b<br>1      1     a      1     b<br>2      2     b      2     c<br>3      3     b      3     c</p>
-</blockquote>
+          <p>在使用 pandas 的过程中，经常用到 merge 或者 concat 操作，今小小补习，作笔记于此。<br>索引：<a href="/2018/05/03/pandas-merge/#merge"><code>merge</code></a> / <a href="/2018/05/03/pandas-merge/#concat"><code>concat</code></a></p>
+<div id="content"></div>
 
-          
+<blockquote>
+<p>参考资料：<a href="https://my.oschina.net/lionets/blog/279785?fromerr=Z1jmQb0L" target="_blank" rel="noopener">pandas 数据规整</a></p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/03/pandas-merge/#更多" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
