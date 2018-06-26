@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="转载自 《李琼羽的博客》 原文链接：https://www.cnblogs.com/Liqiongyu/p/5916710.html 我做部分修改和注解  本文源码寄方于github：https://github.com/w392807287/Design_pattern_of_python 参考文献： 《大话设计模式》——吴强 《Python设计模式》——pythontip.com 《23种设">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二十三种设计模式及其python实现">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/design_pattern_of_python/index.html">
+<meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="转载自 《李琼羽的博客》 原文链接：https://www.cnblogs.com/Liqiongyu/p/5916710.html 我做部分修改和注解  本文源码寄方于github：https://github.com/w392807287/Design_pattern_of_python 参考文献： 《大话设计模式》——吴强 《Python设计模式》——pythontip.com 《23种设">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928141135485-1986044710.gif">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928181031672-1073974804.gif">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928195334656-2085921203.gif">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928194103188-1537654983.gif">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928194345281-610274391.gif">
+<meta property="og:updated_time" content="2018-06-26T08:46:40.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二十三种设计模式及其python实现">
+<meta name="twitter:description" content="转载自 《李琼羽的博客》 原文链接：https://www.cnblogs.com/Liqiongyu/p/5916710.html 我做部分修改和注解  本文源码寄方于github：https://github.com/w392807287/Design_pattern_of_python 参考文献： 《大话设计模式》——吴强 《Python设计模式》——pythontip.com 《23种设">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928141135485-1986044710.gif">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/26/design_pattern_of_python/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>二十三种设计模式及其python实现 | 不太想说话</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?682c8bcd3389def4e85fe433be700aa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  
+<style>
+	#loading{
+		background-color: #f2f2f2;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		margin-top: 0px;
+		top: 0px;
+	}
+	#loading-center{
+		width: 100%;
+		height: 90%;
+		position: relative;
+		}
+	#loading-center-absolute {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 20px;
+		width: 100px;
+		margin-top: -10px;
+		margin-left: -50px;
+
+	}
+    .info{
+        color: black;
+        width: 100%;
+		height: 100%;
+        padding: 0 20px;
+		text-align:center;
+        opacity:0.9;
+        top:58%;
+        font-size: 12px;
+        font-family: "Courier New";
+        font-weight: lighter;
+        line-height: 26px;
+		position: absolute;	
+    }
+    .en{
+        font-size: 14px;
+        }
+	.object{
+		width: 20px;
+		height: 20px;
+		background-color: #000000;
+		-moz-border-radius: 50% 50% 50% 50%;
+		-webkit-border-radius: 50% 50% 50% 50%;
+		border-radius: 50% 50% 50% 50%;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		position: absolute;	
+	}
+	#object_one{
+		-webkit-animation: object 2s linear infinite;
+		 animation: object 2s linear infinite;
+		 }
+	#object_two{ 
+		-webkit-animation: object 2s linear infinite -.4s;
+		animation: object 2s linear infinite -.4s;
+		 }
+	#object_three{ 
+		-webkit-animation: object 2s linear infinite -.8s; 
+		animation: object 2s linear infinite -.8s; 
+		}
+	#object_four{ 
+		-webkit-animation: object 2s linear infinite -1.2s;
+		animation: object 2s linear infinite -1.2s; 
+		} 
+	#object_five{ 
+		-webkit-animation: object 2s linear infinite -1.6s; 
+		animation: object 2s linear infinite -1.6s; 
+		}
+	@-webkit-keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }		
+		
+	}		
+	@keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }
+	}	
+	</style>
+  <script>
+    function load() {
+      var a= setTimeout("loading.style.transition='opacity 0.3s'",0)   
+      //设置透明度改变的过渡时间为0.3秒
+      var b= setTimeout("loading.style.opacity=0", 0)
+      //0.5秒后加载动画开始变为透明
+      var c= setTimeout("loading.style.display='none'",800)
+      //当透明度为0的时候，隐藏掉它
+    }
+  </script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"  onload="load()">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<div id="loading">
+		<div id="loading-center">
+            <div class="info">
+                <span class="en">github.io</span> 有点慢，<span class="en">font-awesome</span> 有点大，
+                <br>
+                客官麻烦搬条板凳坐一下下，我马上就到！
+            </div>
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two" style="left:20px;"></div>
+				<div class="object" id="object_three" style="left:40px;"></div>
+				<div class="object" id="object_four" style="left:60px;"></div>
+				<div class="object" id="object_five" style="left:80px;"></div>
+			</div>
+		</div> 
+	</div>
+
+  <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不太想说话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所爱，天道酬勤</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-失控">
+    <a href="/" rel="section">
+      失控</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-归档">
+    <a href="/archives/" rel="section">
+      归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      关于</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/design_pattern_of_python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">二十三种设计模式及其python实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T00:00:00+08:00">2018-06-26</time>
+            
+
+            
+            
+
+            
+          </span>
+          
+          
+              <span class="post-updated">
+                &nbsp; | &nbsp; 更新于
+                <time itemprop="dateUpdated" datetime="2018-06-26T16:46:40+08:00" content="2018-06-26">
+                  2018-06-26
+                </time>
+              </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言特性/" itemprop="url" rel="index"><span itemprop="name">语言特性</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/26/design_pattern_of_python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/26/design_pattern_of_python/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             热度： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>转载自 《<a href="http://www.cnblogs.com/Liqiongyu/" target="_blank" rel="noopener">李琼羽的博客</a>》</p>
+<p>原文链接：<a href="https://www.cnblogs.com/Liqiongyu/p/5916710.html" target="_blank" rel="noopener">https://www.cnblogs.com/Liqiongyu/p/5916710.html</a></p>
+<p>我做部分修改和注解</p>
+</blockquote>
+<p>本文源码寄方于github：<a href="https://github.com/w392807287/Design_pattern_of_python" target="_blank" rel="noopener">https://github.com/w392807287/Design_pattern_of_python</a></p>
+<p>参考文献：</p>
+<p>《大话设计模式》——吴强</p>
+<p>《Python设计模式》——pythontip.com</p>
+<p>《23种设计模式》——<a href="http://www.cnblogs.com/beijiguangyong/" target="_blank" rel="noopener">http://www.cnblogs.com/beijiguangyong/</a></p>
+<h2 id="设计模式是什么？"><a href="#设计模式是什么？" class="headerlink" title="设计模式是什么？"></a>设计模式是什么？</h2><p>设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰当的情形下将会造成灾难，进而带来无穷的麻烦。然而如果设计模式在正确的时间被用在正确地地方，它将是你的救星。</p>
+<a id="more"></a>
+<p>起初，你会认为“模式”就是为了解决一类特定问题而特别想出来的明智之举。说的没错，看起来的确是通过很多人一起工作，从不同的角度看待问题进而形成的一个最通用、最灵活的解决方案。也许这些问题你曾经见过或是曾经解决过，但是你的解决方案很可能没有模式这么完备。</p>
+<p>虽然被称为“设计模式”，但是它们同“设计“领域并非紧密联系。设计模式同传统意义上的分析、设计与实现不同，事实上设计模式将一个完整的理念根植于程序中，所以它可能出现在分析阶段或是更高层的设计阶段。很有趣的是因为设计模式的具体体现是程序代码，因此可能会让你认为它不会在具体实现阶段之前出现(事实上在进入具体实现阶段之前你都没有意识到正在使用具体的设计模式)。</p>
+<p>可以通过程序设计的基本概念来理解模式：增加一个抽象层。抽象一个事物就是隔离任何具体细节，这么做的目的是为了将那些不变的核心部分从其他细节中分离出来。当你发现你程序中的某些部分经常因为某些原因改动，而你不想让这些改动的部分引发其他部分的改动，这时候你就需要思考那些不会变动的设计方法了。这么做不仅会使代码可维护性更高，而且会让代码更易于理解，从而降低开发成本。</p>
+<p>这里列举了三种最基本的设计模式：</p>
+<ol>
+<li>创建模式，提供实例化的方法，为适合的状况提供相应的对象创建方法。</li>
+<li>结构化模式，通常用来处理实体之间的关系，使得这些实体能够更好地协同工作。</li>
+<li>行为模式，用于在不同的实体建进行通信，为实体之间的通信提供更容易，更灵活的通信方法。</li>
+</ol>
+<p><strong>创建型</strong></p>
+<ol>
+<li>Factory Method（工厂方法）</li>
+<li>Abstract Factory（抽象工厂）</li>
+<li>Builder（建造者）</li>
+<li>Prototype（原型）</li>
+<li>Singleton（单例）</li>
+</ol>
+<p><strong>结构型</strong></p>
+<ol>
+<li>Adapter Class/Object（适配器）</li>
+<li>Bridge（桥接）</li>
+<li>Composite（组合）</li>
+<li>Decorator（装饰）</li>
+<li>Facade（外观）</li>
+<li>Flyweight（享元）</li>
+<li>Proxy（代理）</li>
+</ol>
+<p><strong>行为型</strong></p>
+<ol>
+<li>Interpreter（解释器）</li>
+<li>Template Method（模板方法）</li>
+<li>Chain of Responsibility（责任链）</li>
+<li>Command（命令）</li>
+<li>Iterator（迭代器）</li>
+<li>Mediator（中介者）</li>
+<li>Memento（备忘录）</li>
+<li>Observer（观察者）</li>
+<li>State（状态）</li>
+<li>Strategy（策略）</li>
+<li>Visitor（访问者）</li>
+</ol>
+<h2 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h2><h3 id="１．Factory-Method（工厂方法）"><a href="#１．Factory-Method（工厂方法）" class="headerlink" title="１．Factory Method（工厂方法）"></a>１．Factory Method（工厂方法）</h3><p><img src="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928141135485-1986044710.gif" alt="img"></p>
+<p><strong>意图：</strong></p>
+<p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method 使<strong>一</strong>个类的实例化延迟到其子类。</p>
+<p><strong>适用性：</strong></p>
+<p>当一个类不知道它所必须创建的对象的类的时候。</p>
+<p>当一个类希望由它的子类来指定它所创建的对象的时候。</p>
+<p>当类将创建对象的职责委托给多个帮助子类中的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候。</p>
+<p><strong>实现：</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Factory Method</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChinaGetter</span>:</span></span><br><span class="line">    <span class="string">"""A simple localizer a la gettext"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.trans = dict(dog=<span class="string">u"小狗"</span>, cat=<span class="string">u"小猫"</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, msgid)</span>:</span></span><br><span class="line">        <span class="string">"""We'll punt if we don't have a translation"""</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self.trans[msgid]</span><br><span class="line">        <span class="keyword">except</span> KeyError:</span><br><span class="line">            <span class="keyword">return</span> str(msgid)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnglishGetter</span>:</span></span><br><span class="line">    <span class="string">"""Simply echoes the msg ids"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, msgid)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> str(msgid)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_localizer</span><span class="params">(language=<span class="string">"English"</span>)</span>:</span></span><br><span class="line">    <span class="string">"""The factory method"""</span></span><br><span class="line">    languages = dict(English=EnglishGetter, China=ChinaGetter)</span><br><span class="line">    <span class="keyword">return</span> languages[language]()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Create our localizers</span></span><br><span class="line">e, g = get_localizer(<span class="string">"English"</span>), get_localizer(<span class="string">"China"</span>)</span><br><span class="line"><span class="comment"># Localize some text</span></span><br><span class="line"><span class="keyword">for</span> msgid <span class="keyword">in</span> <span class="string">"dog parrot cat bear"</span>.split():</span><br><span class="line">    print(e.get(msgid), g.get(msgid))</span><br></pre></td></tr></table></figure>
+<h3 id="2-Abstract-Factory（抽象工厂）"><a href="#2-Abstract-Factory（抽象工厂）" class="headerlink" title="2. Abstract Factory（抽象工厂）"></a>2. Abstract Factory（抽象工厂）</h3><p><img src="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928181031672-1073974804.gif" alt="img"></p>
+<p><strong>意图：</strong></p>
+<p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。 </p>
+<p><strong>适用性：</strong></p>
+<p>一个系统要独立于它的产品的创建、组合和表示时。<br>一个系统要由多个产品系列中的一个来配置时。<br>当你要强调一系列相关的产品对象的设计以便进行联合使用时。<br>当你提供一个产品类库，而只想显示它们的接口而不是实现时。</p>
+<p><strong>实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Abstract Factory</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PetShop</span>:</span></span><br><span class="line">    <span class="string">"""A pet shop"""</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, animal_factory=None)</span>:</span></span><br><span class="line">        <span class="string">"""pet_factory is our abstract factory.</span></span><br><span class="line"><span class="string">        We can set it at will."""</span></span><br><span class="line"> </span><br><span class="line">        self.pet_factory = animal_factory</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show_pet</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Creates and shows a pet using the</span></span><br><span class="line"><span class="string">        abstract factory"""</span></span><br><span class="line"> </span><br><span class="line">        pet = self.pet_factory.get_pet()</span><br><span class="line">        print(<span class="string">"This is a lovely"</span>, str(pet))</span><br><span class="line">        print(<span class="string">"It says"</span>, pet.speak())</span><br><span class="line">        print(<span class="string">"It eats"</span>, self.pet_factory.get_food())</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Stuff that our factory makes</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"woof"</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Dog"</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"meow"</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Cat"</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Factory classes</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DogFactory</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_pet</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> Dog()</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_food</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"dog food"</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CatFactory</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_pet</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> Cat()</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_food</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"cat food"</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Create the proper family</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_factory</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""Let's be dynamic!"""</span></span><br><span class="line">    <span class="keyword">return</span> random.choice([DogFactory, CatFactory])()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Show pets with various factories</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    shop = PetShop()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        shop.pet_factory = get_factory()</span><br><span class="line">        shop.show_pet()</span><br><span class="line">        print(<span class="string">"="</span> * <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="3-Builder（建造者）"><a href="#3-Builder（建造者）" class="headerlink" title="3. Builder（建造者）"></a>3. Builder（建造者）</h3><p><strong>意图：</strong></p>
+<p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<p><strong>适用性：</strong></p>
+<p>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。</p>
+<p>当构造过程必须允许被构造的对象有不同的表示时。</p>
+<p><img src="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928195334656-2085921203.gif" alt="img"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"> </span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    Builder</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># Director</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.builder = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_building</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.builder.new_building()</span><br><span class="line">        self.builder.build_floor()</span><br><span class="line">        self.builder.build_size()</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_building</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.builder.building</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Abstract Builder</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Builder</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_building</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building = Building()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Concrete Builder</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BuilderHouse</span><span class="params">(Builder)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_floor</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building.floor = <span class="string">'One'</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_size</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building.size = <span class="string">'Big'</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BuilderFlat</span><span class="params">(Builder)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_floor</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building.floor = <span class="string">'More than One'</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_size</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.building.size = <span class="string">'Small'</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Product</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Building</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.floor = <span class="keyword">None</span></span><br><span class="line">        self.size = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Floor: %s | Size: %s'</span> % (self.floor, self.size)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Client</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    director = Director()</span><br><span class="line">    director.builder = BuilderHouse()</span><br><span class="line">    director.construct_building()</span><br><span class="line">    building = director.get_building()</span><br><span class="line">    print(building)</span><br><span class="line">    director.builder = BuilderFlat()</span><br><span class="line">    director.construct_building()</span><br><span class="line">    building = director.get_building()</span><br><span class="line">    print(building)</span><br></pre></td></tr></table></figure>
+<h3 id="4-Prototype（原型）"><a href="#4-Prototype（原型）" class="headerlink" title="4. Prototype（原型）"></a>4. Prototype（原型）</h3><p><strong>意图：</strong></p>
+<p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
+<p><strong>适用性：</strong></p>
+<p>当要实例化的类是在运行时刻指定时，例如，通过动态装载；或者为了避免创建一个与产品类层次平行的工厂类层次时；或者当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。</p>
+<p><img src="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928194103188-1537654983.gif" alt="img"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Prototype</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Prototype</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._objects = &#123;&#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">register_object</span><span class="params">(self, name, obj)</span>:</span></span><br><span class="line">        <span class="string">"""Register an object"""</span></span><br><span class="line">        self._objects[name] = obj</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unregister_object</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""Unregister an object"""</span></span><br><span class="line">        <span class="keyword">del</span> self._objects[name]</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clone</span><span class="params">(self, name, **attr)</span>:</span></span><br><span class="line">        <span class="string">"""Clone a registered object and update inner attributes dictionary"""</span></span><br><span class="line">        obj = copy.deepcopy(self._objects.get(name))</span><br><span class="line">        obj.__dict__.update(attr)</span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"I am A"</span></span><br><span class="line"> </span><br><span class="line">    a = A()</span><br><span class="line">    prototype = Prototype()</span><br><span class="line">    prototype.register_object(<span class="string">'a'</span>, a)</span><br><span class="line">    b = prototype.clone(<span class="string">'a'</span>, a=<span class="number">1</span>, b=<span class="number">2</span>, c=<span class="number">3</span>)</span><br><span class="line"> </span><br><span class="line">    print(a)</span><br><span class="line">    print(b.a, b.b, b.c)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h3 id="5-Singleton（单例）"><a href="#5-Singleton（单例）" class="headerlink" title="5. Singleton（单例）"></a>5. Singleton（单例）</h3><p><strong>意图：</strong></p>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p><strong>适用性：</strong></p>
+<p>当类只能有一个实例而且客户可以从一个众所周知的访问点访问它时。</p>
+<p>当这个唯一实例应该是通过子类化可扩展的，并且客户应该无需更改代码就能使用一个扩展的实例时。</p>
+<p><img src="https://images2015.cnblogs.com/blog/824579/201609/824579-20160928194345281-610274391.gif" alt="img"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Singleton</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">''''' A python style singleton '''</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kw)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(cls, <span class="string">'_instance'</span>):</span><br><span class="line">            org = super(Singleton, cls)</span><br><span class="line">            cls._instance = org.__new__(cls, *args, **kw)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">SingleSpam</span><span class="params">(Singleton)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, s)</span>:</span></span><br><span class="line">            self.s = s</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.s</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    s1 = SingleSpam(<span class="string">'spam'</span>)</span><br><span class="line">    <span class="keyword">print</span> id(s1), s1</span><br><span class="line">    s2 = SingleSpam(<span class="string">'spa'</span>)</span><br><span class="line">    <span class="keyword">print</span> id(s2), s2</span><br><span class="line">    <span class="keyword">print</span> id(s1), s1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的代码均为 Python 2，我一边验证一边更新代码和文章</p>
+<p>（庄心昊）</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/cv2_contour/" rel="next" title="Python-cv2 Contour 属性">
+                <i class="fa fa-chevron-left"></i> Python-cv2 Contour 属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/./images/avatar.png"
+                alt="John Theo" />
+            
+              <p class="site-author-name" itemprop="name">John Theo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/John-Theo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:John_Theo@zju.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式是什么？"><span class="nav-number">1.</span> <span class="nav-text">设计模式是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建型"><span class="nav-number">2.</span> <span class="nav-text">创建型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#１．Factory-Method（工厂方法）"><span class="nav-number">2.1.</span> <span class="nav-text">１．Factory Method（工厂方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Abstract-Factory（抽象工厂）"><span class="nav-number">2.2.</span> <span class="nav-text">2. Abstract Factory（抽象工厂）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Builder（建造者）"><span class="nav-number">2.3.</span> <span class="nav-text">3. Builder（建造者）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Prototype（原型）"><span class="nav-number">2.4.</span> <span class="nav-text">4. Prototype（原型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Singleton（单例）"><span class="nav-number">2.5.</span> <span class="nav-text">5. Singleton（单例）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Theo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user-circle-o"></i>
+      &ensp;Site UV = <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+  
+  
+    <span>&emsp;|&emsp;</span>
+  
+  
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      &ensp;Site PV = <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
