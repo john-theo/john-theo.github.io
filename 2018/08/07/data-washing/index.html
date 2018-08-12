@@ -98,20 +98,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="不太想说话">
-<meta property="og:url" content="http://yoursite.com/tags/翻译/index.html">
+  <meta name="description" content="全文转自 immcrr的博客">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自编码器、PCA和白化">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/data-washing/index.html">
 <meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="全文转自 immcrr的博客">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-12T17:03:04.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不太想说话">
+<meta name="twitter:title" content="自编码器、PCA和白化">
+<meta name="twitter:description" content="全文转自 immcrr的博客">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/翻译/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/07/data-washing/"/>
 
 
 
@@ -121,7 +126,7 @@
   };
 </script>
 
-  <title>标签: 翻译 | 不太想说话</title>
+  <title>自编码器、PCA和白化 | 不太想说话</title>
   
 
 
@@ -280,7 +285,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
 <div id="loading">
@@ -450,58 +455,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>翻译<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/data-washing/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/03/28/python-translation/" itemprop="url">
-              
-                <span itemprop="name">Python 版本区别翻译</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">自编码器、PCA和白化</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-28T00:00:00+08:00"
-              content="2018-03-28" >
-          03-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-07T00:00:00+08:00">2018-08-07</time>
+            
 
-    </header>
-  </article>
+            
+            
 
+            
+          </span>
+          
+          
+              <span class="post-updated">
+                &nbsp; | &nbsp; 更新于
+                <time itemprop="dateUpdated" datetime="2018-08-13T01:03:04+08:00" content="2018-08-13">
+                  2018-08-13
+                </time>
+              </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/data-washing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/07/data-washing/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             热度： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>全文转自 <a href="https://blog.csdn.net/immcrr/article/details/80293146" target="_blank" rel="noopener"><a href="https://blog.csdn.net/immcrr" target="_blank" rel="noopener">immcrr的博客</a></a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="自编码器-Autoencoder"><a href="#自编码器-Autoencoder" class="headerlink" title="自编码器 Autoencoder"></a>自编码器 Autoencoder</h2><p>自编码器就是一个全连接网络，就简单的三层，一个输入一个输出一个隐藏层。也可以把自编码器级联，形成多层的结构。自编码器的目的就是训练一个恒等映射，输入进去什么，就期望输出什么。简单的恒等映射没有意义，有意义的在于它的隐藏层神经元的个数往往和输入层不同。如果少于输入个数，这就相当于一个特征提取和重构的过程（降维）；如果隐藏层个数大于输入层个数，此时如果还能再加上稀疏性约束，则就相当于稀疏编码。</p>
+<p>如果是前者，Loss直接是输入和输出的的差，比如平方误差之类。</p>
+<p>如果是后者，得加上稀疏性约束（稀疏性即提取出来的特征中，大量系数为零，非零系数尽量少）。为约束稀疏性，手段可以如下（来自UFLDL教程）。先定义隐藏层第 $j$ 单元的平均激活（在训练集上取平均）如下，其中$x^i$是训练集第$i$个样本，一共有$m$个样本。<br>$$<br>\hat{\rho}<em>j = \frac{1}{m} \sum</em>{i=0}^{m}a_j^2(\boldsymbol{x}^i)<br>$$</p>
+<p>再引入一个接近于零的所谓的稀疏性参数$ρ$，约束为$\hat{ρ}_j$接近$ρ$。从而此时Loss可以定义为</p>
+<p>$$<br>J(W,b)=J_0(W,b)+β \sum_{j}^{s_2}KL(ρ|\hatρ_j)<br>$$<br>右边第一项代表重构误差，第二项代表稀疏惩罚。$KL(⋅)$是相对熵，$\hat{ρ}_j$ 离$ρ$越远则这个惩罚项越大；参数$β$用于权衡。 </p>
+<h2 id="稀疏编码-Sparse-Coding"><a href="#稀疏编码-Sparse-Coding" class="headerlink" title="稀疏编码 Sparse Coding"></a>稀疏编码 Sparse Coding</h2><p>上面的自编码器，隐层单元数量大于输入层时，如果再有稀疏性的约束，则相当于稀疏编码。但是因为激活函数的非线性等等问题，总的来说，它不是线性的变换。而一般说的稀疏编码、稀疏表示，大多数都是线性变换。就线性变换而言，稀疏编码是在寻找超完备的一组基${ϕi},i=1,2,⋯,k$，使得输入向量表示成基的线性组合（这里不要求基的正交性）。</p>
+<p>$$<br>\boldsymbol{x}=\sum^ia_i\phi_i<br>$$</p>
+<p>这里$a_i$是稀疏表示稀疏，而非激活函数值。因为这组基是超完备的，所以基的个数大于输入信号的维数,$k&gt;n$。训练集样本容量设为$m$则问题表达为 </p>
+<p>$$<br>\mathop{\text{argmin}}\limits_{a^{(j)}_i,{\phi_i}}\sum^{m}<em>{j=1}\left(\Big|\Big|\boldsymbol{x}^j-\sum^{k}</em>{i=1}a^{(j)}_j\phi_i\Big|\Big|^2+\lambda\sum^{k}_{i=1}S(a^{(j)}_i)\right)<br>$$<br>其中$S(⋅)$是一个函数，负责惩罚明显大于零的系数，从而保证稀疏性，$λ$负责权衡。上面的形式有一个漏洞，即为了减小在新基上的分量（从而迎合稀疏惩罚），我可以把基变大，把其上的分量$a$减小，不改变最终结果而又使得上面目标函数变小。为了弥补，再加入约束来控制基，不让它太大，例如约束为$||ϕi||&lt;Ci$. </p>
+<h2 id="PCA-主成分分析"><a href="#PCA-主成分分析" class="headerlink" title="PCA 主成分分析"></a>PCA 主成分分析</h2><p>PCA具体推导就不写了，也不说方差最大化，或者拉格朗日法求驻点的步骤。只简单总结一下，如果从协方差矩阵对角化的角度来看，事情会怎么样。</p>
+<p>$n$维随机变量$x$每个元素的均值设为零。则其协方差矩阵的第$(i,j)$元为$Cov(xi,xj)$根据协方差定义，它等于$E(x_ix_j)-E(x_i)E(x_j)=E(x_ix_j)$，所以$m$个矩阵的平均$\frac{1}{m}\sum^\limits{i}\boldsymbol{x}^{(i)}\boldsymbol{x}^{(i)T}$正好是协方差矩阵的无偏估计。根据协方差矩阵的意义，如果其第$(i,j)$元素为零，则说明$x_i$和$x_j$不相关。PCA就是要让协方差矩阵的非对角元全部为零（对角元没法搞成零，那是方差），从而使得信号$\boldsymbol{x}$的任意两个维度都不相关，并在此基础上进行维度压缩。</p>
+<p>要对角化一个矩阵，标准手段是求特征值和特征向量，然后在其特征空间中，这个矩阵就自动对角化了。PCA这里也一样，求协方差矩阵的特征分解，然后把特征向量作为新的一组基，把原来的信号空间变换到协方差矩阵的特征空间中，这时协方差矩阵是对角化的形式。</p>
+<p>然后开始降维，利用一个结论：协方差矩阵的越大的特征值对应的特征向量指向的方向是数据弥散越厉害的方向。降维就是要剔除几个基，找到一个子空间，在这个子空间中数据尽可能地保留。所以如果要尽量保留原数据分布地降维，则优先丢弃特征值小的特征向量。剔除以后，得到子空间，降维的操作就是把原数据往这个子空间中投影。</p>
+<h2 id="PCA白化"><a href="#PCA白化" class="headerlink" title="PCA白化"></a>PCA白化</h2><p>PCA白化目的就是得到对角的协方差矩阵后，进一步使其变成单位矩阵。注意到对角的协方差矩阵的对角元就是特征值的排列，所以要使其变成单位矩阵，只要每个对角元$λi$除以他自己（特征值）就可以了，但是一个矩阵的特征值是确定的，不能变，所以直接改变投影后的信号$\boldsymbol{x}$的每个分量，每个分量$xi$乘以$\frac{1}{\sqrt{\lambda_i}}$即可。</p>
+<p>在UFLDL的教程中，使用了二维数据为例，形象一点，可以把二维数据弥散最大的方向与其正交方向视为一个椭圆的长轴方向与短轴方向。无降维的PCA相当于把这个斜着的椭圆旋转摆正。而PCA白化则相当于把这个椭圆两个轴进行缩放，使其变成圆。</p>
 
       
     </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/JavaScript-1/" rel="next" title="JavaScript 基础">
+                <i class="fa fa-chevron-left"></i> JavaScript 基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -522,8 +711,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -634,6 +832,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自编码器-Autoencoder"><span class="nav-number">1.</span> <span class="nav-text">自编码器 Autoencoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稀疏编码-Sparse-Coding"><span class="nav-number">2.</span> <span class="nav-text">稀疏编码 Sparse Coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA-主成分分析"><span class="nav-number">3.</span> <span class="nav-text">PCA 主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA白化"><span class="nav-number">4.</span> <span class="nav-text">PCA白化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -777,6 +991,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
 
   
 
@@ -823,6 +1041,30 @@
       </style>
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
