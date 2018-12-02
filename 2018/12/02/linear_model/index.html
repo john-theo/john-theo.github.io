@@ -98,21 +98,21 @@
 
 
 
-  <meta name="description" content="对应 “西瓜书” 3.1-3.3 内容。test2">
+  <meta name="description" content="对应 “西瓜书” 3.1-3.3 内容。test">
 <meta name="keywords" content="线性回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多元线性回归基础">
 <meta property="og:url" content="http://yoursite.com/2018/12/02/linear_model/index.html">
 <meta property="og:site_name" content="不太想说话">
-<meta property="og:description" content="对应 “西瓜书” 3.1-3.3 内容。test2">
+<meta property="og:description" content="对应 “西瓜书” 3.1-3.3 内容。test">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749485961.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749528406.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749710997.png">
-<meta property="og:updated_time" content="2018-12-02T15:16:12.009Z">
+<meta property="og:updated_time" content="2018-12-02T15:26:54.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多元线性回归基础">
-<meta name="twitter:description" content="对应 “西瓜书” 3.1-3.3 内容。test2">
+<meta name="twitter:description" content="对应 “西瓜书” 3.1-3.3 内容。test">
 <meta name="twitter:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749485961.png">
 
 
@@ -504,7 +504,7 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-12-02T23:16:12+08:00" content="2018-12-02">
+                <time itemprop="dateUpdated" datetime="2018-12-02T23:26:54+08:00" content="2018-12-02">
                   2018-12-02
                 </time>
               </span>
@@ -566,10 +566,10 @@
       
 
       
-        <p>对应 “西瓜书” 3.1-3.3 内容。<br>test2<br><a id="more"></a></p>
+        <p>对应 “西瓜书” 3.1-3.3 内容。<br>test<br><a id="more"></a></p>
 <h2 id="从线性回归开始讲起"><a href="#从线性回归开始讲起" class="headerlink" title="从线性回归开始讲起"></a>从线性回归开始讲起</h2><h3 id="构造误差函数"><a href="#构造误差函数" class="headerlink" title="构造误差函数"></a>构造误差函数</h3><p>线性回归优化目标：</p>
 <p>$ f(x _ i) = w x _ i  + b $，使得 $f(x _ i)  \to y _ i $</p>
-<p>用 $w^{ <em> }$ , $b^{ </em> }$ 表示 $w$ 和 $b$ 的解，有（$x$ 上的差值平方为固定项）：</p>
+<p>用 $ w ^ { <em> } $ , $ b ^ { </em> } $ 表示 $ w $ 和 $ b $ 的解，有（$ x $ 上的差值平方为固定项）：</p>
 <p>$\begin{aligned} \left( w ^ { <em> } , b ^ { </em> } \right) &amp; = \underset { ( w , b ) } { \arg \min } \sum _ { i = 1 } ^ { m } \left( f \left( x _ { i } \right) - y _ { i } \right) ^ { 2 } \\ &amp; = \underset { ( w , b ) } { \arg \min } \sum _ { i = 1 } ^ { m } \left( y _ { i } - w x _ { i } - b \right) ^ { 2 } \end{aligned}$</p>
 <h3 id="偏导求解"><a href="#偏导求解" class="headerlink" title="偏导求解"></a>偏导求解</h3><p>基于<strong>均方误差（欧氏距离 Euclidean distance）</strong>最小化来进行模型求解的方法称为“<strong>最小二乘法</strong>”（least square method），求解过程称为模型的最小二乘<strong>参数估计</strong>（parameter estimation）。</p>
 <p>求解通过将待优化的目标函数对两参数分别<strong>求偏导</strong>得到：</p>
@@ -579,7 +579,7 @@
 <blockquote>
 <p><strong>解析解：</strong>因变量由自变量所表示的函数解析式，它是一个解析式，换句话说就是用参数表示的解。</p>
 <p><strong>数值解：</strong>把各自的参数值自变量的值都带入到解析式中得到数值</p>
-<p><strong>闭式解：</strong>解析解为一封闭形式〈closed-form〉的函数，因此对任一独立变量，我们皆可将其带入解析函数求得正确的相依变量。因此，解析解也被称为闭式解（closed-form solution）。</p>
+<p><strong>闭式解：</strong>解析解为一封闭形式（closed-form）的函数，因此对任一独立变量，我们皆可将其带入解析函数求得正确的相依变量。因此，解析解也被称为闭式解（closed-form solution）。</p>
 </blockquote>
 <h2 id="推广：多元线性回归"><a href="#推广：多元线性回归" class="headerlink" title="推广：多元线性回归"></a>推广：多元线性回归</h2><h3 id="同样的构造"><a href="#同样的构造" class="headerlink" title="同样的构造"></a>同样的构造</h3><p>多元线性回归（multivariate linear regression）的一般表达形式为：</p>
 <p>$f \left( \boldsymbol { x } _ { i } \right) = \boldsymbol { w } ^ { \mathrm { T } } \boldsymbol { x } _ { i } + b$</p>
