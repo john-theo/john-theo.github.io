@@ -109,7 +109,7 @@
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749485961.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749528406.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1543749710997.png">
-<meta property="og:updated_time" content="2018-12-02T14:12:34.477Z">
+<meta property="og:updated_time" content="2018-12-02T14:16:11.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多元线性回归基础">
 <meta name="twitter:description" content="对应 “西瓜书” 3.1-3.3 内容。">
@@ -504,7 +504,7 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-12-02T22:12:34+08:00" content="2018-12-02">
+                <time itemprop="dateUpdated" datetime="2018-12-02T22:16:11+08:00" content="2018-12-02">
                   2018-12-02
                 </time>
               </span>
@@ -577,23 +577,24 @@
         <p>对应 “西瓜书” 3.1-3.3 内容。</p>
 <a id="more"></a>
 <h2 id="从线性回归开始讲起"><a href="#从线性回归开始讲起" class="headerlink" title="从线性回归开始讲起"></a>从线性回归开始讲起</h2><h3 id="构造误差函数"><a href="#构造误差函数" class="headerlink" title="构造误差函数"></a>构造误差函数</h3><p>线性回归优化目标：</p>
+<p>$f \left( x <em> { i } \right) = w x </em> { i } + b，使得 f(x_i)  \to y_i$</p>
 <p>用 $w^<em>$, $b^</em>$ 表示 $w$ 和 $b$ 的解，有（$x$上的差值平方为固定项）：</p>
-<p>$\begin{aligned} \left( w ^ { <em> } , b ^ { </em> } \right) &amp; = \underset { ( w , b ) } { \arg \min } \sum _ { i = 1 } ^ { m } \left( f \left( x _ { i } \right) - y _ { i } \right) ^ { 2 } \ &amp; = \underset { ( w , b ) } { \arg \min } \sum _ { i = 1 } ^ { m } \left( y _ { i } - w x _ { i } - b \right) ^ { 2 } \end{aligned}$</p>
+<p>$\begin{aligned} \left( w ^ { <em> } , b ^ { </em> } \right) &amp; = \underset { ( w , b ) } { \arg \min } \sum <em> { i = 1 } ^ { m } \left( f \left( x </em> { i } \right) - y <em> { i } \right) ^ { 2 } \ &amp; = \underset { ( w , b ) } { \arg \min } \sum </em> { i = 1 } ^ { m } \left( y <em> { i } - w x </em> { i } - b \right) ^ { 2 } \end{aligned}$</p>
 <h3 id="偏导求解"><a href="#偏导求解" class="headerlink" title="偏导求解"></a>偏导求解</h3><p>基于<strong>均方误差（欧氏距离 Euclidean distance）</strong>最小化来进行模型求解的方法称为“<strong>最小二乘法</strong>”（least square method），求解过程称为模型的最小二乘<strong>参数估计</strong>（parameter estimation）。</p>
 <p>求解通过将待优化的目标函数对两参数分别<strong>求偏导</strong>得到：</p>
-<p>$\begin{aligned} \frac { \partial E _ { ( w , b ) } } { \partial w } &amp; = 2 \left( w \sum _ { i = 1 } ^ { m } x _ { i } ^ { 2 } - \sum _ { i = 1 } ^ { m } \left( y _ { i } - b \right) x _ { i } \right) \ \frac { \partial E _ { ( w , b ) } } { \partial b } &amp; = 2 \left( m b - \sum _ { i = 1 } ^ { m } \left( y _ { i } - w x _ { i } \right) \right) \end{aligned}$</p>
+<p>$\begin{aligned} \frac { \partial E <em> { ( w , b ) } } { \partial w } &amp; = 2 \left( w \sum </em> { i = 1 } ^ { m } x <em> { i } ^ { 2 } - \sum </em> { i = 1 } ^ { m } \left( y <em> { i } - b \right) x </em> { i } \right) \ \frac { \partial E <em> { ( w , b ) } } { \partial b } &amp; = 2 \left( m b - \sum </em> { i = 1 } ^ { m } \left( y <em> { i } - w x </em> { i } \right) \right) \end{aligned}$</p>
 <p>令以上两式为 0，可得 $w$ 和 $b$ 的<strong>最优闭式（closed-form）解</strong>：</p>
-<p>$\begin{aligned} w &amp; = \frac { \sum _ { i = 1 } ^ { m } y _ { i } \left( x _ { i } - \overline { x } \right) } { \sum _ { i = 1 } ^ { m } x _ { i } ^ { 2 } - \frac { 1 } { m } \left( \sum _ { i = 1 } ^ { m } x _ { i } \right) ^ { 2 } }, \ b &amp; = \frac { 1 } { m } \sum _ { i = 1 } ^ { m } \left( y _ { i } - w x _ { i } \right) \end{aligned}$</p>
+<p>$\begin{aligned} w &amp; = \frac { \sum <em> { i = 1 } ^ { m } y </em> { i } \left( x <em> { i } - \overline { x } \right) } { \sum </em> { i = 1 } ^ { m } x <em> { i } ^ { 2 } - \frac { 1 } { m } \left( \sum </em> { i = 1 } ^ { m } x <em> { i } \right) ^ { 2 } }, \ b &amp; = \frac { 1 } { m } \sum </em> { i = 1 } ^ { m } \left( y <em> { i } - w x </em> { i } \right) \end{aligned}$</p>
 <blockquote>
 <p><strong>解析解：</strong>因变量由自变量所表示的函数解析式，它是一个解析式，换句话说就是用参数表示的解。</p>
 <p><strong>数值解：</strong>把各自的参数值自变量的值都带入到解析式中得到数值</p>
 <p><strong>闭式解：</strong>解析解为一封闭形式〈closed-form〉的函数，因此对任一独立变量，我们皆可将其带入解析函数求得正确的相依变量。因此，解析解也被称为闭式解（closed-form solution）。</p>
 </blockquote>
 <h2 id="推广：多元线性回归"><a href="#推广：多元线性回归" class="headerlink" title="推广：多元线性回归"></a>推广：多元线性回归</h2><h3 id="同样的构造"><a href="#同样的构造" class="headerlink" title="同样的构造"></a>同样的构造</h3><p>多元线性回归（multivariate linear regression）的一般表达形式为：</p>
-<p>$f \left( \boldsymbol { x } _ { i } \right) = \boldsymbol { w } ^ { \mathrm { T } } \boldsymbol { x } _ { i } + b$</p>
+<p>$f \left( \boldsymbol { x } <em> { i } \right) = \boldsymbol { w } ^ { \mathrm { T } } \boldsymbol { x } </em> { i } + b$</p>
 <p>类似地，用“最小二乘法”进行估计。</p>
 <p>为便于讨论，我们把 $w$ 和 $b$ 吸收入向量形式 $\hat { \boldsymbol { w } } = ( \boldsymbol { w } ; b )$，相应的，把数据集 $D$ 表示为一个 <code>m×(d+1)</code>大小的矩阵 $\mathrm X$，其中每行对应于一个示例，该行前 d 个元素对应于示例的 d 个属性值，最后一个元素恒置为1，即：</p>
-<p>$\mathbf { X } = \left( \begin{array} { c c c c c } { x _ { 11 } } &amp; { x _ { 12 } } &amp; { \dots } &amp; { x _ { 1 d } } &amp; { 1 } \ { x _ { 21 } } &amp; { x _ { 22 } } &amp; { \dots } &amp; { x _ { 2 d } } &amp; { 1 } \ { \vdots } &amp; { \vdots } &amp; { \ddots } &amp; { \vdots } &amp; { \vdots } \ { x _ { m 1 } } &amp; { x _ { m 2 } } &amp; { \dots } &amp; { x _ { m d } } &amp; { 1 } \end{array} \right) = \left( \begin{array} { c c } { x _ { 1 } ^ { \mathrm { T } } } &amp; { 1 } \ { x _ { 2 } ^ { \mathrm { T } } } &amp; { 1 } \ { \vdots } &amp; { \vdots } \ { x _ { m } ^ { \mathrm { T } } } &amp; { 1 } \end{array} \right)$</p>
+<p>$\mathbf { X } = \left( \begin{array} { c c c c c } { x <em> { 11 } } &amp; { x </em> { 12 } } &amp; { \dots } &amp; { x <em> { 1 d } } &amp; { 1 } \ { x </em> { 21 } } &amp; { x <em> { 22 } } &amp; { \dots } &amp; { x </em> { 2 d } } &amp; { 1 } \ { \vdots } &amp; { \vdots } &amp; { \ddots } &amp; { \vdots } &amp; { \vdots } \ { x <em> { m 1 } } &amp; { x </em> { m 2 } } &amp; { \dots } &amp; { x <em> { m d } } &amp; { 1 } \end{array} \right) = \left( \begin{array} { c c } { x </em> { 1 } ^ { \mathrm { T } } } &amp; { 1 } \ { x <em> { 2 } ^ { \mathrm { T } } } &amp; { 1 } \ { \vdots } &amp; { \vdots } \ { x </em> { m } ^ { \mathrm { T } } } &amp; { 1 } \end{array} \right)$</p>
 <p>把标记也写成向量 $y = (y_1;y_2;…y_m)$ 的形式，于是有：</p>
 <p>$\hat { \boldsymbol { w } } ^ { * } = \underset { \boldsymbol { \boldsymbol { w } } } { \arg \min } ( \boldsymbol { y } - \mathbf { X } \hat { \boldsymbol { w } } ) ^ { \mathrm { T } } ( \boldsymbol { y } - \mathbf { X } \hat { \boldsymbol { w } } )$</p>
 <h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><blockquote>
@@ -621,9 +622,9 @@
 </blockquote>
 <p>若将 $y$ 视为<strong>类后验概率估计</strong> $p(y=1|x)$，则有：</p>
 <p>$\begin{aligned} ln \frac {p(y=1|x)}{p(y=0|x)} = \boldsymbol {w}^{ \mathrm T} \boldsymbol {x} + b \end{aligned} $</p>
-<p>对于给定数据集 $\left{ \left( \boldsymbol { x } _ { i } , y _ { i } \right) \right} _ { i = 1 } ^ { m }$，有</p>
-<p><strong>似然函数：</strong><br>$\ell ( \boldsymbol { w } , b ) = \sum _ { i = 1 } ^ { m } \ln p \left( y _ { i } | \boldsymbol { x } _ { i } ; \boldsymbol { w } , b \right)$</p>
-<p><strong>限制条件：</strong><br>$p \left( y _ { i } | \boldsymbol { x } _ { i } ; \boldsymbol { w } , b \right) = y _ { i } p _ { 1 } \left( \hat { \boldsymbol { x } } _ { i } ; \boldsymbol { w } , b \right) + \left( 1 - y _ { i } \right) p _ { 0 } \left( \hat { \boldsymbol { x } } _ { i } ; \boldsymbol { w } , b \right)$</p>
+<p>对于给定数据集 $\left{ \left( \boldsymbol { x } <em> { i } , y </em> { i } \right) \right} _ { i = 1 } ^ { m }$，有</p>
+<p><strong>似然函数：</strong><br>$\ell ( \boldsymbol { w } , b ) = \sum <em> { i = 1 } ^ { m } \ln p \left( y </em> { i } | \boldsymbol { x } _ { i } ; \boldsymbol { w } , b \right)$</p>
+<p><strong>限制条件：</strong><br>$p \left( y <em> { i } | \boldsymbol { x } </em> { i } ; \boldsymbol { w } , b \right) = y <em> { i } p </em> { 1 } \left( \hat { \boldsymbol { x } } <em> { i } ; \boldsymbol { w } , b \right) + \left( 1 - y </em> { i } \right) p <em> { 0 } \left( \hat { \boldsymbol { x } } </em> { i } ; \boldsymbol { w } , b \right)$</p>
 <h3 id="凸优化"><a href="#凸优化" class="headerlink" title="凸优化"></a>凸优化</h3><p>令 <img src="C:\Users\Administrator\AppData\Local\Temp\1543749485961.png" alt="1543749485961"></p>
 <p>最大化原似然函数相当于最小化以下函数：</p>
 <p><img src="C:\Users\Administrator\AppData\Local\Temp\1543749528406.png" alt="1543749528406"></p>
@@ -1444,6 +1445,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   
