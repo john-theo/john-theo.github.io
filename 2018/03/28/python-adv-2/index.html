@@ -659,7 +659,7 @@ p2.address = Earth
 <p>这样一来，s.set_score(1000) 就会报错。</p>
 <p>这种使用 get/set 方法来封装对一个属性的访问在许多面向对象编程的语言中都很常见。</p>
 <p>但是写 s.get_score() 和 s.set_score() 没有直接写 s.score 来得直接。</p>
-<p>有没有两全其美的方法？—-有。</p>
+<p>有没有两全其美的方法？——有。</p>
 <p>因为Python支持高阶函数，在函数式编程中我们介绍了装饰器函数，可以用装饰器函数把 get/set 方法“装饰”成属性调用：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="title">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, score)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.__score = score</span><br><span class="line">    @property</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.__score</span><br><span class="line">    @score.setter</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(<span class="keyword">self</span>, score)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">if</span> score &lt; <span class="number">0</span> <span class="keyword">or</span> score &gt; <span class="number">100</span><span class="symbol">:</span></span><br><span class="line">            raise ValueError(<span class="string">'invalid score'</span>)</span><br><span class="line">        <span class="keyword">self</span>.__score = score</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意: 第一个score(self)是get方法，用@property装饰，第二个score(self, score)是set方法，用@score.setter装饰，@score.setter是前一个@property装饰后的副产品。</p>
@@ -731,8 +731,8 @@ p2.address = Earth
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/19/python-adv/" rel="next" title="Python进阶函数和功能_#1（函数式编程）">
-                <i class="fa fa-chevron-left"></i> Python进阶函数和功能_#1（函数式编程）
+              <a href="/2018/03/28/python-translation/" rel="next" title="Python 版本区别翻译">
+                <i class="fa fa-chevron-left"></i> Python 版本区别翻译
               </a>
             
           </div>
@@ -741,8 +741,8 @@ p2.address = Earth
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/28/python-translation/" rel="prev" title="Python 版本区别翻译">
-                Python 版本区别翻译 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/28/ML-terms/" rel="prev" title="机器学习资源链接汇总">
+                机器学习资源链接汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
