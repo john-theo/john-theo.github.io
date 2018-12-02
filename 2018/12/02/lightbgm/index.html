@@ -98,25 +98,31 @@
 
 
 
-  <meta name="description" content="快速链接课程、术语表、三个月入门">
-<meta name="keywords" content="机器学习,链接">
+  <meta name="description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
+<meta name="keywords" content="集成学习,决策树,Boosting">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习资源链接汇总">
-<meta property="og:url" content="http://yoursite.com/2018/03/28/ML-terms/index.html">
+<meta property="og:title" content="Boosting 和 XGBoost 和 LightGBM 和其他">
+<meta property="og:url" content="http://yoursite.com/2018/12/02/lightbgm/index.html">
 <meta property="og:site_name" content="不太想说话">
-<meta property="og:description" content="快速链接课程、术语表、三个月入门">
+<meta property="og:description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-12T16:00:00.000Z">
+<meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%7D+%28x_i-%5Cbar%7Bx%7D+%29%5E2%7D%7Bn%7D+">
+<meta property="og:image" content="https://upload.wikimedia.org/math/2/b/b/2bbe4b0725baed85eae8dbbb20360ea6.png">
+<meta property="og:image" content="https://upload.wikimedia.org/math/7/f/d/7fd32efb7a21cc484be23d1015ee074e.png">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=L_1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=L_2">
+<meta property="og:updated_time" content="2018-12-02T05:36:36.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习资源链接汇总">
-<meta name="twitter:description" content="快速链接课程、术语表、三个月入门">
+<meta name="twitter:title" content="Boosting 和 XGBoost 和 LightGBM 和其他">
+<meta name="twitter:description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
+<meta name="twitter:image" content="http://www.zhihu.com/equation?tex=%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%7D+%28x_i-%5Cbar%7Bx%7D+%29%5E2%7D%7Bn%7D+">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/28/ML-terms/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/02/lightbgm/"/>
 
 
 
@@ -126,7 +132,7 @@
   };
 </script>
 
-  <title>机器学习资源链接汇总 | 不太想说话</title>
+  <title>Boosting 和 XGBoost 和 LightGBM 和其他 | 不太想说话</title>
   
 
 
@@ -471,7 +477,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/ML-terms/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/lightbgm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Theo">
@@ -488,7 +494,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习资源链接汇总</h1>
+          <h1 class="post-title" itemprop="name headline">Boosting 和 XGBoost 和 LightGBM 和其他</h1>
         
 
         <div class="post-meta">
@@ -500,7 +506,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T00:00:00+08:00">2018-03-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T00:00:00+08:00">2018-12-02</time>
             
 
             
@@ -512,8 +518,8 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-08-13T00:00:00+08:00" content="2018-08-13">
-                  2018-08-13
+                <time itemprop="dateUpdated" datetime="2018-12-02T13:36:36+08:00" content="2018-12-02">
+                  2018-12-02
                 </time>
               </span>
           
@@ -530,7 +536,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习路径/" itemprop="url" rel="index"><span itemprop="name">学习路径</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -545,8 +551,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/28/ML-terms/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/28/ML-terms/" itemprop="commentsCount"></span>
+                <a href="/2018/12/02/lightbgm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/02/lightbgm/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -582,60 +588,56 @@
       
 
       
-        <p><strong>快速链接</strong><br><a href="/2018/03/28/ML-terms/#课程"><code>课程</code></a>、<a href="/2018/03/28/ML-terms/#术语表"><code>术语表</code></a>、<a href="/2018/03/28/ML-terms/#三个月入门"><code>三个月入门</code></a></p>
-<a id="more"></a>
-<hr>
-<h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><h3 id="Google-Crash-Course"><a href="#Google-Crash-Course" class="headerlink" title="Google Crash Course"></a>Google Crash Course</h3><p><i class="fa fa-arrow-circle-right"></i>&ensp;<a href="https://developers.google.cn/machine-learning/crash-course/?hl=zh-CN" target="_blank" rel="noopener"><code>转到</code></a></p>
-<hr>
-<h2 id="术语表"><a href="#术语表" class="headerlink" title="术语表"></a>术语表</h2><h3 id="Google-×-TensorFlow"><a href="#Google-×-TensorFlow" class="headerlink" title="Google × TensorFlow"></a>Google × TensorFlow</h3><p><i class="fa fa-arrow-circle-right"></i>&ensp;<a href="https://developers.google.cn/machine-learning/crash-course/glossary?hl=zh-CN" target="_blank" rel="noopener"><code>转到</code></a></p>
-<hr>
-<h2 id="公共数据集"><a href="#公共数据集" class="headerlink" title="公共数据集"></a>公共数据集</h2><p><a href="https://github.com/awesomedata/awesome-public-datasets/blob/master/README.rst" target="_blank" rel="noopener">awesomedata - public datasets</a></p>
-<h2 id="机器学习中的范数规则化"><a href="#机器学习中的范数规则化" class="headerlink" title="机器学习中的范数规则化"></a>机器学习中的范数规则化</h2><h3 id="L0、L1、L2-正则化"><a href="#L0、L1、L2-正则化" class="headerlink" title="L0、L1、L2 正则化"></a>L0、L1、L2 正则化</h3><p><a href="https://blog.csdn.net/zouxy09/article/details/24971995" target="_blank" rel="noopener">https://blog.csdn.net/zouxy09/article/details/24971995</a></p>
-<h3 id="核范数与规则项参数选择"><a href="#核范数与规则项参数选择" class="headerlink" title="核范数与规则项参数选择"></a>核范数与规则项参数选择</h3><p><a href="https://blog.csdn.net/zouxy09/article/details/24972869" target="_blank" rel="noopener">https://blog.csdn.net/zouxy09/article/details/24972869</a></p>
-<h2 id="三个月入门"><a href="#三个月入门" class="headerlink" title="三个月入门"></a>三个月入门</h2><p><br></p>
-<blockquote>
-<p>Author: Siraj Raval @ Youtube<br>Original Link <a href="https://www.youtube.com/watch?v=Cr6VqTRO1v0" target="_blank" rel="noopener">Here</a></p>
-</blockquote>
-<h3 id="Month-1"><a href="#Month-1" class="headerlink" title="Month 1"></a>Month 1</h3><ul>
-<li><strong>Week 1</strong> - <a href="https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener"><code>Linear Algebra</code></a></li>
-<li><strong>Week 2</strong> - <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" target="_blank" rel="noopener"><code>Calculus</code></a></li>
-<li><strong>Week 3</strong> - <a href="https://www.edx.org/course/introduction-probability-science-mitx-6-041x-2" target="_blank" rel="noopener"><code>Probability</code></a></li>
-<li><strong>Week 4</strong> - <a href="https://www.coursera.org/courses?languages=en&amp;query=Algorithm%20design%20and%20analysis" target="_blank" rel="noopener"><code>Algorithms</code></a></li>
+        <h2 id="集成学习和回归树"><a href="#集成学习和回归树" class="headerlink" title="集成学习和回归树"></a>集成学习和回归树</h2><h3 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h3><p>Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，<strong>下一棵决策树输入样本会与前面决策树的训练和预测相关</strong>，将弱学习器提升为强学习器的集成方法来提高预测精度。</p>
+<p>与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，<strong>各个决策树是独立的</strong>、每个决策树在样本堆里随机选一批样本，随机选一批特征进行独立训练，各个决策树之间没有关系。</p>
+<h3 id="迭代策略"><a href="#迭代策略" class="headerlink" title="迭代策略"></a>迭代策略</h3><p><strong>贪心策略 + 二次最优化（损失函数不是二次函数泰勒展开）</strong>求回归树的参数：（1）选取哪个feature分裂节点；（2）节点的预测值。</p>
+<h3 id="停止迭代策略"><a href="#停止迭代策略" class="headerlink" title="停止迭代策略"></a>停止迭代策略</h3><p>（1）当引入的<strong>分裂带来的增益小于一个阀值</strong>时，类似预剪枝；</p>
+<p>（2）当树达到最大深度时，树太深容易过渡学习局部样本导致 <strong>过拟合</strong>；</p>
+<p>（3）当样本权重和小于设定阈值时（一个叶子节点样本太少了），同样防止过拟合</p>
+<h3 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h3><p>梯度提升（Gradient Boosting）。</p>
+<p>首先需要明确，GB本身是一种理念而非一个具体的算法，其基本思想为：沿着<strong>梯度</strong>方向，构造一系列的弱分类器函数，<strong>并以一定权重组合起来</strong>，形成最终决策的强分类器。</p>
+<p>那么这一系列的弱分类器是怎么样形成的呢？GBDT的做法是：每一棵树所学习的是之前所有树<strong>结论和的残差</strong>，这个残差就是一个加预测值后能得真实值的累加量。</p>
+<h3 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h3><p>回归树（Regression Decistion Tree）的运行流程与分类树基本类似，但有以下两点不同之处：</p>
+<ul>
+<li>第一，回归树的每个节点得到的是一个<strong>预测值而非分类树式的样本计数</strong>，假设在某一棵树的某一节点使用了年龄进行分枝（并假设在该节点上人数&gt;1），那么这个预测值就是属于这个节点的所有人年龄的<strong>平均值</strong>。</li>
+<li>第二，在分枝节点的选取上，回归树并<strong>没有选用最大熵值</strong>来作为划分标准，而是<strong>使用了最小化均方差</strong>，即<img src="http://www.zhihu.com/equation?tex=%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%7D+%28x_i-%5Cbar%7Bx%7D+%29%5E2%7D%7Bn%7D+" alt="\frac{\sum_{i=1}^{n}{} (x_i-\bar{x} )^2}{n}">。这很好理解，被预测出错的次数越多，错的越离谱，均方差就越大，通过最小化均方差也就能够找到最靠谱的分枝依据。</li>
 </ul>
-<h3 id="Month-2"><a href="#Month-2" class="headerlink" title="Month 2"></a>Month 2</h3><ul>
-<li><strong>Week 1</strong><ul>
-<li><a href="https://www.youtube.com/watch?v=T5pRlIbr6gg" target="_blank" rel="noopener">learn <code>python</code> for data science</a></li>
-<li><a href="https://www.youtube.com/watch?v=xRJCOz3AfYY" target="_blank" rel="noopener"><code>Math</code> of Intelligence</a></li>
-<li><a href="https://www.youtube.com/watch?v=2FmcHiLCwTU" target="_blank" rel="noopener">Intro to <code>Tensorflow</code></a><br><br></li>
-</ul>
+<h2 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h2><p>GB算法中最典型的基学习器是<strong>决策树</strong>，尤其是<strong>CART</strong>，正如名字的含义，GBDT是GB和DT的结合。要注意的是这里的决策树是<strong>回归树</strong>，GBDT中的决策树是个弱模型，深度较小一般不会超过5，叶子节点的数量也不会超过10，对于生成的每棵决策树乘上比较小的缩减系数（学习率&lt;0.1），有些GBDT的实现加入了随机抽样（subsample 0.5&lt;=f &lt;=0.8）<strong>提高模型的泛化能力</strong>。通过<strong>交叉验证</strong>的方法选择最优的参数。因此GBDT实际的核心问题变成怎么基于<img src="https://upload.wikimedia.org/math/2/b/b/2bbe4b0725baed85eae8dbbb20360ea6.png" alt="\{(x_i, r_{im})\}_{i=1}^n">使用CART回归树生成<img src="https://upload.wikimedia.org/math/7/f/d/7fd32efb7a21cc484be23d1015ee074e.png" alt="\! h_m(x)">？</p>
+<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><h3 id="XGBoost-1"><a href="#XGBoost-1" class="headerlink" title="XGBoost"></a>XGBoost</h3><p><strong>XGBoost</strong>是Gradient Boosting Machine的一个c++实现，并在原有的基础上加以改进，从而极大地提升了模型训练<strong>速度和预测精度</strong>。可以说，XGBoost是Gradient Boosting的高效实现。</p>
+<h3 id="XGBoost-的主要优化"><a href="#XGBoost-的主要优化" class="headerlink" title="XGBoost 的主要优化"></a>XGBoost 的主要优化</h3><ul>
+<li>在CART基分类器的基础上还<strong>支持线性分类器</strong>（gblinear），此时XGBoost相当于带<img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1">和<img src="https://www.zhihu.com/equation?tex=L_2" alt="L_2">正则化项的Logistics回归（分类问题）或者线性回归（回归问题）</li>
+<li>在目标函数里加入了<strong>正则项</strong>，用于控制模型的复杂度，防止过拟合。</li>
+<li>传统的GBDT在优化时只用到一阶导数，XGBoost则<strong>对目标函数进行了二阶泰勒展开，同时用到了一阶和二阶导数。</strong></li>
+<li>XGBoost工具支持自定义代价函数，只要函数可一阶和二阶求导。</li>
+<li><strong>支持并行化</strong>，选择最佳分裂点进行枚举的时候并行，<strong>同层级节点</strong>内选择最佳分裂点，候选分裂点计算增益用多线程并行。</li>
+<li><p><strong>针对缺失数据的算法</strong>，分别假设特征缺失的样本属于右子树和左子树，而且<strong>只在不缺失的样本上迭代</strong>，分别计算缺失样本属于右子树和左子树的增益，选择增益最大的方向为缺失数据的默认方向。</p>
 </li>
-<li><strong>Week 2</strong><ul>
-<li><a href="https://eu.udacity.com/course/intro-to-machine-learning--ud120" target="_blank" rel="noopener">Intro to <code>ML</code> (Udacity)</a><br><br></li>
-</ul>
+<li><p>可实现后剪枝</p>
 </li>
-<li><strong>Week 3-4</strong><ul>
-<li><a href="https://github.com/NirantK/awesome-project-ideas" target="_blank" rel="noopener">ML <code>Project</code> Ideas</a></li>
-</ul>
+<li><p>交叉验证，方便选择最好的参数，early stop，比如你发现30棵树预测已经很好了，不用进一步学习残差了，那么停止建树。</p>
 </li>
-</ul>
-<h3 id="Month-3-Deep-Learning"><a href="#Month-3-Deep-Learning" class="headerlink" title="Month 3 (Deep Learning)"></a>Month 3 (Deep Learning)</h3><ul>
-<li><strong>Week 1</strong> <ul>
-<li><a href="https://www.youtube.com/watch?v=vOppzHpvTiQ" target="_blank" rel="noopener">Intro to <code>Deep Learning</code></a><br><br></li>
-</ul>
+<li><p><strong>列采样（column subsampling）</strong>，随机森林的套路，不仅能降低过拟合，还能减少计算。</p>
 </li>
-<li><strong>Week 2</strong> <ul>
-<li><a href="http://course.fast.ai/" target="_blank" rel="noopener">Deep Learning by <code>Fast.AI</code></a><br><br></li>
-</ul>
+<li><p>Shrinkage（缩减），XGBoost在进行完一次迭代后，会将叶子节点的权重乘上该系数，主要是为了削弱每棵树的影响，<strong>让后面有更大的学习空间</strong>。实际应用中，一般把<strong>eta设置得小一点</strong>，然后<strong>迭代次数设置得大一点</strong>。</p>
 </li>
-<li><strong>Week 3-4</strong><ul>
-<li><a href="https://github.com/llSourcell?tab=repositories" target="_blank" rel="noopener"><code>Re-implement</code> DL projects from my github</a></li>
+<li>xgboost还支持设置<strong>样本权重</strong>，这个权重体现在梯度g和二阶梯度h上，是不是有点adaboost的意思，重点关注某些样本</li>
 </ul>
-</li>
+<h2 id="LightGBM"><a href="#LightGBM" class="headerlink" title="LightGBM"></a>LightGBM</h2><p>LightGBM 是一个梯度 boosting 框架，使用基于学习算法的决策树。它可以说是分布式的，高效的，它有以下优势：</p>
+<ul>
+<li>更快的训练效率</li>
+<li>低内存使用</li>
+<li>更好的准确率</li>
+<li>支持并行学习</li>
+<li>可处理大规模数据</li>
 </ul>
-<h3 id="For-the-future"><a href="#For-the-future" class="headerlink" title="For the future"></a>For the future</h3><ul>
-<li><a href="https://www.quora.com/Who-should-I-follow-on-Twitter-to-get-useful-and-reliable-machine-learning-information" target="_blank" rel="noopener">ML <code>people to follow</code> on Twitter</a></li>
+<p><a href="http://lightgbm.apachecn.org/cn/latest/Features.html" target="_blank" rel="noopener">LightGBM - 中文文档</a></p>
+<p><a href="https://www.kaggle.com/mlisovyi/lightgbm-vs-xgboost-sklearn-api" target="_blank" rel="noopener">应用示例 - Kaggle</a></p>
+<p><strong>其他参考资料：</strong></p>
+<ul>
+<li><a href="https://blog.csdn.net/github_38414650/article/details/76061893" target="_blank" rel="noopener">通俗、有逻辑的写一篇说下Xgboost的原理，供讨论参考</a></li>
+<li><a href="https://blog.csdn.net/LegenDavid/article/details/78904353" target="_blank" rel="noopener">GBDT和XGboost介绍</a></li>
+<li><a href="https://www.cnblogs.com/wxquare/p/5541414.html" target="_blank" rel="noopener">一步一步理解GB、GBDT、xgboost</a></li>
 </ul>
-<hr>
 
       
     </div>
@@ -669,9 +671,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/集成学习/" rel="tag"># 集成学习</a>
           
-            <a href="/tags/链接/" rel="tag"># 链接</a>
+            <a href="/tags/决策树/" rel="tag"># 决策树</a>
+          
+            <a href="/tags/Boosting/" rel="tag"># Boosting</a>
           
         </div>
       
@@ -684,8 +688,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/python-adv-2/" rel="next" title="Python进阶函数和功能_#2（杂记）">
-                <i class="fa fa-chevron-left"></i> Python进阶函数和功能_#2（杂记）
+              <a href="/2018/08/21/JS_CSS_stuff/" rel="next" title="JS/CSS 学习笔记">
+                <i class="fa fa-chevron-left"></i> JS/CSS 学习笔记
               </a>
             
           </div>
@@ -693,10 +697,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/28/python-translation/" rel="prev" title="Python 版本区别翻译">
-                Python 版本区别翻译 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -891,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程"><span class="nav-number">1.</span> <span class="nav-text">课程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Crash-Course"><span class="nav-number">1.1.</span> <span class="nav-text">Google Crash Course</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#术语表"><span class="nav-number">2.</span> <span class="nav-text">术语表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-×-TensorFlow"><span class="nav-number">2.1.</span> <span class="nav-text">Google × TensorFlow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公共数据集"><span class="nav-number">3.</span> <span class="nav-text">公共数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习中的范数规则化"><span class="nav-number">4.</span> <span class="nav-text">机器学习中的范数规则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#L0、L1、L2-正则化"><span class="nav-number">4.1.</span> <span class="nav-text">L0、L1、L2 正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核范数与规则项参数选择"><span class="nav-number">4.2.</span> <span class="nav-text">核范数与规则项参数选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个月入门"><span class="nav-number">5.</span> <span class="nav-text">三个月入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Month-1"><span class="nav-number">5.1.</span> <span class="nav-text">Month 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Month-2"><span class="nav-number">5.2.</span> <span class="nav-text">Month 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Month-3-Deep-Learning"><span class="nav-number">5.3.</span> <span class="nav-text">Month 3 (Deep Learning)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#For-the-future"><span class="nav-number">5.4.</span> <span class="nav-text">For the future</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集成学习和回归树"><span class="nav-number">1.</span> <span class="nav-text">集成学习和回归树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习"><span class="nav-number">1.1.</span> <span class="nav-text">集成学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代策略"><span class="nav-number">1.2.</span> <span class="nav-text">迭代策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止迭代策略"><span class="nav-number">1.3.</span> <span class="nav-text">停止迭代策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度提升"><span class="nav-number">1.4.</span> <span class="nav-text">梯度提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归树"><span class="nav-number">1.5.</span> <span class="nav-text">回归树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GBDT"><span class="nav-number">2.</span> <span class="nav-text">GBDT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XGBoost"><span class="nav-number">3.</span> <span class="nav-text">XGBoost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XGBoost-1"><span class="nav-number">3.1.</span> <span class="nav-text">XGBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XGBoost-的主要优化"><span class="nav-number">3.2.</span> <span class="nav-text">XGBoost 的主要优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LightGBM"><span class="nav-number">4.</span> <span class="nav-text">LightGBM</span></a></li></ol></div>
             
 
           </div>
