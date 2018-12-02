@@ -573,7 +573,7 @@
 \hat{\rho}_j = \frac{1}{m} \sum_{i=0}^{m}a_j^2(\boldsymbol{x}^i)</script><p>再引入一个接近于零的所谓的稀疏性参数$ρ$，约束为$\hat{ρ}_j$接近$ρ$。从而此时Loss可以定义为</p>
 <script type="math/tex; mode=display">
 J(W,b)=J_0(W,b)+β \sum_{j}^{s_2}KL(ρ|\hatρ_j)</script><p>右边第一项代表重构误差，第二项代表稀疏惩罚。$KL(⋅)$是相对熵，$\hat{ρ}_j$ 离$ρ$越远则这个惩罚项越大；参数$β$用于权衡。 </p>
-<h2 id="稀疏编码-Sparse-Coding"><a href="#稀疏编码-Sparse-Coding" class="headerlink" title="稀疏编码 Sparse Coding"></a>稀疏编码 Sparse Coding</h2><p>上面的自编码器，隐层单元数量大于输入层时，如果再有稀疏性的约束，则相当于稀疏编码。但是因为激活函数的非线性等等问题，总的来说，它不是线性的变换。而一般说的稀疏编码、稀疏表示，大多数都是线性变换。就线性变换而言，稀疏编码是在寻找超完备的一组基${ϕi},i=1,2,⋯,k$，使得输入向量表示成基的线性组合（这里不要求基的正交性）。</p>
+<h2 id="稀疏编码-Sparse-Coding"><a href="#稀疏编码-Sparse-Coding" class="headerlink" title="稀疏编码 Sparse Coding"></a>稀疏编码 Sparse Coding</h2><p>上面的自编码器，隐层单元数量大于输入层时，如果再有稀疏性的约束，则相当于稀疏编码。但是因为激活函数的非线性等等问题，总的来说，它不是线性的变换。而一般说的稀疏编码、稀疏表示，大多数都是线性变换。就线性变换而言，稀疏编码是在寻找超完备的一组基$\{ϕi\},i=1,2,⋯,k$，使得输入向量表示成基的线性组合（这里不要求基的正交性）。</p>
 <script type="math/tex; mode=display">
 \boldsymbol{x}=\sum^ia_i\phi_i</script><p>这里$a_i$是稀疏表示稀疏，而非激活函数值。因为这组基是超完备的，所以基的个数大于输入信号的维数,$k&gt;n$。训练集样本容量设为$m$则问题表达为 </p>
 <script type="math/tex; mode=display">

@@ -578,7 +578,7 @@
 <p><strong>另外，如果你发现本文的机制在最新的版本中不适用，请提交issue。</strong></p>
 <p><strong>（以下为作者正文）</strong></p>
 <hr>
-<p>本文简述了 Python 3.0 相对于 2.6 版本的新功能。 Python 3.0 也被称为 “Python 3000” 或 “Py3K”，是有史以来第一个 <em>特意向后兼容</em>  的Python版本。比普通的发行版本有更多的变化，且对于所有Python用户来说更重要。尽管如此，在充分了解了这些变化之后，你会发现 Python 其实并没有改变太多 —— 总的来说，我们主要修复了广为提及的小问题，并去除了很多无用的设计。</p>
+<p>本文简述了 Python 3.0 相对于 2.6 版本的新功能。 Python 3.0 也被称为 “Python 3000” 或 “Py3K”，是有史以来第一个 _特意向后兼容_  的Python版本。比普通的发行版本有更多的变化，且对于所有Python用户来说更重要。尽管如此，在充分了解了这些变化之后，你会发现 Python 其实并没有改变太多 —— 总的来说，我们主要修复了广为提及的小问题，并去除了很多无用的设计。</p>
 <p>本文的目的不是提供所有新功能的详细说明，而是试图给出一个简便的概述。有关完整的详细信息，请参阅 Python 3.0 的文档和/或文中引用的许多PEP。如果您想了解特定功能的完整实施和设计原理，PEP通常比常规文档具有更多的细节；但请注意，一旦功能完全实施，PEP通常不会保持在最新状态。</p>
 <blockquote>
 <p><strong>译者注：PEP (Python Enhancement Proposals) 是一份为Python社区提供各种增强功能的技术规格，也是提交新特性，以便让社区指出问题，精确化技术文档的提案。<a href="https://www.python.org/dev/peps/" target="_blank" rel="noopener"><code>传送门</code></a></strong></p>
@@ -616,7 +616,7 @@
 <h3 id="大小比较"><a href="#大小比较" class="headerlink" title="大小比较"></a>大小比较</h3><p>Python 3.0 简化了大小比较的流程：</p>
 <ul>
 <li>当表达式没有天然可比的标度时，顺序比较操作符 (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code>) 会抛出一个 TypeError exception。因此，诸如 <code>1 &lt; &#39;&#39;</code>，<code>0 &gt; None</code> 或 <code>len &lt;= len</code> 这样的表达式不再合法，而对于比如 <code>None &lt; None</code> 这样的表达，则会抛出一个 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" target="_blank" rel="noopener">TypeError</a> 而不是返回 <code>False</code>。这就意味着对一个异质的 list 排序不再可行——所有元素必须互相之间可比。值得注意的是，这一限制对 <code>==</code> 和 <code>!=</code> 操作符并不存在：不同类型的对象比较结果总是不同。</li>
-<li>builtin.sorted() 和 <a href="https://docs.python.org/3/library/stdtypes.html#list.sort" target="_blank" rel="noopener">list.sort()</a> 不再接受 <em>cmp</em> 参数指定的比较函数，而使用键值对指定。注意：<em>key</em> 和 <em>reverse</em> 参数现在只能通过键值对指定。</li>
+<li>builtin.sorted() 和 <a href="https://docs.python.org/3/library/stdtypes.html#list.sort" target="_blank" rel="noopener">list.sort()</a> 不再接受 _cmp_ 参数指定的比较函数，而使用键值对指定。注意：_key_ 和 _reverse_ 参数现在只能通过键值对指定。</li>
 <li>cmp() 函数应该被视为不存在了，而 __cmp__() 魔术方法也不再受支持。现在使用 <a href="https://docs.python.org/3/reference/datamodel.html#object.__lt__" target="_blank" rel="noopener">__lt__()</a> 来排序， <a href="https://docs.python.org/3/reference/datamodel.html#object.__eq__" target="_blank" rel="noopener">__eq__()</a> 配合 <a href="https://docs.python.org/3/reference/datamodel.html#object.__hash__" target="_blank" rel="noopener">__hash__()</a> 使用，以及其他所需的比较操作符。（如果你真的很想实现 cmp() 的功能，你可以使用如下表达式 <code>(a &gt; b) - (a &lt; b)</code> ，它的效果和 <code>cmp(a, b)</code> 相同。）</li>
 </ul>
 <blockquote>
@@ -631,11 +631,11 @@
 </ul>
 <h3 id="Text-Vs-Data-取代-Unicode-Vs-8-bit"><a href="#Text-Vs-Data-取代-Unicode-Vs-8-bit" class="headerlink" title="Text Vs. Data 取代 Unicode Vs. 8-bit"></a>Text Vs. Data 取代 Unicode Vs. 8-bit</h3><p>你此前关于 二进制数据 和 Unicode 的 认识被全部改变了。</p>
 <ul>
-<li>Python 3.0 使用 <em>text</em> 和 （二进制）数据 的概念来取代 Unicode 字符串 和 8位字符串。所有的 text 都是 Unicode；而已编码的 Unicode（数据）则被作为 二进制数据。用来存放 text 的类型是 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>，用来存放数据（data）的数据类型是字节（byte）。Python 3.0 和 2.x 之间最大的区别是任何企图混淆 text 和 data 的做法都会引发 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" target="_blank" rel="noopener">TypeError</a>；而如果你要在 Python 2.x 中将 Unicode 和 8位字符串 混合使用，当 8位字符串 正好只有7位（ASCII）时，是没问题的；但当其中包含非ASCII值时，就会引发 <a href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" target="_blank" rel="noopener">UnicodeDecodeError</a> 错误。这样针对数值的做法在近几年引起了众多的不满。</li>
+<li>Python 3.0 使用 _text_ 和 （二进制）数据 的概念来取代 Unicode 字符串 和 8位字符串。所有的 text 都是 Unicode；而已编码的 Unicode（数据）则被作为 二进制数据。用来存放 text 的类型是 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>，用来存放数据（data）的数据类型是字节（byte）。Python 3.0 和 2.x 之间最大的区别是任何企图混淆 text 和 data 的做法都会引发 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" target="_blank" rel="noopener">TypeError</a>；而如果你要在 Python 2.x 中将 Unicode 和 8位字符串 混合使用，当 8位字符串 正好只有7位（ASCII）时，是没问题的；但当其中包含非ASCII值时，就会引发 <a href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" target="_blank" rel="noopener">UnicodeDecodeError</a> 错误。这样针对数值的做法在近几年引起了众多的不满。</li>
 <li>因为这一点原则性的变化，几乎所有使用Unicode，编码或二进制数据的代码都需要更改。这项改变是有建设性的，因为在 2.x 版本中，由编码和非编码字符混合使用导致了非常多的bug。 要在 Python 2.x 中准备好，请对所有未编码的 text 使用 Unicode，并且对二进制或已编码数据使用 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。 然后 <code>2to3</code> 工具将为您完成大部分工作。</li>
 <li>以后，您不需要再对 Unicode 文本使用 <code>u&quot;...&quot;</code> 这样的表达了。然而，您仍然需要对二进制数据使用 <code>b&quot;...&quot;</code> 这样的表达。</li>
 <li>因为 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 和 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型不能混用，您必须明确声明两者之间的转换。使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.encode" target="_blank" rel="noopener">str.encode()</a> 来将 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 转换为 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a>，<a href="https://docs.python.org/3/library/stdtypes.html#bytes.decode" target="_blank" rel="noopener">bytes.decode()</a> 反之。你也可以分别使用 <code>bytes(s, encoding=...)</code> 和 <code>str(b, encoding=...)</code>。</li>
-<li>和 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 一样，<a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型也是不可变的。有一个单独的 <em>可变</em> 类型来保存缓冲（buffered）的二进制数据，<a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。几乎所有接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 的接口也接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。可变的 API 基于 collections.MutableSequence。</li>
+<li>和 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 一样，<a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型也是不可变的。有一个单独的 _可变_ 类型来保存缓冲（buffered）的二进制数据，<a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。几乎所有接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 的接口也接受 <a href="https://docs.python.org/3/library/stdtypes.html#bytearray" target="_blank" rel="noopener">bytearray</a>。可变的 API 基于 collections.MutableSequence。</li>
 <li>所有在原始（raw）字符串里的反斜杠都会被编译为它字面的意思。这意味着 <code>&#39;\U&#39;</code> 和 <code>&#39;\u&#39;</code> 在原始（raw）字符串中的转义不会被专门处理。比如，<code>r&#39;\u20ac&#39;</code> 在 Python 3.0 中是一个含有6个字符的字符串；而在 2.6 版本中，<code>ur&#39;\u20ac&#39;</code> 则表示一个单独的“欧元”符号。（当然，这项改变仅仅影响原始字符串书面形式，在 Python 3.0 中，欧元符号用 <code>&#39;\u20ac&#39;</code> 表示。）</li>
 <li>內建（built-in）的 basestring 抽象类型被移去了。取而代之的是 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。<a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a> 和 <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener">bytes</a> 类型没有足够多的共同功能来共享同一个基类。 <code>2to3</code> 工具（见下文）会将所有出现的 basestring 替换成 <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a>。</li>
 <li>以文本文件（text files）打开的文件（目前作为 <a href="https://docs.python.org/3/library/functions.html#open" target="_blank" rel="noopener">open()</a> 函数的默认模式）通常使用一种编码方式将（内存中的）字符串和（硬盘上的）字节进行映射。以二进制文件（binary files）打开的文件（打开时在 mode 参数处为 <code>&#39;b&#39;</code>）通常在内存中使用字节存储。这意味着，如果一个文件以错误的模式或编码被打开，I/O 会报错，而不是安静地对错误数据进行处理。这也意味着即使是 Unix 的用户也需要在打开文件时制定正确的模式（text 或 binary）。有一种依赖平台（操作系统）的默认编码，在 Unix 系的平台上可以通过环境变量 <code>LANG</code> 设置（个别情况下需要通过对平台特异性本地环境相关的环境变量进行设置）。在大多数情况下，但不是全部情形，系统的默认编码是 UTF-8；你永远不要指望这个默认值派大用场（译者注：谁说的！明明很多乱码问题设成 utf-8 就好了，你骗人）。任何读写非纯 ASCII 文本的应用推荐覆写编码。所以再也没有必要在 codecs 模块里，使用需要关注编码的数据流了。</li>
@@ -688,8 +688,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/19/python-adv/" rel="next" title="Python进阶函数和功能_#1（函数式编程）">
-                <i class="fa fa-chevron-left"></i> Python进阶函数和功能_#1（函数式编程）
+              <a href="/2018/03/28/ML-terms/" rel="next" title="机器学习资源链接汇总">
+                <i class="fa fa-chevron-left"></i> 机器学习资源链接汇总
               </a>
             
           </div>
@@ -698,8 +698,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/28/python-adv-2/" rel="prev" title="Python进阶函数和功能_#2（杂记）">
-                Python进阶函数和功能_#2（杂记） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/03/pandas-merge/" rel="prev" title="Pandas 实用手记（concat/merge）">
+                Pandas 实用手记（concat/merge） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
