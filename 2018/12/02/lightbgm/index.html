@@ -98,23 +98,23 @@
 
 
 
-  <meta name="description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
+  <meta name="description" content="本文记录学习 Boosting 过程中的一些笔记。">
 <meta name="keywords" content="集成学习,决策树,Boosting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Boosting 和 XGBoost 和 LightGBM 和其他">
 <meta property="og:url" content="http://yoursite.com/2018/12/02/lightbgm/index.html">
 <meta property="og:site_name" content="不太想说话">
-<meta property="og:description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
+<meta property="og:description" content="本文记录学习 Boosting 过程中的一些笔记。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%7D+%28x_i-%5Cbar%7Bx%7D+%29%5E2%7D%7Bn%7D+">
 <meta property="og:image" content="https://upload.wikimedia.org/math/2/b/b/2bbe4b0725baed85eae8dbbb20360ea6.png">
 <meta property="og:image" content="https://upload.wikimedia.org/math/7/f/d/7fd32efb7a21cc484be23d1015ee074e.png">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=L_1">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=L_2">
-<meta property="og:updated_time" content="2018-12-02T05:36:36.131Z">
+<meta property="og:updated_time" content="2018-12-02T05:39:56.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Boosting 和 XGBoost 和 LightGBM 和其他">
-<meta name="twitter:description" content="集成学习和回归树集成学习Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，下一棵决策树输入样本会与前面决策树的训练和预测相关，将弱学习器提升为强学习器的集成方法来提高预测精度。 与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，各个决策树是独立的、每">
+<meta name="twitter:description" content="本文记录学习 Boosting 过程中的一些笔记。">
 <meta name="twitter:image" content="http://www.zhihu.com/equation?tex=%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%7D+%28x_i-%5Cbar%7Bx%7D+%29%5E2%7D%7Bn%7D+">
 
 
@@ -518,7 +518,7 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-12-02T13:36:36+08:00" content="2018-12-02">
+                <time itemprop="dateUpdated" datetime="2018-12-02T13:39:56+08:00" content="2018-12-02">
                   2018-12-02
                 </time>
               </span>
@@ -588,7 +588,9 @@
       
 
       
-        <h2 id="集成学习和回归树"><a href="#集成学习和回归树" class="headerlink" title="集成学习和回归树"></a>集成学习和回归树</h2><h3 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h3><p>Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，<strong>下一棵决策树输入样本会与前面决策树的训练和预测相关</strong>，将弱学习器提升为强学习器的集成方法来提高预测精度。</p>
+        <p>本文记录学习 Boosting 过程中的一些笔记。</p>
+<a id="more"></a>
+<h2 id="集成学习和回归树"><a href="#集成学习和回归树" class="headerlink" title="集成学习和回归树"></a>集成学习和回归树</h2><h3 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h3><p>Boosting 是集成学习中的一支，指的是由多个相关联的决策树联合决策，也就是说，<strong>下一棵决策树输入样本会与前面决策树的训练和预测相关</strong>，将弱学习器提升为强学习器的集成方法来提高预测精度。</p>
 <p>与之对比的是Bagging（如 random foreast 随机森林）算法，即通过自助采样的方法生成众多并行式的分类器，通过“少数服从多数”的原则来确定最终的结果，<strong>各个决策树是独立的</strong>、每个决策树在样本堆里随机选一批样本，随机选一批特征进行独立训练，各个决策树之间没有关系。</p>
 <h3 id="迭代策略"><a href="#迭代策略" class="headerlink" title="迭代策略"></a>迭代策略</h3><p><strong>贪心策略 + 二次最优化（损失函数不是二次函数泰勒展开）</strong>求回归树的参数：（1）选取哪个feature分裂节点；（2）节点的预测值。</p>
 <h3 id="停止迭代策略"><a href="#停止迭代策略" class="headerlink" title="停止迭代策略"></a>停止迭代策略</h3><p>（1）当引入的<strong>分裂带来的增益小于一个阀值</strong>时，类似预剪枝；</p>
