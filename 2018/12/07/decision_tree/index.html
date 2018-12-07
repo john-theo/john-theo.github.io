@@ -98,20 +98,27 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="不太想说话">
-<meta property="og:url" content="http://yoursite.com/tags/sklearn/index.html">
+  <meta name="description" content="对应 “西瓜书” 4.1-4.2 内容。">
+<meta name="keywords" content="决策树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树基础">
+<meta property="og:url" content="http://yoursite.com/2018/12/07/decision_tree/index.html">
 <meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="对应 “西瓜书” 4.1-4.2 内容。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="f:/MyBlog/source/images/ML/1544180804996.png">
+<meta property="og:updated_time" content="2018-12-07T15:54:03.862Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不太想说话">
+<meta name="twitter:title" content="决策树基础">
+<meta name="twitter:description" content="对应 “西瓜书” 4.1-4.2 内容。">
+<meta name="twitter:image" content="f:/MyBlog/source/images/ML/1544180804996.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/sklearn/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/07/decision_tree/"/>
 
 
 
@@ -121,7 +128,7 @@
   };
 </script>
 
-  <title>标签: sklearn | 不太想说话</title>
+  <title>决策树基础 | 不太想说话</title>
   
 
 
@@ -280,7 +287,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
 <div id="loading">
@@ -438,58 +445,266 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>sklearn<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/decision_tree/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/04/regularization/" itemprop="url">
-              
-                <span itemprop="name">Regularization 和 L1、L2 罚项</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">决策树基础</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-04T00:00:00+08:00"
-              content="2018-12-04" >
-          12-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
+            
 
-    </header>
-  </article>
+            
+            
 
+            
+          </span>
+          
+          
+              <span class="post-updated">
+                &nbsp; | &nbsp; 更新于
+                <time itemprop="dateUpdated" datetime="2018-12-07T23:54:03+08:00" content="2018-12-07">
+                  2018-12-07
+                </time>
+              </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/07/decision_tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/07/decision_tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对应 “西瓜书” 4.1-4.2 内容。</p>
+<a id="more"></a>
+<p><br></p>
+<h2 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h2><p>老套路，一边讲定义一边讲推导一边讲问题。</p>
+<h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p><strong>“信息熵”（information entropy）</strong>是度量样本集合纯度最常用的一种指标，是统计学上的抽象概念。</p>
+<p>假定当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k, (k=1, 2…，|y|)$，则 $D$ 的信息熵定义为：<br>$\begin{aligned} Ent(D) = - \sum ^ {|y|} _ {k=1} p_k log_2 p_k \end{aligned}$<br>$Ent(D)$ 的值越小，则 $D$ 的<strong>纯度（purity）</strong>越高。</p>
+<blockquote>
+<ul>
+<li><p>推导：<a href="https://www.zhihu.com/question/22178202" target="_blank" rel="noopener">信息熵是什么 - 知乎</a></p>
+</li>
+<li><p>约定：若 $p=0$，则 $p log_2 p = 0$。<br>所以 $Ent(D)$ 最小值为 $0$（此时 $p_k=1$，即所有样本属于同一类），最大值为 $log_2 |y|$。</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><strong>单调性</strong>，即<strong>发生概率越高的事件，其所携带的信息熵越低</strong>。极端案例就是“太阳从东方升起”，因为为确定事件，所以不携带任何信息量。从信息论的角度，认为这句话没有消除任何不确定性。</p>
+</li>
+<li><p><strong>非负性</strong>，即<strong>信息熵不能为负</strong>。这个很好理解，因为负的信息，即你得知了某个信息后，却增加了不确定性是不合逻辑的。</p>
+</li>
+<li><p><strong>累加性</strong>，即<strong>多随机事件同时发生</strong>存在的总不确定性的量度是可以表示为<strong>各事件不确定性的量度的和</strong>。</p>
+<p>$H(A,B)=H(A)+H(B)-I(A,B)$ ，其中 $I(A,B)$  是<strong>互信息（mutual information）</strong>，代表一个随机变量包含另一个随机变量信息量的度量。</p>
+</li>
+</ul>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>假定<strong>离散属性</strong> $a$ 有 $V$ 个可能的取值 ${a^1,a^2…，a^V}$：</p>
+<ol>
+<li><p>若使用 $a$ 来对样本集 $D$ 进行划分，则会<strong>产生</strong> $V$ 个<strong>分支结点</strong>，其中第 $v$ 个分支结点包含了 $D$ 中所有在属性 $a$ 上取值为 $a^v$ 的样本，记为 $D^v$。</p>
+</li>
+<li><p>根据上式<strong>计算</strong>出 $D^v$ 的<strong>信息熵</strong>。</p>
+</li>
+<li><p>再考虑到不同的分支结点所包含的样本数不同，<strong>给分支结点赋予权重</strong> $|D^v|/|D|$，即<strong>样本数越多的分支结点的影响越大</strong>。</p>
+</li>
+<li><p>于是可计算出用属性 $a$ 对样本集 $D$ 进行划分所获得的 <strong>“信息增益”（information gain）</strong>：</p>
+<p>$\begin{aligned} Gain(D,a) = Ent(D)  - \sum ^ {V} _ {v=1} \frac {|D^v|} {|D|} Ent(D^v) &gt; 0 \end{aligned}$</p>
+</li>
+</ol>
+<p>一般而言，<strong>信息增益越大</strong>，则意味着使用属性 $a$ 来进行划分所获得的<strong>“纯度提升”越大</strong>。因此，我们可用信息增益来进行决策树的划分属性选择。</p>
+<p>著名的 <strong>ID3</strong> 决策树学习算法就是<strong>以信息增益为准</strong>则来<strong>选择划分属性</strong>。</p>
+<p>（计算举例在《西瓜书》P76）</p>
+<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p>实际上，信息增益准则<strong>对可取值数目较多的属性有所偏好</strong>。</p>
+<blockquote>
+<p>例如，给每个样本指定一个唯一编号，并把其视作一个离散属性。那么可以计算出其信息增益相当大，远大于其他候选属性，因为对于其每个分支节点（每个编号），其纯度已达最大。这样的决策树显然不具有泛化能力，无法对新样本进行有效预测。</p>
+</blockquote>
+<p>为减少这种偏好可能带来的不利影响，著名的 <strong>C4.5</strong> 决策树算法不直接使用信息增益，而是使用<strong>“增益率”（gain ratio）</strong>来选择最优划分属性。增益率定义为：</p>
+<p>$\begin{aligned} Gain_ratio(D,a) &amp;= \frac {Gain(D,a)} {IV(a)}, \\ IV(a) &amp;=-\sum^V_{v=1} \frac {|D^v|}{|D|} log_2 \frac {|D^v|}{|D|}   \end{aligned}$</p>
+<p>其中，$IV(a)$ 称为属性 $a$ 的<strong>“固有值”（intrinsic value）</strong>。属性 $a$ 的可能取值数目越多（即 $V$ 越大），则 $IV(a)$ 的值通常会越大。</p>
+<p>需注意的是，增益率准则<strong>对可取值数目较少的属性有所偏好</strong>，因此，<strong>C4.5</strong> 算法并<strong>不是直接</strong>选择增益率最大的候选划分属性，而是使用了一个启发式：先从候选划分属性中找出信息增益<strong>高于平均水平的属性</strong>，再<strong>从中选择增益率最高的</strong>。（增益率仅用来剔除分类效率太低的属性，保护信息增益）</p>
+<h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p>类似的，<strong>CART</strong> 决策树使用<strong>“基尼指数”（Gini index）</strong>来选择划分属性。</p>
+<p>数据集D的纯度可用基尼值来度量：</p>
+<p>$\begin{aligned} Gini(D) &amp;= \sum^{|y|}_{k=1} \sum_{k’ \not=k} p_k p_{k’} \\ &amp;=1- \sum^{|y|}_{k=1} p_k^2 \end{aligned}$</p>
+<p>直观来说，Gini（D）反映了从数据集D中随机抽取两个样本，其类别标记不一致的概率.因此，Gini（D）越小，则数据集D的纯度越高。<br>采用与式（4.2）相同的符号表示，属性a的基尼指数定义为</p>
+<h2 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h2><p><img src="F:\MyBlog\source\images\ML\1544180804996.png" alt="1544180804996"></p>
 
       
     </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/决策树/" rel="tag"># 决策树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/04/regularization/" rel="next" title="Regularization 和 L1、L2 罚项">
+                <i class="fa fa-chevron-left"></i> Regularization 和 L1、L2 罚项
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -510,8 +725,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -635,6 +859,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础内容"><span class="nav-number">1.</span> <span class="nav-text">基础内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息熵"><span class="nav-number">1.1.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.2.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增益率"><span class="nav-number">1.3.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尼系数"><span class="nav-number">1.4.</span> <span class="nav-text">基尼系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪代码描述"><span class="nav-number">2.</span> <span class="nav-text">伪代码描述</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -755,6 +995,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
 
   
 
@@ -801,6 +1045,30 @@
       </style>
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1128,7 +1396,45 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1147,22 +1453,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 
