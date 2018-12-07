@@ -106,12 +106,12 @@
 <meta property="og:site_name" content="不太想说话">
 <meta property="og:description" content="对应 “西瓜书” 4.1-4.2 内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="f:/MyBlog/source/images/ML/1544180804996.png">
-<meta property="og:updated_time" content="2018-12-07T15:54:03.862Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/images/ML/1544180804996.png">
+<meta property="og:updated_time" content="2018-12-07T16:05:09.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树基础">
 <meta name="twitter:description" content="对应 “西瓜书” 4.1-4.2 内容。">
-<meta name="twitter:image" content="f:/MyBlog/source/images/ML/1544180804996.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/07/images/ML/1544180804996.png">
 
 
 
@@ -502,8 +502,8 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-12-07T23:54:03+08:00" content="2018-12-07">
-                  2018-12-07
+                <time itemprop="dateUpdated" datetime="2018-12-08T00:05:09+08:00" content="2018-12-08">
+                  2018-12-08
                 </time>
               </span>
           
@@ -613,8 +613,12 @@
 <h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p>类似的，<strong>CART</strong> 决策树使用<strong>“基尼指数”（Gini index）</strong>来选择划分属性。</p>
 <p>数据集D的纯度可用基尼值来度量：</p>
 <p>$\begin{aligned} Gini(D) &amp;= \sum^{|y|}_{k=1} \sum_{k’ \not=k} p_k p_{k’} \\ &amp;=1- \sum^{|y|}_{k=1} p_k^2 \end{aligned}$</p>
-<p>直观来说，Gini（D）反映了从数据集D中随机抽取两个样本，其类别标记不一致的概率.因此，Gini（D）越小，则数据集D的纯度越高。<br>采用与式（4.2）相同的符号表示，属性a的基尼指数定义为</p>
-<h2 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h2><p><img src="F:\MyBlog\source\images\ML\1544180804996.png" alt="1544180804996"></p>
+<p>直观来说，$Gini(D)$ 反映了从数据集 $D$ 中随机抽取两个样本，<strong>其类别标记不一致的概率</strong>。因此，$Gini(D)$ <strong>越小，则数据集</strong> $D$ <strong>的纯度越高</strong>。</p>
+<p>属性 $a$ 的基尼指数定义为：</p>
+<p>$\begin{aligned} Gini_index(D,a) = \sum^V_{v=1} \frac {|D^v|}{|D|}Gini(D^v). \end{aligned}$</p>
+<p>于是，我们在候选属性集合 $A$ 中，选择那个使得划分后基尼指数最小的属性作为最优划分属性，即 $\begin{aligned} a_* = \mathop{\arg\min}_{a \in A} Gini_index(D,a). \end{aligned}$</p>
+<p><br></p>
+<h2 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h2><p><img src="..\images\ML\1544180804996.png" alt="1544180804996"></p>
 
       
     </div>
