@@ -106,17 +106,17 @@
 <meta property="og:site_name" content="不太想说话">
 <meta property="og:description" content="对应 “西瓜书” 4.1-4.4 内容，加一些 sklearn api 的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/12/07/images/ML/1544180804996.png">
+<meta property="og:image" content="http://yoursite.com/images/ML/1544180804996.png">
 <meta property="og:image" content="http://yoursite.com/images/ML/1544457261156.png">
 <meta property="og:image" content="http://yoursite.com/images/ML/1544457654166.png">
 <meta property="og:image" content="http://yoursite.com/images/ML/1544508816124.png">
 <meta property="og:image" content="http://yoursite.com/images/ML/iris.png">
 <meta property="og:image" content="http://yoursite.com/images/ML/sphx_glr_plot_iris_0013.png">
-<meta property="og:updated_time" content="2018-12-11T09:38:35.592Z">
+<meta property="og:updated_time" content="2018-12-11T09:39:55.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树基础">
 <meta name="twitter:description" content="对应 “西瓜书” 4.1-4.4 内容，加一些 sklearn api 的内容。">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/07/images/ML/1544180804996.png">
+<meta name="twitter:image" content="http://yoursite.com/images/ML/1544180804996.png">
 
 
 
@@ -507,7 +507,7 @@
           
               <span class="post-updated">
                 &nbsp; | &nbsp; 更新于
-                <time itemprop="dateUpdated" datetime="2018-12-11T17:38:35+08:00" content="2018-12-11">
+                <time itemprop="dateUpdated" datetime="2018-12-11T17:39:55+08:00" content="2018-12-11">
                   2018-12-11
                 </time>
               </span>
@@ -657,7 +657,7 @@
 <p>$\begin{aligned} Gini_index(D,a) = \sum^V_{v=1} \frac {|D^v|}{|D|}Gini(D^v). \end{aligned}$</p>
 <p>于是，我们在候选属性集合 $A$ 中，选择那个使得划分后基尼指数最小的属性作为最优划分属性，即 $\begin{aligned} a_* = \mathop{\arg\min}_{a \in A} Gini_index(D,a). \end{aligned}$</p>
 <p><br></p>
-<h2 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h2><p><img src="..\images\ML\1544180804996.png" alt="1544180804996"></p>
+<h2 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h2><p><img src="\images\ML\1544180804996.png" alt="1544180804996"></p>
 <h2 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h2><p><strong>剪枝（pruning）</strong>是决策树学习算法对付 <strong>“过拟合”</strong> 的主要手段。在决策树学习中，为了尽可能正确分类训练样本，结点划分过程将不断重复，有时会造成决策树分支过多，这时就可能因训练样本学得“太好”了，以致于把训练集自身的一-些特点当作所有数据都具有的一般性质而导致过拟合。因此，可通过主动去掉一些分支来降低过拟合的风险。</p>
 <p>决策树剪枝的基本策略有<strong>“预剪枝”（prepruning）</strong>和<strong>“后剪枝”（post-pruning）</strong>。预剪枝是指在决策树生成过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化性能提升，则停止划分并将当前结点标记为叶结点；后剪枝则是先从训练集生成一棵完整的决策树，然后<strong>自底向上</strong>地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则<strong>将该子树替换为叶结点</strong>。</p>
 <p>如何判断决策树泛化性能是否提升呢？这可使用2.2节介绍的性能评估方法。本节假定采用留出法，即预留一部分数据用作<strong>“验证集”</strong>以进行性能评估。</p>
