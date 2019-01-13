@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本资料根据浙江大学黄方亮老师（huangfl@zju.edu.cn）、冯晔老师（pandafengye@zju.edu.cn）的课程 ppt 等整理。">
+<meta name="keywords" content="生物信息学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基因芯片从入门到上车">
+<meta property="og:url" content="http://yoursite.com/2019/01/12/gene_chip/index.html">
+<meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="本资料根据浙江大学黄方亮老师（huangfl@zju.edu.cn）、冯晔老师（pandafengye@zju.edu.cn）的课程 ppt 等整理。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片2.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片4.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片5.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片6.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片7.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片10.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片11.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片12.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片13.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片14.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片29.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片30.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片26.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片27.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片15.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片16.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片17.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片18.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片19.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片19.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片20.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片21.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片22.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片23.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片24.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片25.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片31.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片32.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片33.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片34.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片35.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片36.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片46.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片37.jpg">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片40.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片38.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片39.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片41.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片42.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片43.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片44.png">
+<meta property="og:image" content="http://yoursite.com/images/gene_chips/图片45.png">
+<meta property="og:updated_time" content="2019-01-13T20:38:34.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基因芯片从入门到上车">
+<meta name="twitter:description" content="本资料根据浙江大学黄方亮老师（huangfl@zju.edu.cn）、冯晔老师（pandafengye@zju.edu.cn）的课程 ppt 等整理。">
+<meta name="twitter:image" content="http://yoursite.com/images/gene_chips/图片1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/12/gene_chip/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>基因芯片从入门到上车 | 不太想说话</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?682c8bcd3389def4e85fe433be700aa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  
+<style>
+	#loading{
+		background-color: #f2f2f2;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		margin-top: 0px;
+		top: 0px;
+	}
+	#loading-center{
+		width: 100%;
+		height: 90%;
+		position: relative;
+		}
+	#loading-center-absolute {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 20px;
+		width: 100px;
+		margin-top: -10px;
+		margin-left: -50px;
+
+	}
+    .info{
+        color: black;
+        width: 100%;
+		height: 100%;
+        padding: 0 20px;
+		text-align:center;
+        opacity:0.9;
+        top:58%;
+        font-size: 12px;
+        font-family: "Courier New";
+        font-weight: lighter;
+        line-height: 26px;
+		position: absolute;	
+    }
+    .en{
+        font-size: 14px;
+        }
+	.object{
+		width: 20px;
+		height: 20px;
+		background-color: #000000;
+		-moz-border-radius: 50% 50% 50% 50%;
+		-webkit-border-radius: 50% 50% 50% 50%;
+		border-radius: 50% 50% 50% 50%;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		position: absolute;	
+	}
+	#object_one{
+		-webkit-animation: object 2s linear infinite;
+		 animation: object 2s linear infinite;
+		 }
+	#object_two{ 
+		-webkit-animation: object 2s linear infinite -.4s;
+		animation: object 2s linear infinite -.4s;
+		 }
+	#object_three{ 
+		-webkit-animation: object 2s linear infinite -.8s; 
+		animation: object 2s linear infinite -.8s; 
+		}
+	#object_four{ 
+		-webkit-animation: object 2s linear infinite -1.2s;
+		animation: object 2s linear infinite -1.2s; 
+		} 
+	#object_five{ 
+		-webkit-animation: object 2s linear infinite -1.6s; 
+		animation: object 2s linear infinite -1.6s; 
+		}
+	@-webkit-keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }		
+		
+	}		
+	@keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }
+	}	
+	</style>
+  <script>
+    function load() {
+      var a= setTimeout("loading.style.transition='opacity 0.3s'",0)   
+      //设置透明度改变的过渡时间为0.3秒
+      var b= setTimeout("loading.style.opacity=0", 0)
+      //0.5秒后加载动画开始变为透明
+      var c= setTimeout("loading.style.display='none'",800)
+      //当透明度为0的时候，隐藏掉它
+    }
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"  onload="load()">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<div id="loading">
+		<div id="loading-center">
+            <div class="info">
+                <span class="en">github.io</span> 有点慢，<span class="en">font-awesome</span> 有点大，
+                <br>
+                客官麻烦搬条板凳坐一下下，我马上就到！
+            </div>
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two" style="left:20px;"></div>
+				<div class="object" id="object_three" style="left:40px;"></div>
+				<div class="object" id="object_four" style="left:60px;"></div>
+				<div class="object" id="object_five" style="left:80px;"></div>
+			</div>
+		</div> 
+	</div>
+
+  <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不太想说话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所爱，天道酬勤</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-失控">
+    <a href="/" rel="section">
+      失控</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-归档">
+    <a href="/archives/" rel="section">
+      归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      关于</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/gene_chip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基因芯片从入门到上车</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T00:00:00+08:00">2019-01-12</time>
+            
+
+            
+            
+
+            
+          </span>
+          
+          
+              <span class="post-updated">
+                &nbsp; | &nbsp; 更新于
+                <time itemprop="dateUpdated" datetime="2019-01-14T04:38:34+08:00" content="2019-01-14">
+                  2019-01-14
+                </time>
+              </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/综述/" itemprop="url" rel="index"><span itemprop="name">综述</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/12/gene_chip/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/12/gene_chip/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本资料根据浙江大学<a href="#">黄方亮老师（huangfl@zju.edu.cn）</a>、<a href="#">冯晔老师（pandafengye@zju.edu.cn）</a>的课程 ppt 等整理。</p>
+<a id="more"></a>
+<p>未经两位老师和我本人许可，请勿以任何方式转载或引用本文。</p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>生物芯片（biochip）指通过机器人<strong>自动印迹</strong>或<strong>光引导化学合成技术</strong>在硅片、玻璃、凝胶或尼龙膜上制造的<strong>生物分子微阵列</strong>，根据<strong>分子间的特异性相互作用</strong>的原理，将生命科学领域中<strong>不连续</strong>的分析过程集成于芯片表面，以实现对细胞、蛋白质、基因及其他<strong>生物组分</strong>的准确、快速、大信息量的检测。</p>
+<h3 id="基因芯片发展历史"><a href="#基因芯片发展历史" class="headerlink" title="基因芯片发展历史"></a>基因芯片发展历史</h3><ol>
+<li><strong>Southern &amp; Northern Blot</strong><br><img src="/images/gene_chips/图片1.jpg" alt=""></li>
+<li><strong>Dot Blot</strong><br><img src="/images/gene_chips/图片2.png" alt=""></li>
+<li><strong>Macroarray</strong><br><img src="/images/gene_chips/图片3.jpg" alt=""></li>
+<li><p><strong>Microarray</strong><br><img src="/images/gene_chips/图片4.png" alt=""></p>
+<ul>
+<li>1991年Affymatrix公司福德（Fodor）组织半导体专家和分子生物学专家共同研制出利用光蚀刻光导合成多肽； </li>
+<li>1992年运用半导体照相平板技术，对原位合成制备的DNA芯片作了首次报道，这是世界上第一块基因芯片； </li>
+<li>1993年设计了一种寡核苷酸生物芯片； </li>
+<li>1994年又提出用光导合成的寡核苷酸芯片进行DNA序列快速分析； </li>
+<li>1995年，斯坦福大学布朗（P．Brown）实验室发明了第一块以玻璃为载体的基因微矩阵芯片；</li>
+<li>1996年灵活运用了照相平板印刷、计算机、半导体、激光共聚焦扫描、寡核苷酸合成及荧光标记探针杂交等多学科技术创造了世界上第一块商业化的生物芯片；</li>
+<li>2001年，全世界生物芯片市场已达170亿美元，用生物芯片进行药理遗传学和药理基因组学研究所涉及的世界药物市场每年约1800亿美元。</li>
+</ul>
+</li>
+</ol>
+<h3 id="基因芯片技术的特点"><a href="#基因芯片技术的特点" class="headerlink" title="基因芯片技术的特点"></a>基因芯片技术的特点</h3><ul>
+<li><strong>高度并行性</strong>：提高实验进程、利于显示图谱的快速对照和阅读。</li>
+<li><strong>多样性</strong>：可进行样品的多方面分析，提高精确性，减少误差。</li>
+<li><strong>微型化</strong>：减少试剂用量和反应液体积，提高样品浓度和反应速率。</li>
+<li><strong>自动化</strong>：降低成本，保证质量而且灵敏度高。</li>
+</ul>
+<h3 id="生物芯片的分类"><a href="#生物芯片的分类" class="headerlink" title="生物芯片的分类"></a>生物芯片的分类</h3><p><strong>一、按载体材料分类</strong></p>
+<ul>
+<li>玻璃芯片</li>
+<li>硅芯片</li>
+<li>陶瓷芯片</li>
+</ul>
+<p><strong>二、点样方式分类</strong></p>
+<ul>
+<li><strong>原位合成芯片</strong>：采用显微 <strong>光</strong> 蚀刻等技术在特定部位原位合成寡核苷酸而制备的芯片。探针较短。<br><img src="/images/gene_chips/图片5.png" alt=""></li>
+<li><strong>微矩阵芯片</strong>：将预先制备的DNA片段以显微 <strong>打印</strong> 的方式有序地固化于支持物表面而制成的芯片。探针的来源较灵活。</li>
+<li><strong>电定位芯片</strong>：利用 <strong>静电</strong> 吸附的原理将DNA快速定位在硅基质、导电玻璃上，在电力推动下进行快速杂交。</li>
+</ul>
+<p><strong>三、按生物类型分类</strong></p>
+<ul>
+<li><strong>基因芯片或DNA芯片（Genechip）</strong>：是根据 <strong>核酸杂交</strong> 的原理，将大量 <strong>探针分子</strong> 固定于支持物上，然后与标记的样品进行杂交，通过检测杂交信号的强度及分布来进行分析。</li>
+<li><strong>蛋白质芯片(proteinchip)</strong>：利用 <strong>抗体与抗原</strong> 特异性结合即 <strong>免疫</strong> 反应的原理，将蛋白质分子（抗原或抗体）结合到固相支持物上，形成蛋白质微阵列，实现抗原抗体的互检，即蛋白质的检测。</li>
+<li><strong>细胞芯片(cellchip)</strong>：是将细胞按照特定的方式固定在载体上，用来检测 <strong>细胞间相互影响</strong> 或相互作用。 </li>
+<li><strong>组织芯片(tissuechip)</strong>：是将组织切片等按照特定的方式固定在载体上，用来进行免疫组织化学等组织内 <strong>成分差异</strong> 研究。</li>
+<li><strong>芯片实验室</strong>：微流控芯片，<strong>lab-on-chip</strong> 采用纳米技术，制造出微小结构：变性、分离、纯化、电泳、PCR扩增、加样及检测，使各个实验步骤微缩于一个芯片上。高度集成化的集样品制备、基因扩增、核酸标记及检测为一体的便携式生物分析系统。实现生化分析全过程集成在一片芯片上完成，从而使生物分析过程自动化、连续化和微缩化。芯片实验室是生物芯片技术发展的最终目标。<br><img src="/images/gene_chips/图片6.png" alt=""></li>
+</ul>
+<p><img src="/images/gene_chips/图片7.png" alt=""></p>
+<h2 id="测序技术简史"><a href="#测序技术简史" class="headerlink" title="测序技术简史"></a>测序技术简史</h2><h3 id="一代DNA测序历史"><a href="#一代DNA测序历史" class="headerlink" title="一代DNA测序历史"></a>一代DNA测序历史</h3><ul>
+<li>70年代末，WalterGilbert发明化学法、FrederickSanger发明双脱氧终止法手动测序，同位素标记</li>
+<li>80年代中期，出现自动测序仪（应用双脱氧终止法原理）、荧光代替同位素，计算机图象识别</li>
+<li>90年代中期，测序仪重大改进、集束化的毛细管电泳代替凝胶电泳</li>
+<li>2001年完成人类基因组框架图</li>
+</ul>
+<p><img src="/images/gene_chips/图片9.jpg" alt=""></p>
+<blockquote>
+<p>一代测序仪 MegaBACE1000</p>
+</blockquote>
+<h3 id="双脱氧终止法测序反应原理"><a href="#双脱氧终止法测序反应原理" class="headerlink" title="双脱氧终止法测序反应原理"></a>双脱氧终止法测序反应原理</h3><p><strong>原料</strong></p>
+<ul>
+<li>DNA聚合酶</li>
+<li>DNA模板</li>
+<li>单链寡核苷酸引物</li>
+<li>4 种 dNTP（dATP、dGTP、dTTP和dCTP）</li>
+<li><p>4 种 ddNTP（ddATP、ddGTP、ddTTP和ddCTP）</p>
+<p>DNA聚合酶在模板指导下，不断地逐个将dNTP加到引物的3’-OH末端，使引物延伸，合成出新的与模板互补DNA链。在链的延长过程中一旦加入双脱氧核苷三磷酸（ddNTP），由于其双脱氧核糖的3’位置缺少一个羟基，不能同后续的dNTP形成磷酸二酯键，即形成一系列具有相同5’-引物端和以ddN残基为3’端结尾的 <strong>长短不一的片段的混合物</strong>，通过毛细管电泳并经过分析从而获得模板DNA的核苷酸序列。</p>
+</li>
+</ul>
+<p><img src="/images/gene_chips/图片10.png" alt=""><br><img src="/images/gene_chips/图片11.png" alt=""></p>
+<h3 id="Illumina-测序原理"><a href="#Illumina-测序原理" class="headerlink" title="Illumina 测序原理"></a>Illumina 测序原理</h3><p><img src="/images/gene_chips/图片12.jpg" alt=""><br><img src="/images/gene_chips/图片13.png" alt=""></p>
+<h3 id="二代测序仪功能"><a href="#二代测序仪功能" class="headerlink" title="二代测序仪功能"></a>二代测序仪功能</h3><ul>
+<li>未知及已知物种 <strong>表达谱</strong>, 基因组测序</li>
+<li>鉴定 <strong>RNA 可变剪切</strong></li>
+<li>环境 <strong>(宏)基因组</strong> （Metagenomics）测序</li>
+<li>不同PCR产物 <strong>混合测序</strong></li>
+<li><strong>DNA 甲基化</strong> 鉴定</li>
+<li><strong>小RNA，非编码RNA</strong> 测序</li>
+<li>染色质 <strong>免疫共沉淀</strong>分析(chip-seq)</li>
+<li><strong>病症筛查</strong>，唐氏综合症筛查，癌症用药基因敏感位点筛查，新生儿疾病相关基因位点筛查</li>
+</ul>
+<p><img src="/images/gene_chips/图片14.png" alt=""></p>
+<h3 id="二代测序数据格式"><a href="#二代测序数据格式" class="headerlink" title="二代测序数据格式"></a>二代测序数据格式</h3><ul>
+<li>Fastq，Fasta</li>
+<li>Bam</li>
+<li>Sam</li>
+<li>Tiff</li>
+</ul>
+<p>当二代测序的原始数据拿到手之后，第一步要做的就是看一看原始reads的质量。常用的工具就是fastqc（使用方法见第三章PPT）</p>
+<h3 id="fastq"><a href="#fastq" class="headerlink" title="fastq"></a>fastq</h3><p><img src="/images/gene_chips/图片29.png" alt=""></p>
+<p>打分公式<br><img src="/images/gene_chips/图片30.png" alt=""></p>
+<h3 id="SAM，BAM格式"><a href="#SAM，BAM格式" class="headerlink" title="SAM，BAM格式"></a>SAM，BAM格式</h3><p>SAM是一种 <strong>序列比对格式标准</strong> ，由sanger制定，是以TAB为分割符的文本格式。主要应用于测序序列mapping到基因组上的结果表示，当然也可以表示任意的多重比对结果。当测序得到的fastq文件map到基因组之后，我们通常会得到一个sam或者bam为扩展名的文件。SAM的全称是sequence alignment/map format。 </p>
+<p>SAM和BAM是 <strong>序列比对</strong> 之后常用的输出格式，比如tophat输出BAM格式，bowtie和bwa等都采用了SAM格式。</p>
+<p>BAM格式其实就是SAM格式的 <strong>二进制格式</strong>，占用存储空间更小。</p>
+<p><strong>在SAM输出的结果中每一行都包括十二项通过Tab分隔，从左到右分别是：</strong></p>
+<ol>
+<li>序列的名字</li>
+<li>概括出一个合适的标记，各个数字分别代表</li>
+<li>参考序列的名字</li>
+<li>在参考序列上的位置</li>
+<li>mapping quality 越高则位点越独特</li>
+<li>代表比对结果的CIGAR字符串，</li>
+<li>mate 序列所在参考序列的名称</li>
+<li>mate 序列在参考序列上的位置</li>
+<li>估计出的片段的长度，当mate 序列位于本序列上游时该值为负值。</li>
+<li>read的序列</li>
+<li>ASCII码格式的序列质量</li>
+<li>可选的区域</li>
+</ol>
+<h3 id="第三代测序技术"><a href="#第三代测序技术" class="headerlink" title="第三代测序技术"></a>第三代测序技术</h3><p><img src="/images/gene_chips/图片26.png" alt=""></p>
+<p><img src="/images/gene_chips/图片27.png" alt=""></p>
+<blockquote>
+<p>纳米孔测序仪，错误率36%，120Kb</p>
+</blockquote>
+<h2 id="DNA芯片技术的操作流程"><a href="#DNA芯片技术的操作流程" class="headerlink" title="DNA芯片技术的操作流程"></a>DNA芯片技术的操作流程</h2><h3 id="芯片的制作准备"><a href="#芯片的制作准备" class="headerlink" title="芯片的制作准备"></a>芯片的制作准备</h3><ul>
+<li>点阵设计（芯片上核酸探针序列的选择以及排布）</li>
+<li>固定在芯片上的生物分子样品</li>
+<li>固相支持物（即芯片片基）</li>
+<li>制作芯片的仪器</li>
+</ul>
+<p><strong>固相支持物的种类及预处理</strong></p>
+<p>考虑荧光背景的大小、化学稳定性、结构复杂性、介质对化学修饰作用的反应、介质表面积及其承载能力以及非特异吸附的程度等因素。<br><img src="/images/gene_chips/图片15.png" alt=""></p>
+<h3 id="芯片制备方法"><a href="#芯片制备方法" class="headerlink" title="芯片制备方法"></a>芯片制备方法</h3><ol>
+<li><strong>原位合成</strong>（in situ synthesis）适用于：寡核苷酸<ul>
+<li>① 光导原位合成法</li>
+<li>② 原位喷印合成</li>
+<li>③ 分子印章多次压印合成</li>
+</ul>
+</li>
+<li><strong>点样法</strong> 适用于：大片段DNA、寡核苷酸、mRNA<ul>
+<li>① 接触式点样（针式打印）</li>
+<li>② 非接触式点样（喷墨打印）</li>
+</ul>
+</li>
+</ol>
+<p><strong>原位合成法（in situ synthesis)</strong></p>
+<p>又可分为原位光控合成法和原位标准试剂合成法。适用于寡核苷酸，使用 <strong>光引导</strong> 化学原位合成技术。是目前制造高密度寡核苷酸最为成功的方法。</p>
+<p><strong>优势</strong>：合成速度快、步骤少、探针数目呈指数增长、阵列密度高；<br><strong>缺陷</strong>：但光蚀刻掩膜昂贵、每步产率较低，因此合成探针长度较短。</p>
+<ul>
+<li>测序、查明点突变；</li>
+<li>高密度、根据已知的DNA编制程序；</li>
+<li>制作复杂、价格昂贵、不能测定未知DNA序列。</li>
+</ul>
+<p><img src="/images/gene_chips/图片16.jpg" alt=""></p>
+<blockquote>
+<p>光敏保护基团；光蚀刻掩膜（或蔽光膜）</p>
+</blockquote>
+<p><strong>压电打印法</strong></p>
+<p>类似彩色喷墨打印，但有多个芯片喷印头及储液囊，储液囊中装四种碱基合成试剂，喷印头在整个芯片上移动。</p>
+<ul>
+<li>其化学原理：固相合成 DNA    </li>
+<li>40~50nt，产率较高</li>
+</ul>
+<p><strong>点样法</strong></p>
+<ul>
+<li>设计点阵</li>
+<li>人工合成的寡核苷酸片段；<ul>
+<li>PCR、RT/PCR 等扩增的 DNA 或 cDNA 片段；</li>
+<li>基因组提取的 DNA 片段；</li>
+</ul>
+</li>
+<li>表面带正电荷的芯片支持物</li>
+<li>紫外交联固定、Schiff碱连接法固定</li>
+</ul>
+<p><img src="/images/gene_chips/图片17.jpg" alt=""></p>
+<h3 id="待检测样品的制备和标记"><a href="#待检测样品的制备和标记" class="headerlink" title="待检测样品的制备和标记"></a>待检测样品的制备和标记</h3><ol>
+<li>待检测样品中 mRNA 或 DNA 的提取及纯化<ul>
+<li>RNA的稳定性<ul>
+<li>液氮或干冰;  立即抽提</li>
+<li>RNA 保护剂</li>
+</ul>
+</li>
+<li>纯化</li>
+</ul>
+</li>
+<li>RT-PCR 或 PCR 扩增靶片段<ul>
+<li>固相PCR系统</li>
+</ul>
+</li>
+<li>样品的标记<ul>
+<li>伴随RT or PCR过程</li>
+<li>随机引物法、缺口平移法等</li>
+<li>标记物<ul>
+<li>荧光染料，如Cy3、Cy5</li>
+<li>生物素、地高辛</li>
+<li>放射性核素，如 32P、33P</li>
+<li>化学发光</li>
+<li>金属离子Au和Ag(纳米金属微粒探针)</li>
+</ul>
+</li>
+<li>双/多色荧光标记</li>
+<li>标记产物纯化</li>
+</ul>
+</li>
+</ol>
+<p><strong>检测表达量的步骤</strong></p>
+<ol>
+<li>mRNA提取</li>
+<li>cDNA合成、PCR</li>
+<li>标记</li>
+</ol>
+<p><strong>SNP或者突变检测、Genotyping</strong></p>
+<ol>
+<li>Genomic DNA 纯化</li>
+<li>标记</li>
+</ol>
+<p>一旦生物样品被收集分离，它的 RNA 会立刻变得 <strong>非常不稳定</strong>，极易被降解。由于特异及非特异的RNA降解或者由于应激反应产生新的RNA都会引起RNA状态的改变。因此，采样后需立即稳定样品里的RNA以保存当时RNA的表达状态。<br>将液氮或干冰带到采样现场，采样后立即抽提RNA或者运回实验室保存。<br>RNAlater RNA Stabilization Reagent, 只要在采样后立即将新鲜样品浸入这种液体试剂，<strong>RNA保护剂</strong>可以迅速渗透到组织或其他生物样本中，稳定并保护RNA完整而不被降解，确保下游分析得到的数据真实反应样品的表达信息。37度1天；18~25度7天，2-8度4周，-20度永久保存。特别适用于动物组织（切成&lt;0.5cm),以使迅速渗透、培养细胞、细菌、白细胞，不适用全血或体液。<br>纯化柱</p>
+<p>标记物要注意适用的芯片片基，如有的化学发光试剂盒不适用于玻片基质；间接荧光标记适用玻片基质。</p>
+<p><img src="/images/gene_chips/图片18.png" alt=""></p>
+<p><img src="/images/gene_chips/图片19.jpg" alt=""></p>
+<blockquote>
+<p>Cy3、Cy5双色荧光标记结果示意图</p>
+</blockquote>
+<h3 id="分子杂交"><a href="#分子杂交" class="headerlink" title="分子杂交"></a>分子杂交</h3><p>配套商业化芯片有配套杂交试剂、杂交盒；自制芯片，可自行配，也可购买杂交buf,洗膜液，有不同严谨程度的杂交液可供选择。毕竟在芯片这样精密的实验中，在这么小的一个点上的DNA的两是非常有限的，要得到理想的结果需要非常精确的反应条件。</p>
+<ul>
+<li>芯片杂交盒、洗片器；芯片杂交仪</li>
+<li>杂交液</li>
+<li>清洗液</li>
+<li>影响杂交的因素<ul>
+<li>时间、温度、缓冲液等，</li>
+<li>根据芯片上核酸片段的长短、用途选择杂交条件</li>
+</ul>
+</li>
+</ul>
+<h3 id="DNA-条形码"><a href="#DNA-条形码" class="headerlink" title="DNA 条形码"></a>DNA 条形码</h3><p>条形码技术是应现代零售业发展的需求而产生的， 在零售业的商品管理与销售中发挥了无法替代的关键作用， 生物分类学家从中得到了启示：DNA分子一级结构上的线性核苷酸排列可以建立类似的生物条形码，应用于快速鉴别生物。</p>
+<p><strong>DNA 条形码的理想序列有3 个基本判断标准：</strong></p>
+<ol>
+<li>序列变异水平适宜，可以将不同物种彼此区分开来，同时种内变异较小；</li>
+<li>变异区域两端的序列高度保守，可以设计在众多物种中稳定扩增的通用引物；</li>
+<li>扩增序列尽量短，最好一个反应可以完成测序.</li>
+</ol>
+<p><strong>DNA条形码技术的分析流程</strong></p>
+<ol>
+<li>采集所研究样品，记录采集时间和地点，并利用酒精或冷冻保存样品，采用适宜方法提取DNA；</li>
+<li>利用相关引物对目的片段进行PCR扩增；</li>
+<li>对扩增片段进行测序；</li>
+<li>利用相关软件校正序列，建立系统进化树，并分析结果；</li>
+<li>将研究样品的DNA序列，图像，采集地点和日期，采集人和鉴定人等信息提交DNA条形码数据库。</li>
+</ol>
+<h2 id="基因芯片的应用"><a href="#基因芯片的应用" class="headerlink" title="基因芯片的应用"></a>基因芯片的应用</h2><h3 id="基因表达分析"><a href="#基因表达分析" class="headerlink" title="基因表达分析"></a>基因表达分析</h3><p>针对基因的 <strong>保守区段</strong> 设计多对 <strong>完全匹配的寡核苷酸探针（PM）</strong> 和与之相应的 <strong>中心单碱基错配的寡核苷酸探针（MM）</strong>，固定于芯片的 <strong>相邻位置</strong> 上，与标记的样品靶序列杂交。正常完全匹配的情况下（阳性），PM的杂交信号明显强于MM的杂交信号，而错配时（假阳性），两者的杂交信号区别不明显，<strong>（PM/MM）信号的比值可作为衡量阳性的指标</strong>。针对某一基因的三条以上探针呈阳性时，可定性的判定基因的表达。而通过比较正常和异常样品杂交信号的差异，来检测不同样品中基因表达水平的变化。</p>
+<h3 id="基因功能分析研究"><a href="#基因功能分析研究" class="headerlink" title="基因功能分析研究"></a>基因功能分析研究</h3><p>将成千上万个我们克隆到的特异性靶基因固定在一块芯片上，对来源于不同情况细胞的mRNA或逆转录所得的cDNA进行检测，从而对这些基因表达的个体特异性、组织特异性、发育阶段特异性、分化阶段特异性等进行综合评定与判断。</p>
+<h3 id="疾病的基因诊断"><a href="#疾病的基因诊断" class="headerlink" title="疾病的基因诊断"></a>疾病的基因诊断</h3><p>目前诊断芯片主要涉及：</p>
+<ul>
+<li>癌症</li>
+<li>心血管疾病</li>
+<li>血液病</li>
+<li>遗传性疾病</li>
+<li>神经系统疾病</li>
+<li>部分感染性疾病</li>
+<li>免疫反应相关性疾病</li>
+<li>毒物引起的损伤等</li>
+</ul>
+<h3 id="药物筛选"><a href="#药物筛选" class="headerlink" title="药物筛选"></a>药物筛选</h3><p>经过基因功能研究，可以确立与某些疾病相关的基因以及它们的表达情况。将这些基因特异性片段固定在芯片上，研究病变组织和正常组织在某些药物刺激下这些基因表达的变化情况，可快速判断药物作用的效果，并进行高通量筛选。</p>
+<h3 id="检测基因突变"><a href="#检测基因突变" class="headerlink" title="检测基因突变"></a>检测基因突变</h3><p>根据基因突变热点所有可能的突变情况设计多条寡核苷酸探针，合成、固定在芯片上的特定位置，与PCR扩增、标记的靶基因相应区段杂交，根据特定位置上杂交信号的有无和与之相应的探针序列来判定基因突变的类型。</p>
+<ul>
+<li><strong>RNA 的检测</strong>：表达丰度，剪切体 </li>
+<li><strong>DNA 的检测</strong>： SNP , CGH , Methylation</li>
+<li><strong>cDNA芯片</strong>：表达谱芯片， CGH </li>
+<li><strong>寡核苷酸芯片</strong>：诊断芯片，SNP分型芯片</li>
+</ul>
+<h2 id="探针设计原则"><a href="#探针设计原则" class="headerlink" title="探针设计原则"></a>探针设计原则</h2><p>以已知序列的突变热点位置为中心，按从左到右的顺序在目标序列中取一定长度的互补片段（&lt;25bp)作为探针。对于这组探针，其中之一为野生型，而其他三种为突变型探针。将此四组探针顺序地点样于芯片上相邻的四行，分别为A、G、C、T行，同时与扩增得到的标记的易变基因区段DNA杂交，根据杂交信号的位置可确定突变的类型。</p>
+<ol>
+<li>探针序列应为特异性强和灵敏度高的寡核苷酸。</li>
+<li>(G+C)% 应在 40~60% 。</li>
+<li>避免内部“发卡”结构 (连续互补 &lt; 4 nt）。</li>
+<li>避免同一碱基的连续出现 ( &lt; 4 nt)。</li>
+<li>探针与其他已知的各种基因序列进行同源性比较，若此探针序列与 <strong>非靶基因</strong> 序列有70%以上的同源性或连续8个以上的碱基序列相同，则最好不用。</li>
+<li>设置多个序列相近的参考寡核苷酸探针来检测同一基因。</li>
+</ol>
+<h2 id="线粒体和叶绿体-DNA"><a href="#线粒体和叶绿体-DNA" class="headerlink" title="线粒体和叶绿体 DNA"></a>线粒体和叶绿体 DNA</h2><h3 id="线粒体"><a href="#线粒体" class="headerlink" title="线粒体"></a>线粒体</h3><p>mtDNA 和 核 DNA 的主要差异：</p>
+<ol>
+<li>长度</li>
+<li>密码子对应氨基酸</li>
+<li>mtDNA 几乎不发生基因重组（群体遗传学、进化生物学）</li>
+</ol>
+<p><img src="/images/gene_chips/图片19.png" alt=""><br><img src="/images/gene_chips/图片20.png" alt=""></p>
+<h3 id="叶绿体"><a href="#叶绿体" class="headerlink" title="叶绿体"></a>叶绿体</h3><ol>
+<li>双链环状</li>
+<li>约含12个cpDNA分子</li>
+<li>大小在120kb到217kb之间，相当于噬菌体基因组的大小</li>
+<li>编码与光合作用密切相关的一些蛋白和一些核糖体蛋</li>
+<li>基因表达调控是在不同水平上进行的，光和细胞分裂素对叶绿体基因的表达也起着重要的调节作用</li>
+<li>基因组由两个反向重复序列（IR）和一个短单拷贝序列（short single copy seguence, SSC）及一个长单拷贝序列（long single copy seguence, LSC）组成</li>
+</ol>
+<p><strong>叶绿体基因组DNA检测</strong></p>
+<ol>
+<li>采集没有检测过叶绿体基因组的物种样本</li>
+<li>提取物种总DNA </li>
+<li>根据基因条形码技术（rbcl基因）<strong>确认物种</strong></li>
+<li><strong>酶解法富集</strong>叶绿体DNA </li>
+<li>构建高通量测序<strong>文库</strong>：<ol>
+<li><strong>纯化富集</strong>后的叶绿体DNA </li>
+<li>检测浓度，取 <strong>50ng</strong> 构建高通量测序文库</li>
+<li>酶切法构建测序文库</li>
+</ol>
+</li>
+</ol>
+<p><strong>操作流程</strong></p>
+<ol>
+<li>利用 DOGMA 或 CPGAVA S软件 <strong>注释</strong> 叶绿体基因组中的基因</li>
+<li>利用 tRNAscan-SE 1.21 软件确定 <strong>tRNA 基因的边界</strong>。注释结果利用 Apollo 软件进行 <strong>修订</strong>, 调节编码基因 <strong>起始终止位置</strong>。</li>
+<li>利用 sequin 软件完成五味子叶绿体基因组的 <strong>提交</strong>。 </li>
+<li>利用 OGDRAW 软件画出五味子叶绿体基因组 <strong>环形图谱</strong>。</li>
+<li>利用 mVISTA 软件, 在 Shuffle-LAGAN 模型下, 将五味子叶绿体基因组与其他5种基部被子植物 (少药八角、白睡莲(Nymphaea alba L.)、Trithuria inconspicua Cheeseman、Amborella trichopoda Baill. 和Nuphar advena (Aiton) W.T. Aiton) 叶绿体基因组进行 <strong>比较分析</strong>。</li>
+<li>利用 <a href="http://pgrc.ipk-gatersleben.de/misa/" target="_blank" rel="noopener">MISA 软件</a> 检测叶绿体基因组 <strong>简单重复序列(simple sequence repeats, SSR)</strong>。 </li>
+<li>Tandem repeats finder v4.04 软件被用于检测 <strong>串联重复(tandem, T)</strong>, 参数默认。</li>
+</ol>
+<p><strong>分析结论示例</strong><br>研究完成了五味子叶绿体基因组 <strong>测序、组装与注释</strong>，并对其 <strong>结构、GC含量、密码子使用率、重复序列</strong> 等进行了分析。结果显示，五味子叶绿体基因组结构和基因组成与大多数被子植物类似，但 ycf15 基因缺失。与大多数被子植物相比，五味子叶绿体基因组的 IR 区发生了约 10 kb 的收缩。通过叶绿体基因组系统进化分析，五味子的 <strong>系统发育位置</strong> 得到确认。五味子作为传统药用植物，具有重要药用和经济价值，其叶绿体基因组的测序与分析，为五味子科 <strong>系统进化分析</strong> 和 <strong>物种鉴定</strong> 提供了数据基础，并为解决近缘种进化关系和物种鉴定等提供了新的方法。</p>
+<h2 id="软件和数据库"><a href="#软件和数据库" class="headerlink" title="软件和数据库"></a>软件和数据库</h2><h3 id="网络设计引物软件"><a href="#网络设计引物软件" class="headerlink" title="网络设计引物软件"></a>网络设计引物软件</h3><p><img src="/images/gene_chips/图片21.png" alt=""></p>
+<blockquote>
+<p>PRIMER3</p>
+</blockquote>
+<h3 id="看测序图软件"><a href="#看测序图软件" class="headerlink" title="看测序图软件"></a>看测序图软件</h3><p><img src="/images/gene_chips/图片22.png" alt=""></p>
+<blockquote>
+<p>chromas</p>
+</blockquote>
+<p><img src="/images/gene_chips/图片23.png" alt=""></p>
+<blockquote>
+<p>bioedit</p>
+</blockquote>
+<h3 id="一代测序序列分析软件DNASTAR"><a href="#一代测序序列分析软件DNASTAR" class="headerlink" title="一代测序序列分析软件DNASTAR"></a>一代测序序列分析软件DNASTAR</h3><p><img src="/images/gene_chips/图片24.png" alt=""></p>
+<blockquote>
+<p>SEQMAN</p>
+</blockquote>
+<p><img src="/images/gene_chips/图片25.png" alt=""></p>
+<blockquote>
+<p>EDITSEQ</p>
+</blockquote>
+<h3 id="基因组拼接"><a href="#基因组拼接" class="headerlink" title="基因组拼接"></a>基因组拼接</h3><p><img src="/images/gene_chips/图片31.png" alt=""></p>
+<blockquote>
+<p>CLC Genomics Workbench</p>
+</blockquote>
+<h3 id="适合于NGS数据的基因组组装软件"><a href="#适合于NGS数据的基因组组装软件" class="headerlink" title="适合于NGS数据的基因组组装软件"></a>适合于NGS数据的基因组组装软件</h3><ol>
+<li>ALLPATHS-LG</li>
+<li>Velvet</li>
+<li>SOAPdenovo</li>
+<li>Bambus2</li>
+<li>CABOG</li>
+<li>MSR-CA</li>
+<li>SGA</li>
+<li>VCAKE</li>
+<li>SHARCGS</li>
+<li>SSAKE</li>
+<li>Euler</li>
+</ol>
+<h3 id="基因组注释"><a href="#基因组注释" class="headerlink" title="基因组注释"></a>基因组注释</h3><p>微生物基因组注释和基因预测工具：<a href="http://chinaaoju.blog.163.com/blog/static/1500889612012699239592/" target="_blank" rel="noopener">Glimmer</a><br>直接用SEQIN软件上传到NCBI，官方注释。</p>
+<h3 id="比较基因组数据库"><a href="#比较基因组数据库" class="headerlink" title="比较基因组数据库"></a>比较基因组数据库</h3><p>TIGR（The Institute of Genomic Research Database-TDB，美国基因组研究所的数据库）是国际上重要的测序中心之一，其重点是假设的基因组学和比较基因组的研究。它有大量的基因组数据和标记表达序列数据，其资源以微生物为主，真核生物和人类基因组为辅。TIGR数据库包括了微生物、植物及人类的DNA及蛋白质序列, 基因表达, 细胞的作用, 蛋白质家族及分类数据，是一套大型综合数据库。在它收录的多种多样的数据库中，微生物基因组数据库是世界上著名的基因组数据库。，此外，其还拥有世界上最大的cDNA数据库。由该页面可进入以下数据库：微生物库（MDB），人类基因索引，老鼠基因索引，水稻(Rice)基因索引，人类基因组排序项目，人类cDNA图项目，表达的基因结构库等。 </p>
+<h2 id="基因组拼接-1"><a href="#基因组拼接-1" class="headerlink" title="基因组拼接"></a>基因组拼接</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>Read：一条测序序列即为一条read；</li>
+<li>Contig：重叠群，拼接一致序列片段，中间没有gap；</li>
+<li>Scaffold：框架序列，基于文库正反向信息确定的contigs顺序框架，中间可能有gap；</li>
+<li>N50：将各个序列按长度大小排列，从大到小扫描累加长度值，累加值首次超过所有序列总长的50%时，扫描到的该序列长度为N50。</li>
+</ul>
+<p><img src="/images/gene_chips/图片32.png" alt=""></p>
+<p><strong>De novo、Re-sequencing</strong><br>从头测序之前没人做过，重测序可以用来找SNP。<br><img src="/images/gene_chips/图片33.png" alt=""></p>
+<p><strong>双末端测序 Pair-End、Mate-Pair</strong><br>Mate-Pair 大片段环化<br><img src="/images/gene_chips/图片34.png" alt=""></p>
+<p><strong>覆盖度、质量值</strong><br><img src="/images/gene_chips/图片35.png" alt=""></p>
+<h2 id="不同的芯片类型"><a href="#不同的芯片类型" class="headerlink" title="不同的芯片类型"></a>不同的芯片类型</h2><ul>
+<li>表达谱芯片</li>
+<li>EST</li>
+<li>RNA-seq</li>
+<li>其他芯片类型</li>
+</ul>
+<h3 id="表达谱芯片"><a href="#表达谱芯片" class="headerlink" title="表达谱芯片"></a>表达谱芯片</h3><p><strong>单色荧光系统</strong></p>
+<ul>
+<li>较短的寡核苷酸芯片如 Affymatrix 芯片；载有较长片段的寡核苷酸芯片也可使用，如Illumina 芯片</li>
+<li>实验组和对照组分别用同样的 <strong>荧光物质标记</strong>（或生物素biotin) ，分别与芯片杂交，即 <strong>一张芯片只杂交一个样本</strong></li>
+<li><p>根据杂交结果判断待测样品同芯片上哪个片段结合，通过与对照组的比较转化成基因表达的改变</p>
+<p><strong>双色荧光系统</strong></p>
+</li>
+<li>cDNA 芯片技术及载有较长片段的寡核昔酸芯片 </li>
+<li>实验组及对照组两种组织的 <strong>mRNA</strong> 在反转录成 cDNA 的过程中分别标记上 <strong>Cy3</strong> 和 <strong>Cy5</strong> 两种荧光，制备成探针，<strong>竞争性</strong> 地与芯片上的核酸片段进行<strong>杂交 </strong></li>
+<li>两种波长的 <strong>激光扫描</strong> 读取竞争杂交的结果，通过计算机处理就能确定芯片上基因所结合探针的量，通过计算两种 <strong>荧光强度的比值</strong> 来判断两种组织中 <strong>基因表达是否有变化</strong>。</li>
+</ul>
+<p><img src="/images/gene_chips/图片36.png" alt=""></p>
+<blockquote>
+<p>双荧光系统芯片的原理及流程图</p>
+</blockquote>
+<p><img src="/images/gene_chips/图片46.png" alt=""></p>
+<blockquote>
+<p>常见的双通道（dual channel）实验流程</p>
+</blockquote>
+<ul>
+<li>对照基因(reference gene)：绿色荧光标记(G)</li>
+<li>样本基因(sample gene)：红色荧光标记(R)</li>
+</ul>
+<p><strong>单通道和双通道的比较</strong></p>
+<p>单通道实验结果 <strong>重复性更好</strong>，使得比较不同样品之间各种基因表达的相对比例是可靠的。进行多个样品之间（芯片之间）的比较时，只需在多个样本中设置对照。由于点样的是寡核昔酸，探针无法检测。 </p>
+<p>双通道（点样cDNA）重复性相对较差，但是 <strong>探针可以测序验证</strong>。双色法需在每次杂交检测中设置对照，只能进行两个样品之间的比较，芯片之间的比较并不可靠</p>
+<p><strong>样本量：从多少总 RNA 中进行逆转录才能满足实验需要？</strong></p>
+<p>非扩增： 20 微克；扩增： 1 微克<br>有些情况下，样本极为稀有，不可能得到大量的 mRNA 靶分子<br>基因芯片实验对总RNA量的需求在一定程度上限制了该技术的推广<br>发展方向：提高检测灵敏度，减少基因芯片实验样本用量</p>
+<p><strong>数据分析</strong></p>
+<ol>
+<li>质控、均一化<br><img src="/images/gene_chips/图片37.jpg" alt=""></li>
+<li>差异基因筛选<br><img src="/images/gene_chips/图片40.png" alt=""></li>
+<li>基因、样本聚类<br><img src="/images/gene_chips/图片38.png" alt=""></li>
+<li>功能富集分析<ul>
+<li>常用注释数据库：GO、KEGG、COG、Reactome、Biocarta等等;</li>
+<li>功能富集分析方法主要分成四大类：<ul>
+<li>ORA: over-representation analysis 过表达分析</li>
+<li>FCS：functional class scoring 功能集打分</li>
+<li>PT：pathway topology 通路拓扑结构</li>
+<li>NT：network topology 网络拓扑结构</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>共调控基因</strong> </p>
+<ul>
+<li>可能参与一些紧密相关的生理功能</li>
+<li>可能由共同的转录因子激活<br><img src="/images/gene_chips/图片39.png" alt=""></li>
+</ul>
+</blockquote>
+<h3 id="EST"><a href="#EST" class="headerlink" title="EST"></a>EST</h3><p>ESTs（Expressed Sequence tags ）是从 <strong>已建好的cDNA库</strong> 中随机取出一个克隆，从5’末端或3’末端对插入的 cDNA 片段进行一轮 <strong>单向自动测序</strong>，所获得的约60-500bp的一段cDNA序列。<br><img src="/images/gene_chips/图片41.png" alt=""><br><img src="/images/gene_chips/图片42.png" alt=""></p>
+<p><strong>cDNA 文库分类</strong></p>
+<ul>
+<li>Oligo d(T) cDNA文库。</li>
+<li>随机引物cDNA文库。</li>
+</ul>
+<p><strong>操作流程</strong></p>
+<ol>
+<li>随机挑取克隆进行5’或3’端测序</li>
+<li>序列前处理</li>
+<li>聚类和拼接</li>
+<li>基因注释及功能分类</li>
+<li>后续分析</li>
+</ol>
+<p><strong>序列前处理</strong></p>
+<ol>
+<li>应用 <strong>去除低质量</strong> 的序列 (phred)</li>
+<li>BLAST、RepeatMasker 或 Crossmatch 遮蔽数据组中 <strong>不属于表达的基因的赝象序列</strong> (artifactual sequences)。<ul>
+<li>载体序列<br>  (<a href="http://www.ncbi.nlm.nih.gov/VecScreen/UniVec.html" target="_blank" rel="noopener">VecScreen</a>) </li>
+<li>重复序列 (<a href="http://www.girinst.org/repbase/index.html" target="_blank" rel="noopener">RepBase</a>)</li>
+<li>污染序列 (如核糖体RNA、细菌或其它物种的基因组DNA等)</li>
+</ul>
+</li>
+<li><strong>镶嵌克隆</strong>的识别</li>
+<li>最后去除<strong>长度小</strong>于100bp的序列。<br>(序列长度：无统一标准，一般认为100bp以上的EST即可代表足够表达基因信息)</li>
+</ol>
+<p><strong>ESTs的聚类和拼接</strong></p>
+<ul>
+<li><strong>聚类目的</strong>：将来自同一个基因或同一个转录本的具有重叠部分 (over-lapping) 的ESTs整合至单一的簇(cluster)  中。</li>
+<li><strong>聚类作用</strong>：<ul>
+<li>产生较长的一致性序列(consensus sequence)，用于注释。</li>
+<li>降低数据的冗余，纠正错误数据。</li>
+<li>可以用于检测选择性剪切。</li>
+<li>基因表达谱分析。</li>
+</ul>
+</li>
+</ul>
+<p><strong>不严格的和严格的聚类</strong></p>
+<ul>
+<li>loose clustering:<ul>
+<li>产生的一致性序列比较长</li>
+<li>表达基因ESTs数据的覆盖率高</li>
+<li>含有同一基因不同的转录形式，如各种选择性剪接体</li>
+<li>每一类中可能包含旁系同源基因(paralogous expressed gene)的转录本</li>
+<li>序列的保真度低</li>
+</ul>
+</li>
+<li>stringent clustering:<ul>
+<li>产生的一致性序列比较短</li>
+<li>表达基因ESTs数据的覆盖率低</li>
+<li>因此所含有的同一基因的不同转录形式少</li>
+<li>序列保真度高</li>
+</ul>
+</li>
+</ul>
+<p><strong>基因注释及功能分类</strong></p>
+<ul>
+<li>基因注释：<ul>
+<li>序列联配：Blastn， Blastx</li>
+<li>蛋白质功能域搜索 (结构比对)：Pfam，Interproscan</li>
+</ul>
+</li>
+<li>基因功能分类:<ul>
+<li>Gene Ontology分类</li>
+<li>COG分类</li>
+<li>KEGG分类</li>
+</ul>
+</li>
+</ul>
+<h3 id="RNA-seq"><a href="#RNA-seq" class="headerlink" title="RNA-seq"></a>RNA-seq</h3><ol>
+<li>样品RNA准备</li>
+<li>测序文库构建 <ul>
+<li>使用 oligo dT 微珠纯化mRNA </li>
+<li>mRNA 片段化处理</li>
+<li>反转录反应合成合成双链 cDNA </li>
+<li><strong>双链 DNA 末端修复</strong> 及 <strong>3’ 末端加 ‘A’</strong> </li>
+<li>使用特定的 <strong>测序接头连接</strong> DNA 片段两端</li>
+<li>高保真聚合酶扩增构建成功的测序文库</li>
+</ul>
+</li>
+<li>DNA成簇（Cluster）扩增</li>
+<li>高通量测序（Illumina Genome Analyzer IIx） </li>
+<li>数据分析<ul>
+<li>原始数据读取</li>
+<li>与数据库比对并进行注释 </li>
+<li>深层次数据分析</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/gene_chips/图片43.png" alt=""></p>
+<p><strong>fasta 和 fastq 格式</strong><br><img src="/images/gene_chips/图片44.png" alt=""></p>
+<blockquote>
+<p>fastq<br><img src="/images/gene_chips/图片45.png" alt=""><br>fasta</p>
+</blockquote>
+<p><strong>RNA-seq 数据的均一化</strong></p>
+<p><strong>RPKM</strong>（Reads Per Kilobase per Million mapped reads），代表每百万reads中来自于某基因每千碱基长度的reads数。RPKM是将map到基因的read数除以map到基因组上的所有read数(以million为单位)与RNA的长度(以KB为单位)。</p>
+<p>RPKM不仅对 <strong>测序深度</strong> 作了归一化，而且对 <strong>基因长度</strong> 也作了归一化，使得不同长度的基因在不同测序深度下得到的基因表达水平估计值具有了可比性，是目前最常用的基因表达估计方法。</p>
+<p><strong>技术优势</strong><br>相对于传统的 sanger 测序法，RNA-seq具有以下优势：</p>
+<ul>
+<li><strong>数字化信号</strong>：直接测定每个转录本片段序列，单核苷酸分辨率的精确度，同时不存在传统微阵列杂交的荧光模拟信号带来的交叉反应和背景噪音问题。</li>
+<li><strong>高灵敏度</strong>：能够检测到细胞中少至几个拷贝的稀有转录本。</li>
+<li><strong>任意物种的全基因组分析</strong>：无需预先设计特异性探针，因此无需了解物种基因信息，能够直接对任何物种进行转录组分析。同时能够检测未知基因，发现新的转录本，并精确地识别可变剪切位点及cSNP , UTR 区域。</li>
+</ul>
+<p><strong>技术应用</strong></p>
+<ol>
+<li><strong>转录本结构研究</strong>：利用单碱基分辨率的 RNA-Seq 技术可极大地丰富基因注释的很多方面内容，包括 <strong>5’/3’边界鉴定</strong>、 <strong>UTRs 区域鉴定</strong> 以及 <strong>新的转录区域鉴定</strong>等。 RNA-seq 还可对 <strong>可变剪接</strong>（ Alternative Splicing ）进行 <strong>定量</strong> 研究。 </li>
+<li><strong>转录本变异研究</strong>：在发现序列差异方面，如 <strong>融合基因</strong> 鉴定、<strong>编码序列多态性</strong> 研究等， RNA-seq 也具有很大的潜力。</li>
+<li><strong>非编码区域功能研究</strong>：转录组学研究的一个重要方面就是发现和分析ncRNA。ncRNA按其功能可分为 <strong>看家ncRNA</strong> 和 <strong>调节ncRNA</strong>。前者通常稳定表达，发挥着一系列对细胞存活至关重要的功能，主要包括转移RNA ( tRNA ）、核糖体RNA ( rRNA ）、小核 RNA ( snRNA ) 及小核仁 RNA ( snoRNA ）等；后者主要包括长链 ncRNA ( IncRNA ）和以 microRNA 为代表的小 snRNA( small ncRNA ) ，在表观遗传、转录及转录后等多个层面调控基因表达。</li>
+<li><strong>低丰度全新转录本的确定</strong>：虽然利用转座子标签和芯片技术能够获得全新的转录本，但是其工作量大，结果不确定。而 RNA-Seq 不受背景噪音问题的困扰，结果准确性高，因而被用来发现全新的转录本。近年来对酿酒酵母、栗酒裂殖酵母、拟南芥、水稻、小鼠、人、和人体白色念珠菌的转录组测定结果都显示出大量的新转录区域，并且其中许多转录水平都低于已知的cDNA 基因。</li>
+</ol>
+<h3 id="其它芯片"><a href="#其它芯片" class="headerlink" title="其它芯片"></a>其它芯片</h3><ul>
+<li>核酸水平<ul>
+<li>表达谱芯片</li>
+<li>CGH芯片</li>
+<li>芯片测序</li>
+<li>MicroRNA芯片</li>
+<li>ChlP-chip（ChlP-seq）</li>
+</ul>
+</li>
+<li>非核酸水平<ul>
+<li>蛋白质芯片</li>
+<li>组织芯片</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生物信息学/" rel="tag"># 生物信息学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/09/bio_text_mining/" rel="next" title="十年生物医学文本挖掘界竞赛：成功、失败和未来">
+                <i class="fa fa-chevron-left"></i> 十年生物医学文本挖掘界竞赛：成功、失败和未来
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/./images/avatar.png"
+                alt="John Theo" />
+            
+              <p class="site-author-name" itemprop="name">John Theo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/John-Theo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:John_Theo@zju.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概论"><span class="nav-number">1.</span> <span class="nav-text">概论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基因芯片发展历史"><span class="nav-number">1.2.</span> <span class="nav-text">基因芯片发展历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基因芯片技术的特点"><span class="nav-number">1.3.</span> <span class="nav-text">基因芯片技术的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生物芯片的分类"><span class="nav-number">1.4.</span> <span class="nav-text">生物芯片的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测序技术简史"><span class="nav-number">2.</span> <span class="nav-text">测序技术简史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一代DNA测序历史"><span class="nav-number">2.1.</span> <span class="nav-text">一代DNA测序历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双脱氧终止法测序反应原理"><span class="nav-number">2.2.</span> <span class="nav-text">双脱氧终止法测序反应原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Illumina-测序原理"><span class="nav-number">2.3.</span> <span class="nav-text">Illumina 测序原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二代测序仪功能"><span class="nav-number">2.4.</span> <span class="nav-text">二代测序仪功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二代测序数据格式"><span class="nav-number">2.5.</span> <span class="nav-text">二代测序数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastq"><span class="nav-number">2.6.</span> <span class="nav-text">fastq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAM，BAM格式"><span class="nav-number">2.7.</span> <span class="nav-text">SAM，BAM格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三代测序技术"><span class="nav-number">2.8.</span> <span class="nav-text">第三代测序技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNA芯片技术的操作流程"><span class="nav-number">3.</span> <span class="nav-text">DNA芯片技术的操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#芯片的制作准备"><span class="nav-number">3.1.</span> <span class="nav-text">芯片的制作准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#芯片制备方法"><span class="nav-number">3.2.</span> <span class="nav-text">芯片制备方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待检测样品的制备和标记"><span class="nav-number">3.3.</span> <span class="nav-text">待检测样品的制备和标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分子杂交"><span class="nav-number">3.4.</span> <span class="nav-text">分子杂交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNA-条形码"><span class="nav-number">3.5.</span> <span class="nav-text">DNA 条形码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基因芯片的应用"><span class="nav-number">4.</span> <span class="nav-text">基因芯片的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基因表达分析"><span class="nav-number">4.1.</span> <span class="nav-text">基因表达分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基因功能分析研究"><span class="nav-number">4.2.</span> <span class="nav-text">基因功能分析研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#疾病的基因诊断"><span class="nav-number">4.3.</span> <span class="nav-text">疾病的基因诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#药物筛选"><span class="nav-number">4.4.</span> <span class="nav-text">药物筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测基因突变"><span class="nav-number">4.5.</span> <span class="nav-text">检测基因突变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探针设计原则"><span class="nav-number">5.</span> <span class="nav-text">探针设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线粒体和叶绿体-DNA"><span class="nav-number">6.</span> <span class="nav-text">线粒体和叶绿体 DNA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线粒体"><span class="nav-number">6.1.</span> <span class="nav-text">线粒体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叶绿体"><span class="nav-number">6.2.</span> <span class="nav-text">叶绿体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件和数据库"><span class="nav-number">7.</span> <span class="nav-text">软件和数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络设计引物软件"><span class="nav-number">7.1.</span> <span class="nav-text">网络设计引物软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看测序图软件"><span class="nav-number">7.2.</span> <span class="nav-text">看测序图软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一代测序序列分析软件DNASTAR"><span class="nav-number">7.3.</span> <span class="nav-text">一代测序序列分析软件DNASTAR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基因组拼接"><span class="nav-number">7.4.</span> <span class="nav-text">基因组拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适合于NGS数据的基因组组装软件"><span class="nav-number">7.5.</span> <span class="nav-text">适合于NGS数据的基因组组装软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基因组注释"><span class="nav-number">7.6.</span> <span class="nav-text">基因组注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较基因组数据库"><span class="nav-number">7.7.</span> <span class="nav-text">比较基因组数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基因组拼接-1"><span class="nav-number">8.</span> <span class="nav-text">基因组拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念-1"><span class="nav-number">8.1.</span> <span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同的芯片类型"><span class="nav-number">9.</span> <span class="nav-text">不同的芯片类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达谱芯片"><span class="nav-number">9.1.</span> <span class="nav-text">表达谱芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EST"><span class="nav-number">9.2.</span> <span class="nav-text">EST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RNA-seq"><span class="nav-number">9.3.</span> <span class="nav-text">RNA-seq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它芯片"><span class="nav-number">9.4.</span> <span class="nav-text">其它芯片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Theo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本科毕设文献翻译部分。  翻译：Huang C C, Lu Z. Community challenges in biomedical text mining over 10 years: success, failure and the future[J]. Briefings in bioinformatics, 2015, 17(1): 132-144. 原作者：Chung-Chi Huan">
+<meta name="keywords" content="生物信息学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十年生物医学文本挖掘界竞赛：成功、失败和未来">
+<meta property="og:url" content="http://yoursite.com/2019/01/09/bio_text_mining/index.html">
+<meta property="og:site_name" content="不太想说话">
+<meta property="og:description" content="本科毕设文献翻译部分。  翻译：Huang C C, Lu Z. Community challenges in biomedical text mining over 10 years: success, failure and the future[J]. Briefings in bioinformatics, 2015, 17(1): 132-144. 原作者：Chung-Chi Huan">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/article_btm/fig_1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_btm/fig_2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_btm/table_1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_btm/fig_3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_btm/fig_4.jpg">
+<meta property="og:updated_time" content="2019-01-12T14:02:40.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十年生物医学文本挖掘界竞赛：成功、失败和未来">
+<meta name="twitter:description" content="本科毕设文献翻译部分。  翻译：Huang C C, Lu Z. Community challenges in biomedical text mining over 10 years: success, failure and the future[J]. Briefings in bioinformatics, 2015, 17(1): 132-144. 原作者：Chung-Chi Huan">
+<meta name="twitter:image" content="http://yoursite.com/images/article_btm/fig_1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/09/bio_text_mining/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>十年生物医学文本挖掘界竞赛：成功、失败和未来 | 不太想说话</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?682c8bcd3389def4e85fe433be700aa6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  
+<style>
+	#loading{
+		background-color: #f2f2f2;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		margin-top: 0px;
+		top: 0px;
+	}
+	#loading-center{
+		width: 100%;
+		height: 90%;
+		position: relative;
+		}
+	#loading-center-absolute {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 20px;
+		width: 100px;
+		margin-top: -10px;
+		margin-left: -50px;
+
+	}
+    .info{
+        color: black;
+        width: 100%;
+		height: 100%;
+        padding: 0 20px;
+		text-align:center;
+        opacity:0.9;
+        top:58%;
+        font-size: 12px;
+        font-family: "Courier New";
+        font-weight: lighter;
+        line-height: 26px;
+		position: absolute;	
+    }
+    .en{
+        font-size: 14px;
+        }
+	.object{
+		width: 20px;
+		height: 20px;
+		background-color: #000000;
+		-moz-border-radius: 50% 50% 50% 50%;
+		-webkit-border-radius: 50% 50% 50% 50%;
+		border-radius: 50% 50% 50% 50%;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		position: absolute;	
+	}
+	#object_one{
+		-webkit-animation: object 2s linear infinite;
+		 animation: object 2s linear infinite;
+		 }
+	#object_two{ 
+		-webkit-animation: object 2s linear infinite -.4s;
+		animation: object 2s linear infinite -.4s;
+		 }
+	#object_three{ 
+		-webkit-animation: object 2s linear infinite -.8s; 
+		animation: object 2s linear infinite -.8s; 
+		}
+	#object_four{ 
+		-webkit-animation: object 2s linear infinite -1.2s;
+		animation: object 2s linear infinite -1.2s; 
+		} 
+	#object_five{ 
+		-webkit-animation: object 2s linear infinite -1.6s; 
+		animation: object 2s linear infinite -1.6s; 
+		}
+	@-webkit-keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }		
+		
+	}		
+	@keyframes object{
+	  0% { left: 100px; top:0}
+	  80% { left: 0; top:0;}
+	  85% { left: 0; top: -20px; width: 20px; height: 20px;}
+	  90% { width: 40px; height: 15px; }
+	  95% { left: 100px; top: -20px; width: 20px; height: 20px;}
+	  100% { left: 100px; top:0; }
+	}	
+	</style>
+  <script>
+    function load() {
+      var a= setTimeout("loading.style.transition='opacity 0.3s'",0)   
+      //设置透明度改变的过渡时间为0.3秒
+      var b= setTimeout("loading.style.opacity=0", 0)
+      //0.5秒后加载动画开始变为透明
+      var c= setTimeout("loading.style.display='none'",800)
+      //当透明度为0的时候，隐藏掉它
+    }
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"  onload="load()">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<div id="loading">
+		<div id="loading-center">
+            <div class="info">
+                <span class="en">github.io</span> 有点慢，<span class="en">font-awesome</span> 有点大，
+                <br>
+                客官麻烦搬条板凳坐一下下，我马上就到！
+            </div>
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two" style="left:20px;"></div>
+				<div class="object" id="object_three" style="left:40px;"></div>
+				<div class="object" id="object_four" style="left:60px;"></div>
+				<div class="object" id="object_five" style="left:80px;"></div>
+			</div>
+		</div> 
+	</div>
+
+  <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不太想说话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所爱，天道酬勤</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-失控">
+    <a href="/" rel="section">
+      失控</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-归档">
+    <a href="/archives/" rel="section">
+      归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      关于</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/bio_text_mining/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Theo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不太想说话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">十年生物医学文本挖掘界竞赛：成功、失败和未来</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T00:00:00+08:00">2019-01-09</time>
+            
+
+            
+            
+
+            
+          </span>
+          
+          
+              <span class="post-updated">
+                &nbsp; | &nbsp; 更新于
+                <time itemprop="dateUpdated" datetime="2019-01-12T22:02:40+08:00" content="2019-01-12">
+                  2019-01-12
+                </time>
+              </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/综述/" itemprop="url" rel="index"><span itemprop="name">综述</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/09/bio_text_mining/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/09/bio_text_mining/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本科毕设文献翻译部分。</p>
+<blockquote>
+<p>翻译：<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4719069/" target="_blank" rel="noopener">Huang C C, Lu Z. Community challenges in biomedical text mining over 10 years: success, failure and the future[J]. Briefings in bioinformatics, 2015, 17(1): 132-144.</a></p>
+<p>原作者：Chung-Chi Huang and Zhiyong Lu, National Center for Biotechnology Information (NCBI), National Library of Medicine (NLM), National Institutes of Health (NIH)</p>
+</blockquote>
+<a id="more"></a>
+<p><br></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>竞争是一个提高 state of the art 的有效途径。随着 <a href="https://en.wikipedia.org/wiki/CASP" target="_blank" rel="noopener">蛋白质结构预测竞赛（Critical Assessment of protein Structure Prediction, CASP）</a> 在生物信息学研究中取得的成功，文本挖掘研究界组织了一系列挑战性赛事，以评估和推进生物医学相关自然语言处理（NLP）研究。在本文中，我们回顾了 2002 年至 2014 年不同的社区挑战评估及其各自的任务。此外，我们还分别通过 NLP 研究和生物医学应用中的目标问题来研究这些挑战任务。我们将简述要组织一场生物医学 NLP（BioNLP）竞赛的一般工作流程，以及涉及的利益相关者（任务组织者、任务数据生产者、任务参与者和最终用户）。最后，将不同的生物 NLP 竞赛作为一个整体，我们总结了他们的影响和贡献，然后讨论了它们的局限性和困难。我们总结了未来生物 NLP 挑战评估的趋势。</p>
+<h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><p>生物医学自然语言处理（BioNLP）；BioNLP 竞赛；BioNLP 共享任务（shared tasks）；关键性评估（critical assessment）；文本挖掘</p>
+<p><br></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>大多数生物医学的最新成果都在学术刊物上发表，因此在文献中查找相关信息对于任何生命科学研究人员都是必不可少的<sup><a href="#fn_1-4" id="reffn_1-4">1-4</a></sup><i id="reffn_1" display="none"></i>。然而，近年来生物医学文献数量迅速增长，每天（<em>文章发表于2015年5月</em>）在生物医学期刊上发表超过3000篇文章。这使得文献检索和信息获取成为一项艰巨的任务<sup><a href="#fn_1" id="reffn_1">1</a></sup> <sup><a href="#fn_5" id="reffn_5">5</a></sup> <sup><a href="#fn_6" id="reffn_6">6</a></sup>。临床领域的医疗保健专业人员在处理日益增多的电子医疗/健康记录时<sup><a href="#fn_8" id="reffn_8">8</a></sup>，也面临着类似的信息爆炸和过载问题<sup><a href="#fn_7" id="reffn_7">7</a></sup>。</p>
+<p><i id="fig_1" display="none"></i><br><img src="/images/article_btm/fig_1.jpg" alt=""></p>
+<blockquote>
+<div style="font-size: 12px"><b>图一</b> 数据通道技术基于 NLP 技术和通道化（channeled）数据的应用。NLP 技术（如文档收集和信息提取）帮助生命科学领域的科学家从繁重的手工选则感兴趣的文档工作中解放出来。下面举一些聚焦 NLP 的 BioNLP 竞赛的例子。例如，信息提取相关的 BioNLP 主题包括但不仅限于，寻找药物-药物相互作用、蛋白-蛋白相互作用、基因关联、临床时序关联和基因功能标注等等。通道化 / 从文本中挖掘的数据，在另一方面，可以进一步地在数据库完善、构建本体、建立语义网络等交互系统等多个方面得到落地应用。</div>
+
+</blockquote>
+<p><br></p>
+<p>自然语言处理（NLP）通过从文本中提取关键信息并将其转换为结构化知识以供人理解，从而可以极大地促进研究效率。由于学术出版物和临床报告主要以文本形式编写，就使其在生物医学研究中变得越来越重要<sup><a href="#fn_9" id="reffn_9">9</a></sup>。自20世纪90年代末以来，NLP 与生物医学界的跨学科合作越来越普遍，形成了一个新的研究领域，称为生物医学自然语言处理（BioNLP）或文本挖掘，目的是为各种生物医学应用开发 NLP 方法。如 <a href="./#fig_1">图一</a> 所示，文本挖掘开发人员首先使用如“文档分类（document classification）”和“文档/文段收集（document/passage retrieval）”这样的信息收集（information retrieval, IE）技术来确定一部分相关文档<sup><a href="#fn_10-16" id="reffn_10-16">10-16</a></sup>。这一步的本文选择工作，一下子将搜索范围从整个文档集缩小到了主题相关文档（相关的 BioNLP 话题包括生物医学文献检索、化学专利检索、医疗案例检索和队列识别 (cohort recognition)）。这个筛选过程通常被称为文献分拣（triaging）<sup><a href="#fn_10" id="reffn_10">10</a></sup> <sup><a href="#fn_17" id="reffn_17">17</a></sup>。然后，BioNLP 开发人员结合信息提取（IE）技术（例如 <strong>事件（event）提取</strong> 或 <strong>实体关系（entity-relation）</strong> 提取）来识别可能代表目标信息焦点的文本段。这个信息焦点可能是 <strong>实体-实体相互作用</strong> （如药物-药物相互作用 (DDI) <sup><a href="#fn_18" id="reffn_18">18</a></sup> 和蛋白质-蛋白质相互作用 (PPI) <sup><a href="#fn_19" id="reffn_19">19</a></sup>）、 <strong>实体-实体关系</strong>（如蛋白质-残基关联<sup><a href="#fn_20" id="reffn_20">20</a></sup>、基因关系<sup><a href="#fn_21" id="reffn_21">21</a></sup>或临床记录中的时间关联<sup><a href="#fn_22" id="reffn_22">22</a></sup>）、<strong>特定生物实体的功能或关联的参考声明或实验方法</strong>（例如基因功能标注（references into gene function, geneRIFs）<sup><a href="#fn_23" id="reffn_23">23</a></sup>）、 <strong>生物过程</strong> （例如磷酸化）以及 <strong>参与功能实现的生物实体</strong> （例如基因事件 (gene event) 提取<sup><a href="#fn_24" id="reffn_24">24</a></sup>）等。</p>
+<blockquote>
+<p><strong>Notes: Information Extraction Pipeline and Tasks</strong></p>
+<ol>
+<li>Information retrieval (refining article collection)</li>
+<li>Focus extraction<ul>
+<li>event extraction</li>
+<li>entity-relation extraction</li>
+<li>entity-entity interaction</li>
+<li>DDI / PPI</li>
+<li>protein-residue association</li>
+<li>gene relation</li>
+<li>temporal relation in clinical record</li>
+<li>references into gene function</li>
+<li>gene event extraction</li>
+<li>……</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>总的来说，支持 NLP 的自动数据通道增益（the automatic NLP-enabled data channeling）使生命科学领域的用户能够接触到感兴趣的特定文本片段，而无需进行大量的手动搜索和查找。另外，从生物医学文献和临床记录中提取或文本挖掘的信息具有广泛的现实应用。例如，可以利用它来辅助数据库管理<sup><a href="#fn_25-29" id="reffn_25-29">25-29</a></sup>、构建本体<sup><a href="#fn_30" id="reffn_30">30</a></sup>、促进语义 Web 搜索<sup><a href="#fn_31" id="reffn_31">31</a></sup> <sup><a href="#fn_32" id="reffn_32">32</a></sup>和辅助开发交互系统（例如计算机辅助校正（curation）工具<sup><a href="#fn_33" id="reffn_33">33</a></sup> <sup><a href="#fn_34" id="reffn_34">34</a></sup>）。</p>
+<p>为了促进这种跨学科的合作，同时评价和推进 NLP 技术在生物医学领域的应用，随着 CASP 对蛋白质结构预测的竞赛在 1994 年<sup><a href="#fn_35" id="reffn_35">35</a></sup> <sup><a href="#fn_36" id="reffn_36">36</a></sup>的成功举办，近年来大量 BioNLP 共享任务（shared-tasks）开始举办。一些竞赛关注从生物医学文献中提取信息，而另一部分则更关注从医疗记录中提取信息。作为对主流生物医学文献知识发现工作的一点补充，本篇综述旨在简要介绍像<sup><a href="#fn_37" id="reffn_37">37</a></sup> <sup><a href="#fn_38" id="reffn_38">38</a></sup>这样在 2002 到 2014 年间举办的 BioNLP 竞赛。</p>
+<p>特别地，我们兼顾了 NLP 领域的研究和潜在的生物医学问题，并系统地总结和比较了这些比赛的主要任务和子任务。我们也简要聊了一下要举办 BioNLP 竞赛的步骤。最后，我们整体性的总结了这些竞赛的影响和贡献，同时概括了他们遇到的问题和局限性。</p>
+<blockquote>
+<p><strong>Notes: Article Structure</strong></p>
+<ol>
+<li>BioNLP tasks &amp; subtasks</li>
+<li>Steps to organize one</li>
+<li>Impacts &amp; contributions</li>
+<li>Limitations $ difficulties</li>
+</ol>
+</blockquote>
+<p>请注意，竞赛参与体系不在本文的讨论范围内。我们希望各位读者能前去参看每个竞赛自己的任务概览介绍文章，学习参赛者们的实现方法、模型描述和模型优劣。</p>
+<h2 id="任务综述"><a href="#任务综述" class="headerlink" title="任务综述"></a>任务综述</h2><p><a href="./#fig_2">图二</a> 按时间顺序列举了 2002-2014 年间的 BioNLP 竞赛。各个竞赛用白色粗体标出，它们关注的问题用黑色斜体标注，还带了一些简要的关于 <a href="./#table_1">表一</a> 中竞赛内容的注解。<a href="./#fig_2">图二</a> 中我们把 BioNLP 竞赛的评价按照文本类型进行了分组：关注出版文献的生物类任务和关注医疗记录的临床任务。这些竞赛任务最早在 2002 年由 <a href="https://www.kdd.org/kdd-cup" target="_blank" rel="noopener">ACM KDD CUP</a> 开出先河，这些年又有 <a href="https://en.wikipedia.org/wiki/TREC_Genomics" target="_blank" rel="noopener">TREC Genomics</a> 等竞赛相继举办。</p>
+<blockquote>
+<p><strong>Notes: BioNLP Text Genre</strong></p>
+<ol>
+<li>Biological tasks focus on scholarly publications</li>
+<li>Clinical tasks on clinical records</li>
+</ol>
+</blockquote>
+<h3 id="KDD-Cup-TREC-Genomics-Chemical-和-CoNLL"><a href="#KDD-Cup-TREC-Genomics-Chemical-和-CoNLL" class="headerlink" title="KDD Cup, TREC Genomics/Chemical 和 CoNLL"></a>KDD Cup, TREC Genomics/Chemical 和 CoNLL</h3><p>早年间的竞赛，如 KDD Cup 和 TREC Genomics，主要关注文本收集<sup><a href="#fn_23" id="reffn_23">23</a></sup>和文本分类<sup><a href="#fn_17" id="reffn_17">17</a></sup>任务。比如 KDD Cup 2002 年<sup><a href="#fn_39" id="reffn_39">39</a></sup>的 the fly genetics task 需要参赛者判断是否一篇文章符合苍蝇基因表达的各项准则。</p>
+<p>TREC ad hoc 2003 年的竞赛任务<sup><a href="#fn_23" id="reffn_23">23</a></sup> 需要参与者收集基因功能相关的文献（例如选取描述基因功能的文献），并且接下来两年的任务是收集基因和其他生物实体相关的文献。TREC 也尝试了<sup><a href="#fn_23" id="reffn_23">23</a></sup>基因功能（GeneRIFs）相关的文段 / 表述提取<sup><a href="#fn_41" id="reffn_41">41</a></sup> <sup><a href="#fn_42" id="reffn_42">42</a></sup>。在随后的的 2006 年<sup><a href="#fn_43" id="reffn_43">43</a></sup>和 2007 年<sup><a href="#fn_44" id="reffn_44">44</a></sup>，</p>
+<p>TREC Genomics further formulated search topics into natural language<br>questions (bio-entity-based questions in 2007) addressing<br>biologists’ quests in the paradigm of question answering (QA)<br>via NLP. Continuing its previous efforts on document retrieval,<br>TREC organized a chemical track from 2009 to 2011 [45–47]<br>addressing the needs of document retrieval in chemical patents. For text classification, CoNLL dedicated its 2010<br>shared task to the identification of uncertain sentences in biomedical<br>literature and locating in-sentence hedging cues<br>[48], as negations and speculations common in biomedical<br>publications can have direct influence on the text-mined<br>results.</p>
+<p><i id="fig_2" display="none"></i><br><img src="/images/article_btm/fig_2.jpg" alt=""></p>
+<blockquote>
+<div style="font-size: 12px"><b>Figure 2.</b> BioNLP challenges in chronological order. Challenges are shown in bold white font, whereas their specific task focus is shown in italic black font following the task/track short-hands in Table 1.</div>
+
+</blockquote>
+<p><br></p>
+<h3 id="BioCreative-JNLPBA-and-CALBC"><a href="#BioCreative-JNLPBA-and-CALBC" class="headerlink" title="BioCreative, JNLPBA and CALBC"></a>BioCreative, JNLPBA and CALBC</h3><p>In 2004, BioCreative and JNLPBA started to address the needs<br>to automatically detect bio-entities in free texts. Specifically,<br>the Gene Mention (GM) task [49] in BioCreative I [50] aimed<br>for gene name detection, whereas the bio-entity task in<br>JNLPBA [51] involved multiple entity types such as DNA, RNA<br>and cell type. Biological named entity recognition (NER) is<br>essential, as it is the building block for many higher-level NLP<br>tasks such as protein–protein interaction or gene regulation<br>(GR) extraction [51]. Following the GM tasks, the gene<br>normalization (GN) task in BioCreative I [52], BioCreative II [53]<br>and BioCreative III [54] was introduced where gene names<br>located automatically are further mapped to unique identifiers<br>in some standard lexicons/databases (e.g. EntrezGene).<br>In addition to genes or proteins, automatic detection of<br>other key biological entities such as chemicals and diseases<br>is also examined in recent BioCreative tasks [55–57].<br>CALBC is another NER-oriented challenge with the goal of<br>generating a large, shared corpus with annotated bio-entities<br>[58, 59].</p>
+<h3 id="KDD-Cup-LLL-BioCreative-DDIExtraction-and-BioASQ"><a href="#KDD-Cup-LLL-BioCreative-DDIExtraction-and-BioASQ" class="headerlink" title="KDD Cup, LLL, BioCreative, DDIExtraction and BioASQ"></a>KDD Cup, LLL, BioCreative, DDIExtraction and BioASQ</h3><p>Meanwhile, IE techniques have been tested in various biorelated<br>topics such as the GR prediction track in KDD Cup 2002<br>and the genic interaction extraction task in LLL 2005 [21]. In<br>BioCreative, two major IE tasks were introduced: the automatic<br>assignment of gene ontology terms (i.e. the GO task in<br>BioCreative I [60] and IV [61, 62]) and the extraction of protein–<br>protein interaction (i.e. the PPI task in BioCreative II [19], II.5 [63]<br>and III [12]). In 2011, the DDI task was first introduced in<br>DDIExtraction [18] and then repeated in 2013 [64]. Facing similar<br>challenge as the GO task in BioCreative, automatic assignment of<br>MeSH terms to biomedical articles itself [65] is far more challenging<br>owing to the size of the MeSH lexicon and rich expression<br>of MeSH concepts in text (word sense disambiguation may<br>be involved). Thus, it becomes one of the two tasks in the recent<br>BioASQ challenge [66, 67] while the other task focused on obtaining<br>precise and comprehensible answers to questions from<br>real-life biomedical research.</p>
+<p><i id="table_1" display="none"></i><br><img src="/images/article_btm/table_1.jpg" alt=""></p>
+<blockquote>
+<div style="font-size: 12px"><b>表一</b> Challenges are ordered according to their appearance in the article, while their tasks are alphabetically ordered according to abbreviated names. The
+texts are color-coded and consistent with Figure 2. A colour version of this table is available at BIB online: http://bib.oxfordjournals.org.</div>
+
+</blockquote>
+<h3 id="BioNLP-ST"><a href="#BioNLP-ST" class="headerlink" title="BioNLP-ST"></a>BioNLP-ST</h3><p>Compared with the BioCreative tasks and other IE-oriented<br>events, BioNLP-ST has its unique semantics as to how to represent<br>biological events/processes along with participating entities<br>and devotes itself to event/relation extraction. For instance,<br>the BioNLP-ST GENIA (GE) task in 2009 [24], 2011 [68] and 2013<br>[69] asked task participants to extract gene-related events such<br>as regulation, expression and transcription and to associate<br>them with their corresponding event participants, localization<br>or sites. BioNLP-ST 2011 Bacteria task [70] and 2013 Bacteria<br>Biotope task [71] aimed to detect the habitats for bacteria,<br>whereas the BioNLP-ST 2011 Infectious Diseases task [72] and<br>2013 Cancer Genetics (CG) task [73] targeted biomolecular mechanisms<br>of infectious diseases and cancer genetics, respectively.<br>BioNLP-ST also covered topics as high level as pathway curation<br>(i.e. the Pathway Curation task in BioNLP-ST 2013 [74]) and as<br>fundamental as co-reference resolution [i.e. the co-reference<br>resolution task (CO-reference) in BioNLP-ST 2011 [75]] and name<br>alias (i.e. the REN task in BioNLP-ST 2011 [76]). Though fundamental,<br>co-reference and alias issues clearly impose an upper<br>bound on the performance of event extracting systems. Gene<br>regulation (e.g. GRO and GRN tasks in 2013 [77]) and gene interaction<br>(e.g. Bacteria task in 2011 [70]) were addressed too.</p>
+<p><i id="fig_3" display="none"></i><br><img src="/images/article_btm/fig_3.jpg" alt=""></p>
+<blockquote>
+<div style="font-size: 12px"><b>图三</b> Challenges’ subtasks/tracks organized based on NLP perspectives. A colour version of this figure is available at BIB online: http://bib.oxfordjournals.org.</div>
+
+</blockquote>
+<h3 id="TAC-BiomedSumm"><a href="#TAC-BiomedSumm" class="headerlink" title="TAC BiomedSumm"></a>TAC BiomedSumm</h3><p>In 2014, the TAC BiomedSumm track challenged participants to<br>leverage the set of citation sentences that reference a specific<br>paper (‘citances’) for summarization, an important problem in<br>BioNLP research [42, 78]. Specifically, the track included identifying<br>the text spans in the referenced papers reflecting the citances,<br>classifying those spans into paper facets and then<br>generating summary for the referenced papers based on the<br>community discussion of their citances.</p>
+<h3 id="i2b2-TREC-Medical-CDS"><a href="#i2b2-TREC-Medical-CDS" class="headerlink" title="i2b2, TREC Medical/CDS"></a>i2b2, TREC Medical/CDS</h3><p>The first clinically oriented challenge task was introduced by<br>Informatics for Integrating Biology and the Bedside (i2b2) in</p>
+<ol>
+<li>An early focus was de-identification [79], a task similar in<br>spirit to NER, as the sensitive private health information in the<br>medical/clinical records needs to be removed before distribution.<br>i2b2 hosted text classification tasks on determining<br>smoking status [80] at document level (i.e. clinical records) in<br>the same year, on predicting obesity and its co-morbidities [81]<br>at document level (i.e. clinical records) in 2008, on determining<br>sentiments at sentence level (from suicide notes) in 2011 [82]<br>and on predicting heart disease risks at document level (i.e.<br>clinical records) in 2014. i2b2 was also interested in mention detection<br>and concept recognition but not for bio-entities. Instead<br>they tackled with clinical concepts such as medical problems,<br>tests, treatments, medication and dosage in clinical narratives<br>in 2009 [83] and 2010 [84] and, in addition to the concepts, temporal<br>expressions in 2012 [22]. Recognized entities were then<br>analyzed with assertion information (e.g. the presence/absence<br>of a medical problem) in 2010 [84] or were later linked with temporal<br>relations (e.g. the dosage before the surgery) in 2012 [22].<br>TREC, on the other hand, shifted its focus from biomedical literature<br>to clinical records in recent years. TREC Medical track<br>was introduced in 2011 [85] and 2012 [86] in view of identifying<br>cohorts matching specific ‘inclusion criteria’ (e.g. gender, agegroup,<br>treatment and disease present) for clinical research, clinical<br>trials or epidemiological studies. In 2014, the TREC CDS track<br>investigated NLP technologies for medical case retrieval for clinical<br>decision support.</li>
+</ol>
+<h3 id="ShARe-CLEF-eHealth-and-SemEval"><a href="#ShARe-CLEF-eHealth-and-SemEval" class="headerlink" title="ShARe/CLEF eHealth and SemEval"></a>ShARe/CLEF eHealth and SemEval</h3><p>In addition to i2b2 and TREC Medical/CDS, a new evaluation<br>event called ShARe/CLEF eHealth was piloted in 2013 [87]. It addressed<br>three separate tasks (a) traditional NER on disease<br>names in clinical notes and normalization, (b) mapping acronyms<br>and abbreviations in clinical documents to UMLS CUIs<br>and (c) retrieving relevant documents to address questions patients<br>may have when reading discharge summaries. In 2014,<br>task 7 of SemEval [88] repeated the disease NER and normalization<br>task of ShARe/CLEF eHealth 2013 while ShARe/CLEF eHealth<br>2014 launched a different set of tasks [89]: (a) interactive search<br>system for eHealth data, (b) disease template/attribute filling<br>[90] and (c) ad hoc medical record retrieval [91] where task (c) is<br>the first attempt to deal with multilingualism.<br>In Figure 3, we categorize the challenge tracks in Table 1 by<br>the targeted problems in NLP research: from IR (ad hoc retrieval,<br>passage retrieval and text classification), to NER (mention detection,<br>normalization and co-reference resolution), to IE and to<br>QA and summarization. For example, the cohort track of<br>TREC Medical is in the category text classification while the<br>BioCreative’s CHEMDNER track [92] is in mention detection (chemical,<br>drug and disease detection to be exact) and so are its GM<br>and GN tracks. In general, NLP tasks closer to the top of the<br>pyramid are more difficult. We can see from Figure 3 that,<br>among the shared tasks, TREC pays much of its attention on IR,<br>whereas others (e.g. BioCreative, LLL, BioNLP-ST and DDI) focus on<br>NER and IE.</p>
+<p><i id="fig_4" display="none"></i><br><img src="/images/article_btm/fig_4.jpg" alt=""></p>
+<blockquote>
+<div style="font-size: 12px"><b>图四</b> Different biological and clinical problems targeted by BioNLP challenges. Challenge subtasks are coded in the same colors as in Figure 2 (e.g. BioNLP-ST tasks
+are green marked). A colour version of this figure is available at BIB online: http://bib.oxfordjournals.org.</div>
+
+
+</blockquote>
+<p>From a different perspective, Figure 4 examines the BioNLP<br>challenges based on targeted problems in biology and medicine.<br>As can be seen, these two domains have their own interested<br>entities and relations, respectively illustrated by circles and explosions<br>in Figure 4. On the biological side, the key bio-entities<br>include genes/proteins, chemicals, drugs and diseases [93–96],<br>whereas on the clinical side, medical problems, tests, treatments,<br>medication relevant information and cohorts are mostly<br>concerned. As for important relations, biological tasks mainly<br>aim for bio-entities’ functions (e.g. gene functions in the GO<br>task of BioCreative), relational events (e.g. gene-related events in<br>the GE of BioNLP-ST) and interactions (e.g. drug–drug interaction<br>in the DDI task of DDIExtraction and protein–protein interaction<br>in the PPI task of BioCreative). Clinical tasks, on the other hand,<br>deal with completely different sets of relations between clinical<br>entities such as temporal relations, status, assertion/risk, comorbidity<br>and sentiment analysis. Figure 4 aligns individual<br>tasks (in boxes) close to their associated entities and relations<br>whenever possible. For example, the i2b2 obesity task [81] is<br>aligned with the relation of co-morbidity, as it aims at predicting<br>co-morbidities of the medical problem of obesity whereas<br>the i2b2 temporal task [22] is aligned with the temporal relation,<br>given its target of determining temporal relations between medical<br>concepts (e.g. treatment and problem).</p>
+<p><br></p>
+<h2 id="如何举办一个竞赛"><a href="#如何举办一个竞赛" class="headerlink" title="如何举办一个竞赛"></a>如何举办一个竞赛</h2><p>这部分我不是很感兴趣所以全部跳过了，感兴趣的朋友移步 <a href="https://academic.oup.com/bib/article/17/1/132/1742060" target="_blank" rel="noopener">原文</a>。</p>
+<p><br></p>
+<h2 id="The-limitations-of-formal-challenge-evaluations"><a href="#The-limitations-of-formal-challenge-evaluations" class="headerlink" title="The limitations of formal challenge evaluations"></a>The limitations of formal challenge evaluations</h2><p>First, challenge tasks are always simplified or abstracted from<br>the real-world problems due to the nature of open evaluations<br>(tasks have to be well defined and with a ‘proper’ level of difficulty).<br>For instance, owing to the restricted access and difficulty<br>in processing full text, a common simplification step shared by<br>many BioNLP challenge tasks is to use abstracts instead, despite<br>the fact that individual researchers, data indexers and curators<br>routinely read the full text [61, 65]. Other examples include<br>using a modest number of artificial and well-structured questions<br>of limited types for QA or IR tasks, whereas in realty, information<br>seekers typically ask complex and open-ended natural<br>language questions that are often ill-formed and ungrammatical<br>[3].<br>Second, there may not be sufficient participation or innovation in<br>method development. Insufficient participation can happen because<br>of the task itself (too difficult or unattractive) or owing to<br>the other competing tasks in the same time. As can be seen in<br>Figure 2, in recent years there have always been more concurrent<br>tasks than an individual group could address. As a result,<br>some tasks had low participation (less than five). Also, we notice<br>that when a task is broken down into multiple subtasks,<br>fewer teams afford to choose to complete it end-to-end. For instance,<br>in BioNLP-ST 2009 [24], there were 24 teams participating<br>in GE subtask-1, although only two teams completed all three<br>subtasks. In terms of technical advancement, challenge tasks<br>are designed to stimulate the research community to progress<br>by developing new and different methodologies. However,<br>when an existing method is found to be effective and competitive,<br>we often see a lack of diversity in team methods. For<br>example, of the top 12 systems in the Smoking Status detection<br>task at the 2006 i2b2 challenge, 9 used support vector machines<br>with no statistically significant difference in their microaveraged<br>F-measures [80].<br>Finally, there exists a gap between challenge tasks and real-world<br>use for several reasons. First, for some tasks, even the best automated<br>results are significantly lower than what is desired in<br>practical settings. Furthermore, as previously discussed, challenge<br>tasks are always an abstraction of the real problems so<br>that even a high-performing system will be plagued by many<br>other factors (e.g. different text input, system scalability or<br>interoperability) in real-world applications. For instance, previous<br>BioCreative Gene Normalization challenge showed that the<br>task performance dropped significantly when tested on full<br>texts [54] instead of abstracts [53]. Finally, a tradition for many<br>participants in such challenges is to achieve competitive performance<br>and publish results in a reputable journal. Not until<br>recently, there was almost no incentive for teams to adapt and<br>push their methods into real-world uses.</p>
+<p><br></p>
+<h2 id="未来趋势"><a href="#未来趋势" class="headerlink" title="未来趋势"></a>未来趋势</h2><p>我们觉得鉴于现阶段的成功，在未来竞赛性的评估会继续在 BioNLP 领域中扮演非常关键的作用。虽然一些基本任务（例如命名实体识别和信息提取等）仍将继续，同时我们也非常期待能在不远的将来看到，以不同生物、临床中用户的需求为重点的项目得以举办。我们也希望，成功有效的方法和技术能持续不断地转化到实际应用中<sup><a href="#fn_117" id="reffn_117">117</a></sup> <sup><a href="#fn_118" id="reffn_118">118</a></sup>。向着这个目标，除系统准确性以外，系统扩展性和互用性（interoperability）也需要在未来的竞赛评估中得到进一步的重视<sup><a href="#fn_119" id="reffn_119">119</a></sup> <sup><a href="#fn_120" id="reffn_120">120</a></sup>。另一个趋势可能是，在给定资源有限的条件下，与其各自分散举办不同的竞赛，不如搭建一个更加协同、更加高效、更加的经济的竞赛框架，其可以同时惠及竞赛参与者和组织者。最后，真实的竞赛评估已经在一定程度上展现出其实用性，但是协同性的竞赛可能是共同解决单个队伍无法解决的现实问题的最终途径。</p>
+<blockquote>
+<p>本文提要</p>
+<ul>
+<li>我们回顾了 2002 年到 2014 年的生物学和临床领域的 BioNLP 竞赛。</li>
+<li>我们从 NLP 和实体关联的角度总结了各项竞赛的子任务。</li>
+<li>我们描述了学术社区竞赛评估举办的几个步骤。</li>
+<li>我们从各个角度讨论了各项 BioNLP 竞赛的影响、贡献和各自面临的问题和局限性。</li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>（此处仅链接前十篇，其余文章请前往 <a href="https://academic.oup.com/bib/article/17/1/132/1742060" target="_blank" rel="noopener">原文</a> 查阅）</p>
+<p><i id="fn_1-4" display="none"></i></p>
+<p><i id="fn_1,5,6" display="none"></i></p>
+<blockquote id="fn_1">
+<sup>1</sup>. <a href="https://academic.oup.com/database/article/doi/10.1093/database/baq036/460587" target="_blank" rel="noopener">Lu Z. PubMed and beyond: a survey of web tools for searching biomedical literature[J]. Database, 2011, 2011.</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. <a href="https://link.springer.com/protocol/10.1007/978-1-4939-0709-0_2" target="_blank" rel="noopener">Khare R, Leaman R, Lu Z. Accessing biomedical literature in the current information landscape[M]//Biomedical Literature Mining. Humana Press, New York, NY, 2014: 11-31.</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. <a href="https://academic.oup.com/database/article/doi/10.1093/database/bap018/357287" target="_blank" rel="noopener">Islamaj Dogan R, Murray G C, Névéol A, et al. Understanding PubMed® user search behavior through log analysis[J]. Database, 2009, 2009.</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. <a href="https://www.nature.com/articles/nrg1768" target="_blank" rel="noopener">Jensen L J, Saric J, Bork P. Literature mining for the biologist: from information retrieval to biological discovery[J]. Nature reviews genetics, 2006, 7(2): 119.</a><a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. <a href="https://www.liebertpub.com/doi/abs/10.1089/106652703322756104" target="_blank" rel="noopener">Shatkay H, Feldman R. Mining the biomedical literature in the genomic era: an overview[J]. Journal of computational biology, 2003, 10(6): 821-855.</a><a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. <a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(06" target="_blank" rel="noopener">Hunter L, Cohen K B. Biomedical language processing: what’s beyond PubMed?[J]. Molecular cell, 2006, 21(5): 589-594.</a>00114-6)<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. <a href="https://academic.oup.com/jamia/article/12/6/614/692247" target="_blank" rel="noopener">Berner E S, Moss J. Informatics challenges for the impending patient information explosion[J]. Journal of the American Medical Informatics Association, 2005, 12(6): 614-617.</a><a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/412773#full-text-tab" target="_blank" rel="noopener">Linder J A, Ma J, Bates D W, et al. Electronic health record use and the quality of ambulatory care in the United States[J]. Archives of internal medicine, 2007, 167(13): 1400-1405.</a><a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_9">
+<sup>9</sup>. <a href="https://link.springer.com/chapter/10.1007%2F978-1-4020-5811-0_9" target="_blank" rel="noopener">Cohen K B, Hunter L. Natural language processing and systems biology[M]//Artificial intelligence methods and tools for systems biology. Springer, Dordrecht, 2004: 147-173.</a><a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_10">
+<sup>10</sup>. <a href="https://trec.nist.gov/pubs/trec13/papers/GEO.OVERVIEW.pdf" target="_blank" rel="noopener">Hersh W, Bhuptiraju RT, Ross L, et al. TREC 2004 genomics track overview. In: Proceedings of the 13th Text Retrieval Conference, 2004</a><a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<p><i id="fn_10-16" display="none"></i></p>
+<p>（此处仅链接前十篇，其余文章请前往 <a href="https://academic.oup.com/bib/article/17/1/132/1742060" target="_blank" rel="noopener">原文</a> 查阅）</p>
+
+      
+    </div>
+    
+    
+      <div>
+        ﻿<div>
+    
+<br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">————&emsp;&emsp;EOF&emsp;&emsp;————</div>
+<br><br>
+    
+</div>
+      </div>
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生物信息学/" rel="tag"># 生物信息学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/07/decision_tree/" rel="next" title="决策树基础">
+                <i class="fa fa-chevron-left"></i> 决策树基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/12/gene_chip/" rel="prev" title="基因芯片从入门到上车">
+                基因芯片从入门到上车 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/./images/avatar.png"
+                alt="John Theo" />
+            
+              <p class="site-author-name" itemprop="name">John Theo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/John-Theo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:John_Theo@zju.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.1.</span> <span class="nav-text">关键词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务综述"><span class="nav-number">3.</span> <span class="nav-text">任务综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KDD-Cup-TREC-Genomics-Chemical-和-CoNLL"><span class="nav-number">3.1.</span> <span class="nav-text">KDD Cup, TREC Genomics/Chemical 和 CoNLL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BioCreative-JNLPBA-and-CALBC"><span class="nav-number">3.2.</span> <span class="nav-text">BioCreative, JNLPBA and CALBC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KDD-Cup-LLL-BioCreative-DDIExtraction-and-BioASQ"><span class="nav-number">3.3.</span> <span class="nav-text">KDD Cup, LLL, BioCreative, DDIExtraction and BioASQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BioNLP-ST"><span class="nav-number">3.4.</span> <span class="nav-text">BioNLP-ST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TAC-BiomedSumm"><span class="nav-number">3.5.</span> <span class="nav-text">TAC BiomedSumm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i2b2-TREC-Medical-CDS"><span class="nav-number">3.6.</span> <span class="nav-text">i2b2, TREC Medical/CDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ShARe-CLEF-eHealth-and-SemEval"><span class="nav-number">3.7.</span> <span class="nav-text">ShARe/CLEF eHealth and SemEval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何举办一个竞赛"><span class="nav-number">4.</span> <span class="nav-text">如何举办一个竞赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-limitations-of-formal-challenge-evaluations"><span class="nav-number">5.</span> <span class="nav-text">The limitations of formal challenge evaluations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未来趋势"><span class="nav-number">6.</span> <span class="nav-text">未来趋势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Theo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'john-theo',
+            repo: 'john-theo.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '76d6a0a675bc659dcddb05b0abac444d8d551ba8',
+            
+                client_id: 'e0d570403cbff63adeab'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
